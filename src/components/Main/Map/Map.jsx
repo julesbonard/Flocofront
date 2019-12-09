@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import Leaflet from 'leaflet';
-import { Map, TileLayer } from 'react-leaflet'
+import { Map } from 'react-leaflet'
 import Mark from './Mark'
+import Tile from "./Tile";
 import 'leaflet/dist/leaflet.css';
 
 Leaflet.Icon.Default.imagePath =
@@ -15,23 +16,17 @@ Leaflet.Icon.Default.mergeOptions({
     shadowUrl: require('leaflet/dist/images/marker-shadow.png')
 });
 
-export default class MapDisplay extends Component {
-state = {
-    lat: 48.5833,
-    lng: 7.75,
-    zoom: 8,
-}
+export default function MapDisplay() {
+    const [latitude, setLatitude] = useState(48.5833);
+    const [longitude, setlongitude] = useState(7.75);
+    const [zoom, setZoom] = useState(7);
+    
+    const position = [latitude, longitude]
 
-render() {
-    const position = [this.state.lat, this.state.lng]
     return (
-    <Map center={position} zoom={this.state.zoom} style={{height : '600px'}}>
-        <TileLayer
-        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Mark/>
+    <Map center={position} zoom={zoom} style={{height : '600px'}}>
+        <Tile/>
+        <Mark lat="48.5833" lon="7.75"/>
     </Map>
     )
-}
 }
