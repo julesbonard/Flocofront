@@ -1,0 +1,18 @@
+$textcolor: #383838;
+$secondarytextcolor: #888888;
+
+.userimage {
+    border: solid 1px black;
+    border-radius: 100%;
+    width: 8rem;
+    height: 8rem;
+}
+
+.username {
+    margin: 5px 0;
+    color: $textcolor;
+}
+
+.userlevel {
+    color: $secondarytextcolor;
+}
