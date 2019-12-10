@@ -6,8 +6,8 @@ import Burger from './Burger';
 function MainLayout({children}) {
   return (
     <>
+    <Burger />
     <Sidebar.Pushable as={Segment}>
-      <Burger />
       <div>{children}</div>
     </Sidebar.Pushable>
     </>

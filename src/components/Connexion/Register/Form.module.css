@@ -1,0 +1,18 @@
+.inscription {
+    margin-top: 70px;
+}
+
+label.area {
+    display: none;
+    background-color: #05957c;
+    font-family: 'Montserrat', sans-serif;
+    color: white!important;
+    border-radius: 50px;
+    height: 30px;
+}
+
+button {
+    background-color: #e78e5e!important;
+    border: white;
+    color: #ebd3b7!important;
+}

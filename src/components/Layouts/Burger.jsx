@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { Icon, Button, Menu, Segment, Sidebar } from 'semantic-ui-react'
 
+
 export default function Burger() {
   const [visible, setVisible] = useState('visible' )
 
   return (
-    <>
+    <div >
       <Sidebar
         as={Menu}
         animation='overlay'
@@ -34,6 +35,6 @@ export default function Burger() {
           </Button>
         </Segment>
       </Sidebar.Pusher>
-    </>
+    </div>
   )
 }
