@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Image, Grid, Container, Input, Menu} from 'semantic-ui-react'
+import { Image, Grid, Container, Menu} from 'semantic-ui-react'
 import styles from './Account.module.scss'
 
 
