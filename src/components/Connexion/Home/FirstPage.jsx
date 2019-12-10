@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LoginPage from'../Login/LoginPage'
 
 
 const Firstpage = () => {
@@ -8,7 +9,7 @@ const Firstpage = () => {
         <div>
 
         <Link to="../Login/LoginPage">
-            C'est la première page lol
+            Floco
         </Link>
         </div>
         <div>
