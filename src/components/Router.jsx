@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import MainLayout from './Layouts/MainLayout';
-import Firstpage from './Connexion/Home/FirstPage';
 import LoginPage from './Connexion/Login/LoginPage';
 import Map from './Main/Map/Page'
+import Account from './Compte/Account';
 import RegisterLayout from './Connexion/Register/RegisterLayout';
 import Form from './Connexion/Register/Form';
 
@@ -23,9 +23,10 @@ function Router() {
     return (
         <BrowserRouter>
             <Switch>
-            <CustomRoute exact path="/" layout={MainLayout} component={Firstpage} />
+            <CustomRoute exact path="/" layout={MainLayout} component={Map} />
             <CustomRoute path="/Login/LoginPage" layout={MainLayout} component={LoginPage} />
             <CustomRoute path="/Map" layout={MainLayout} component={Map} />
+            <CustomRoute path="/Account" layout={MainLayout} component={Account} />
             <CustomRoute path="/Register" layout={RegisterLayout} component={Form} />
             </Switch>
         </BrowserRouter>

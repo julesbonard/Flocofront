@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment, Sidebar } from 'semantic-ui-react'
+import { Sidebar } from 'semantic-ui-react'
 
 import Burger from './Burger';
 
