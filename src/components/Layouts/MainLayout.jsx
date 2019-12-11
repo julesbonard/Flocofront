@@ -7,7 +7,7 @@ function MainLayout({children}) {
   return (
     <>
     <Burger />
-    <Sidebar.Pushable>
+    <Sidebar.Pushable as={Segment}>
       <div>{children}</div>
     </Sidebar.Pushable>
     </>

@@ -8,11 +8,12 @@ import styles from './Burger.module.scss';
 
 const {iconbackground, widthlink, backgroundimage, closetagburger} = styles;
 
+
 export default function Burger() {
   const [visible, setVisible] = useState(!'visible' )
 
   return (
-    <>
+    <header>
       <Sidebar
         as={Menu}
         animation='overlay'
@@ -64,6 +65,6 @@ export default function Burger() {
       </Sidebar.Pusher>
 
       <Image src={Logo} size="tiny" alt="Floco logo"/>
-    </>
+    </header>
   )
 }

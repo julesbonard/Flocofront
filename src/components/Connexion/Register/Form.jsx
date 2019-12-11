@@ -1,0 +1,44 @@
+import React from 'react'
+import { Button, Checkbox, Form, Image } from 'semantic-ui-react'
+import styles from './Form.module.css'
+
+import Logo from '../../../assets/logo-floco.png'
+
+const {inscription, barre, area, space, logo, submit} = styles;
+
+function FormRegister () {
+  return(
+  <div>
+      <Image className={logo} src={Logo} size='tiny' centered alt='Logo Floco' />
+    <div className={inscription}>
+      <Form className={barre}>
+        <Form.Field>
+          <label className={area} fluid size="large">First Name</label>
+          <input className={space} placeholder='First Name' />
+        </Form.Field>
+        <Form.Field>
+          <label className={area}>Last Name</label>
+          <input className={space} placeholder='Last Name' />
+        </Form.Field>
+        <Form.Field>
+          <label className={area}>Mail</label>
+          <input className={space} placeholder='Mail' />
+        </Form.Field>
+        <Form.Field>
+          <label className={area}>Username</label>
+          <input className={space} placeholder='Username' />
+        </Form.Field>
+        <Form.Field>
+          <label className={area}>Password</label>
+          <input className={space} placeholder='Password' />
+        </Form.Field>
+        <Form.Field>
+          <Checkbox label='I agree to the Terms and Conditions' />
+        </Form.Field>
+        <Button className={submit} type='submit'>Submit</Button>
+      </Form>
+    </div>
+  </div>
+)}
+
+export default FormRegister;
