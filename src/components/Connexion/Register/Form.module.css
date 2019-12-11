@@ -1,5 +1,15 @@
+body {
+    margin: 0;
+}
+
 .inscription {
     margin-top: 70px;
+}
+
+form.barre {
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
 }
 
 label.area {
@@ -11,8 +21,16 @@ label.area {
     height: 30px;
 }
 
-button {
+input.space {
+    margin-bottom: 20px!important;
+}
+
+button.submit {
     background-color: #e78e5e!important;
     border: white;
     color: #ebd3b7!important;
 }
+
+.logo {
+    margin-top: 20px;
+} 

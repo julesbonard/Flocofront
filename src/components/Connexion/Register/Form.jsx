@@ -4,38 +4,38 @@ import styles from './Form.module.css'
 
 import Logo from '../../../assets/logo-floco.png'
 
-const {inscription, area} = styles;
+const {inscription, barre, area, space, logo, submit} = styles;
 
 function FormRegister () {
   return(
   <div>
-      <Image src={Logo} size='tiny' centered alt='Logo Floco' />
+      <Image className={logo} src={Logo} size='tiny' centered alt='Logo Floco' />
     <div className={inscription}>
-      <Form>
+      <Form className={barre}>
         <Form.Field>
           <label className={area} fluid size="large">First Name</label>
-          <input placeholder='First Name' />
+          <input className={space} placeholder='First Name' />
         </Form.Field>
         <Form.Field>
           <label className={area}>Last Name</label>
-          <input placeholder='Last Name' />
+          <input className={space} placeholder='Last Name' />
         </Form.Field>
         <Form.Field>
           <label className={area}>Mail</label>
-          <input placeholder='Mail' />
+          <input className={space} placeholder='Mail' />
         </Form.Field>
         <Form.Field>
           <label className={area}>Username</label>
-          <input placeholder='Username' />
+          <input className={space} placeholder='Username' />
         </Form.Field>
         <Form.Field>
           <label className={area}>Password</label>
-          <input placeholder='Password' />
+          <input className={space} placeholder='Password' />
         </Form.Field>
         <Form.Field>
           <Checkbox label='I agree to the Terms and Conditions' />
         </Form.Field>
-        <Button type='submit'>Submit</Button>
+        <Button className={submit} type='submit'>Submit</Button>
       </Form>
     </div>
   </div>
