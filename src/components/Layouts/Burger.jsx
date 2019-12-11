@@ -6,7 +6,7 @@ export default function Burger() {
   const [visible, setVisible] = useState('visible' )
 
   return (
-    <div >
+    <header>
       <Sidebar
         as={Menu}
         animation='overlay'
@@ -35,6 +35,6 @@ export default function Burger() {
           </Button>
         </Segment>
       </Sidebar.Pusher>
-    </div>
+    </header>
   )
 }
