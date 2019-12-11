@@ -1,0 +1,31 @@
+.iconbackground {
+    margin: 0;
+    background: white!important;
+}
+
+.widthlink{
+    padding: 17px 0px!important;
+    font-size: 17px;
+    text-align: left!important;
+    margin-left: 5px;
+    letter-spacing: 1px;
+}
+
+.backgroundimage{
+    color: grey!important;
+    &::before{
+        content: "";
+        display: inline-block;
+        width: 18px;
+        margin-right: 4px;
+        height: 20px;
+        margin-bottom: -4px;
+        background: url(http://www.fabrikgraphik.com/wp-content/uploads/2015/07/Apple_black.jpg) center center / 25px 20px no-repeat;
+    }
+}
+
+.closetagburger {
+    padding-top: 40px!important;
+    width: 100%!important;
+    height: 100px!important;
+}

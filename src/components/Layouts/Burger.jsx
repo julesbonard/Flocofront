@@ -3,10 +3,10 @@ import { Icon, Button, Menu, Segment, Sidebar, Image} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 import Logo from '../../assets/logo-floco.png';
-import styles from './Burger.module.css';
+import styles from './Burger.module.scss';
 
 
-const {iconbackground} = styles;
+const {iconbackground, widthlink, backgroundimage, closetagburger} = styles;
 
 export default function Burger() {
   const [visible, setVisible] = useState(!'visible' )
@@ -20,34 +20,39 @@ export default function Burger() {
         onHide={() => setVisible(false)}
         vertical
         visible={visible}
-        width='thin'
+        style={{width: "160px"}}
       >
 
-        <Menu.Item as='a'>
-          <Link to="/Map">
-            Page D'acceuil
+        <Menu.Item as='a' className={widthlink}>
+          <Link to="/Map" className={backgroundimage}>
+              Page D'acceuil
           </Link>
         </Menu.Item>
 
-        <Menu.Item as='a'>
-          <Link to="../Account">
-            Mon Compte
+        <Menu.Item as='a' className={widthlink}>
+          <Link to="../Account" className={backgroundimage}>
+                Mon compte
           </Link>
         </Menu.Item>
 
-        <Menu.Item as='a'>
-          Agenda
+        <Menu.Item as='a' className={widthlink}>
+          <Link to="/Map" className={backgroundimage}>
+              Agenda
+          </Link>
         </Menu.Item>
 
-        <Menu.Item as='a'>
-          Communauté
+        <Menu.Item as='a' className={widthlink}>
+          <Link to="/Map" className={backgroundimage}>
+              Communauté
+          </Link>
         </Menu.Item>
 
-        <Menu.Item as='a'>
-          Bibliothèque
+        <Menu.Item as='a' className={widthlink}>
+          <Link to="/Map" className={backgroundimage}>
+              Bibliothèque
+          </Link>
         </Menu.Item>
-
-        <Icon link name='close' onClick={()=>setVisible(!visible)} />
+          <Icon link size="large" name='close' className={closetagburger} onClick={()=>setVisible(!visible)} />
       </Sidebar>
 
       <Sidebar.Pusher>
