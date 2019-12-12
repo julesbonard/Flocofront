@@ -24,7 +24,7 @@ export default function MapDisplay() {
     const position = [latitude, longitude]
 
     return (
-    <Map center={position} zoom={zoom} style={{height : '600px'}}>
+    <Map center={position} zoom={zoom} style={{height : '400px'}}>
         <Tile/>
         <Mark lat="48.5833" lon="7.75"/>
     </Map>
