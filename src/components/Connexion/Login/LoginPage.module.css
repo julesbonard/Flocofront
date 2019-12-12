@@ -1,7 +1,6 @@
-.no-border {
+.no_border {
   border: none !important;
   box-shadow: none !important;
-  border-radius: 1.285714rem;
 }
 
 .hr {
@@ -30,15 +29,37 @@
   /* espace les traits du texte */
   margin: 0 0.5em;
 }
-.mess {
+
+.rounded {
+  border-radius: 35px !important;
+}
+
+.teal {
+  background-color: #05957c !important;
+}
+
+.text {
+  color: white;
+}
+.no_background {
+  background: none !important;
+  margin: 0;
+}
+
+.coucou {
+  text-decoration: underline;
+}
+
+.bruh {
+  text-decoration: underline;
+  background-color: none !important;
+  margin-bottom: 34px;
+}
+.ui.segment {
   border: none !important;
-  background: inherit !important;
   box-shadow: none !important;
 }
 
-.ui.stacked.segment.no-border::after {
-  content: none;
-}
-.ui.button {
-  border-radius: 50px !important;
+.logotop {
+  margin-top: 40px !important;
 }

@@ -9,17 +9,17 @@ import {
   Segment
 } from "semantic-ui-react";
 import flower from "../../../Images/logo-floco.png";
-import "../Login/LoginPage.css";
+import styles from "./LoginPage.module.css";
 
-function LoginForm() {
+function LoginPage() {
   return (
     <Grid textAlign="center" style={{ height: "65vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as="h2" color="green" textAlign="center">
-          <Image src={flower} size="tall" />
+          <Image className={styles.logotop} src={flower} size="tall" />
         </Header>
         <Form size="medium">
-          <Segment stacked className="no-border">
+          <Segment className={styles.no_border}>
             <Form.Input
               fluid
               icon="user"
@@ -34,34 +34,50 @@ function LoginForm() {
               type="password"
             />
 
-            <Button color="teal" fluid size="large">
+            <Button
+              className={`${styles.rounded} ${styles.teal}`}
+              color="teal"
+              fluid
+              size="large"
+            >
               Se connecter
             </Button>
           </Segment>
         </Form>
-        <Message className="mess">
-          <h1 className="hr">Ou</h1>
+        <Message className={`${styles.no_border} ${styles.no_background}`}>
+          <a className={styles.bruh} href="#">
+            Mot de passe oublié ?
+          </a>
+        </Message>
+        <Message className={`${styles.no_border} ${styles.no_background}`}>
+          <h1 className={styles.hr}>Ou</h1>
         </Message>
         <Grid.Row>
           <Grid.Column>
-            <Segment className="no-border">
-              <button class="ui facebook button ">
-                <i class="facebook icon"></i>
+            <Segment className={styles.no_border}>
+              <Button color="facebook" className={styles.rounded}>
+                <i className="facebook icon"></i>
                 CONTINUER AVEC FACEBOOK
-              </button>
+              </Button>
             </Segment>
-            <Segment className="no-border">
-              <button class="ui google plus button">
-                <i class="google plus icon"></i>
+            <Segment className={styles.no_border}>
+              <Button color="google plus" className={styles.rounded}>
+                <i className="google plus icon"></i>
                 CONTINUER AVEC GOOGLE
-              </button>
+              </Button>
             </Segment>
-            <Segment className="no-border">
-              <button class="ui twitter button">
-                <i class="twitter icon"></i>
+            <Segment className={styles.no_border}>
+              <Button color="twitter" className={styles.rounded}>
+                <i className="twitter icon"></i>
                 CONTINUER AVEC TWITTER
-              </button>
+              </Button>
             </Segment>
+            <Message className={`${styles.no_border} ${styles.no_background}`}>
+              Pas de compte ?{" "}
+              <a className={styles.coucou} href="#">
+                Créer un tout de suite
+              </a>
+            </Message>
           </Grid.Column>
         </Grid.Row>
       </Grid.Column>
@@ -69,4 +85,4 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+export default LoginPage;

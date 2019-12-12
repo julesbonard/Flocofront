@@ -1,12 +1,12 @@
-import React from 'react';
-import { Form } from 'semantic-ui-react'
+import React from "react";
+import { Form } from "semantic-ui-react";
 
-function RegisterLayout({children}) {
+function RegisterLayout({ children }) {
   return (
     <>
-    <Form>
+      <Form>
         <div>{children}</div>
-    </Form>
+      </Form>
     </>
   );
 }
