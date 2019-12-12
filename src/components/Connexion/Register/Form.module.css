@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+}
+
+.inscription {
+    margin-top: 70px;
+}
+
+form.barre {
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+}
+
+label.area {
+    display: none;
+    background-color: #05957c;
+    font-family: 'Montserrat', sans-serif;
+    color: white!important;
+    border-radius: 50px;
+    height: 30px;
+}
+
+input.space {
+    margin-bottom: 20px!important;
+}
+
+button.submit {
+    background-color: #e78e5e!important;
+    border: white;
+    color: #ebd3b7!important;
+}
+
+.logo {
+    margin-top: 20px;
+}
+
+.textalign {
+    text-align: center;
+}

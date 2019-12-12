@@ -1,0 +1,58 @@
+.iconbackground {
+    margin: 0;
+    background: white!important;
+}
+
+.widthlink{
+    padding: 17px 0px!important;
+    font-size: 16px;
+    text-align: left!important;
+    margin-left: 5px;
+}
+
+@mixin logo ($logo){
+    color: grey!important;
+    &::before{
+        content: "";
+        display: inline-block;
+        width: 25px;
+        margin-right: 4px;
+        height: 25px;
+        margin-bottom: -5px;
+        background: url($logo) center center / 25px 23px no-repeat;
+    }
+}
+
+.imagehome{
+    @include logo("../../assets/accueil_vert.png");
+}
+
+.imagecompte{
+    @include logo("../../assets/mon_compte_vert.png");
+}
+
+.imageagenda{
+    @include logo("../../assets/agenda_vert.png");
+}
+
+.imagecommunaute{
+    @include logo("../../assets/communaute_vert.png");
+}
+
+.imagebibliotheque{
+    @include logo("../../assets/bibliotheque_vert.png");
+}
+
+.closetagburger {
+    padding-top: 40px!important;
+    width: 100%!important;
+    height: 100px!important;
+}
+
+.centerlogo{
+    position: absolute!important;
+    top: 33px;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
