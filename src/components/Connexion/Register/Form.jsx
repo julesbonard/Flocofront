@@ -4,11 +4,11 @@ import styles from './Form.module.css'
 
 import Logo from '../../../assets/logo-floco.png'
 
-const {inscription, barre, area, space, logo, submit} = styles;
+const {inscription, barre, area, space, logo, submit, textalign} = styles;
 
 function FormRegister () {
   return(
-  <div>
+  <div className={textalign}>
       <Image className={logo} src={Logo} size='tiny' centered alt='Logo Floco' />
     <div className={inscription}>
       <Form className={barre}>

@@ -33,4 +33,8 @@ button.submit {
 
 .logo {
     margin-top: 20px;
-} 
+}
+
+.textalign {
+    text-align: center;
+}
