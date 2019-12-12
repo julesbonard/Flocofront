@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import { Image, Grid, Container, Menu} from 'semantic-ui-react'
 import  './UserHeader.scss'
+import React, {useState} from 'react';
+import { Image, Grid, Menu} from 'semantic-ui-react'
 
 
 function Account () {
@@ -10,7 +10,7 @@ function Account () {
 
 
         return (
-            <Container>
+            <>
               <Grid>
                   <Grid.Column textAlign='center'>
                       <Image className='userimage' src='https://monamiejournaliste.com/wp-content/uploads/2016/01/Un-ours-fait-coucou-1024x600.jpg' centered/>
@@ -21,7 +21,7 @@ function Account () {
 
               <Menu fluid widths={3}>
                 <Menu.Item
-                  name='Activiés'
+                  name='Activités'
                   active={activeItem === 'home'}
                   onClick={handleItemClick}
                 />
@@ -36,7 +36,7 @@ function Account () {
                   onClick={handleItemClick}
                 />
               </Menu>
-            </Container>
+            </>
         )
     }
 

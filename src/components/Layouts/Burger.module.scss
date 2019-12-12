@@ -5,23 +5,42 @@
 
 .widthlink{
     padding: 17px 0px!important;
-    font-size: 17px;
+    font-size: 16px;
     text-align: left!important;
     margin-left: 5px;
-    letter-spacing: 1px;
 }
 
-.backgroundimage{
+@mixin logo ($logo){
     color: grey!important;
     &::before{
         content: "";
         display: inline-block;
-        width: 18px;
+        width: 25px;
         margin-right: 4px;
-        height: 20px;
-        margin-bottom: -4px;
-        background: url(http://www.fabrikgraphik.com/wp-content/uploads/2015/07/Apple_black.jpg) center center / 25px 20px no-repeat;
+        height: 25px;
+        margin-bottom: -5px;
+        background: url($logo) center center / 25px 23px no-repeat;
     }
+}
+
+.imagehome{
+    @include logo("../../assets/accueil_vert.png");
+}
+
+.imagecompte{
+    @include logo("../../assets/mon_compte_vert.png");
+}
+
+.imageagenda{
+    @include logo("../../assets/agenda_vert.png");
+}
+
+.imagecommunaute{
+    @include logo("../../assets/communaute_vert.png");
+}
+
+.imagebibliotheque{
+    @include logo("../../assets/bibliotheque_vert.png");
 }
 
 .closetagburger {
@@ -29,3 +48,11 @@
     width: 100%!important;
     height: 100px!important;
 }
+
+.centerlogo{
+    position: absolute!important;
+    top: 33px;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+

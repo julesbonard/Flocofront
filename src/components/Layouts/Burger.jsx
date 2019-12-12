@@ -6,7 +6,11 @@ import Logo from '../../assets/logo-floco.png';
 import styles from './Burger.module.scss';
 
 
-const {iconbackground, widthlink, backgroundimage, closetagburger} = styles;
+const {
+        iconbackground, widthlink, 
+        closetagburger, centerlogo, imageagenda, imagebibliotheque,
+        imagecommunaute,imagecompte, imagehome
+      } = styles;
 
 
 export default function Burger() {
@@ -25,31 +29,31 @@ export default function Burger() {
       >
 
         <Menu.Item as='a' className={widthlink}>
-          <Link to="/Map" className={backgroundimage}>
+          <Link to="/Map" className={imagehome}>
               Page D'acceuil
           </Link>
         </Menu.Item>
 
         <Menu.Item as='a' className={widthlink}>
-          <Link to="../Account" className={backgroundimage}>
+          <Link to="../Account" className={imagecompte}>
                 Mon compte
           </Link>
         </Menu.Item>
 
         <Menu.Item as='a' className={widthlink}>
-          <Link to="/Map" className={backgroundimage}>
+          <Link to="/Map" className={imageagenda}>
               Agenda
           </Link>
         </Menu.Item>
 
         <Menu.Item as='a' className={widthlink}>
-          <Link to="/Map" className={backgroundimage}>
+          <Link to="/Map" className={imagecommunaute}>
               Communauté
           </Link>
         </Menu.Item>
 
         <Menu.Item as='a' className={widthlink}>
-          <Link to="/Map" className={backgroundimage}>
+          <Link to="/Map" className={imagebibliotheque}>
               Bibliothèque
           </Link>
         </Menu.Item>
@@ -64,7 +68,9 @@ export default function Burger() {
         </Segment>
       </Sidebar.Pusher>
 
-      <Image src={Logo} size="tiny" alt="Floco logo"/>
+      <Link to="/Map">
+        <Image className={centerlogo} src={Logo} size="tiny" alt="Floco logo"/>
+      </Link>
     </header>
   )
 }
