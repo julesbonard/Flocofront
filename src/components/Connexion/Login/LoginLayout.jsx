@@ -1,7 +1,7 @@
 import React from "react";
 import { Form } from "semantic-ui-react";
 
-function RegisterLayout({ children }) {
+function LoginLayout({ children }) {
   return (
     <>
       <Form>
@@ -11,4 +11,4 @@ function RegisterLayout({ children }) {
   );
 }
 
-export default RegisterLayout;
+export default LoginLayout;
