@@ -8,6 +8,7 @@ import Account from "./Compte/Account";
 import RegisterLayout from "./Connexion/Register/RegisterLayout";
 import Form from "./Connexion/Register/Form";
 import Card from "./Flora/Progress/Card";
+import Firstpage from "./Connexion/Home/FirstPage";
 
 const CustomRoute = ({
   component: Component,
