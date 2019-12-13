@@ -7,13 +7,16 @@ import Map from "./Main/Map/Page";
 import Account from "./Compte/Account";
 import RegisterLayout from "./Connexion/Register/RegisterLayout";
 import Form from "./Connexion/Register/Form";
+import CardLayout from "./Flora/Progress/CardLayout";
 import Card from "./Flora/Progress/Card";
-import Firstpage from "./Connexion/Home/FirstPage";
-
+import Homepage from "./Connexion/Home/Homepage";
+import LoginLayout from "./Connexion/Login/LoginLayout";
 const CustomRoute = ({
   component: Component,
   layout: Layout,
   layout: RegisterLayout,
+  layout: CardLayout,
+  layout: LoginLayout,
   ...rest
 }) => (
   <Route
@@ -30,18 +33,24 @@ function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <CustomRoute exact path="/" layout={MainLayout} component={Firstpage} />
-        <Route path="/Login/LoginPage" component={LoginPage} />
+        <CustomRoute exact path="/" layout={MainLayout} component={Map} />
+        <CustomRoute
+          path="/Login/LoginPage"
+          layout={LoginLayout}
+          component={LoginPage}
+        />
         <CustomRoute path="/Map" layout={MainLayout} component={Map} />
+        <CustomRoute path="/Account" layout={MainLayout} component={Account} />
         <CustomRoute
           path="/Register"
           layout={RegisterLayout}
           component={Form}
         />
+        <CustomRoute path="/Progress" layout={CardLayout} component={Card} />
         <CustomRoute
-          path="/Login"
+          path="/Register"
           layout={RegisterLayout}
-          component={LoginPage}
+          component={Homepage}
         />
       </Switch>
     </BrowserRouter>

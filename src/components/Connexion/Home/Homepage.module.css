@@ -1,0 +1,11 @@
+.homepage {
+    background-color: #FFECE3;
+}
+
+.login, .register {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+    background-color: white;
+    color: #05957c;
+}
