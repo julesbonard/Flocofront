@@ -1,3 +1,80 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
 .card {
     text-align: center;
+}
+
+.title {
+    margin-top: 20px!important;
+    background-color: #05957c;
+    color: blanchedalmond;
+    border-radius: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+}
+
+.levelthree {
+    text-align: center;
+    padding: 10px;
+    color: white;
+    background-color: #f5eeeb8e!important;
+    border: solid 5px white;
+    box-shadow: 0 4px 8px grey;
+    border-radius: 50px;
+    margin-top: 100px!important;
+    margin-left: 25px;
+    width: 300px;
+    height: 50px;
+}
+
+.leveltwo {
+    text-align: center;
+    padding: 10px;
+    color: blanchedalmond;
+    background-color: #e78e5e!important;
+    border: solid 5px blanchedalmond;
+    box-shadow: 0 4px 8px grey;
+    border-radius: 50px;
+    margin-top: 120px!important;
+    margin-left: 50px;
+    width: 300px;
+    height: 50px;
+}
+
+.more {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70px!important;
+    color: #e78e5e;
+    /*box-shadow: 0 4px 8px grey;*/
+    
+}
+
+.levelone {
+    
+    text-align: center;
+    padding: 5px;
+    color: blanchedalmond;
+    background-color: #e78e5e!important;
+    border: solid 5px blanchedalmond;
+    box-shadow: 0 4px 8px grey;
+    border-radius: 50px;
+    margin-top: 50px!important;
+    margin-left: 10px;
+    width: 320px;
+    height: 60px;
+}
+
+.endpage {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flore2 {
+    margin-right: 0;
 }
