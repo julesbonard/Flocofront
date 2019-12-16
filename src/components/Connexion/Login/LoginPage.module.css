@@ -1,0 +1,65 @@
+.no_border {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.hr {
+  /* centre verticalement les enfants entre eux */
+  align-items: center;
+
+  /* active flexbox */
+  display: flex;
+
+  /* garde le texte centré s’il passe sur plusieurs lignes ou si flexbox n’est pas supporté */
+  text-align: center;
+  font-size: small;
+}
+
+.hr::before,
+.hr::after {
+  /* la couleur est volontairement absente ; ainsi elle sera celle du texte */
+  border-top: 0.0625em solid;
+
+  /* nécessaire pour afficher les pseudo-éléments */
+  content: "";
+
+  /* partage le reste de la largeur disponible */
+  flex: 1;
+
+  /* espace les traits du texte */
+  margin: 0 0.5em;
+}
+
+.rounded {
+  border-radius: 35px !important;
+}
+
+.teal {
+  background-color: #05957c !important;
+}
+
+.text {
+  color: white;
+}
+.no_background {
+  background: none !important;
+  margin: 0;
+}
+
+.coucou {
+  text-decoration: underline;
+}
+
+.bruh {
+  text-decoration: underline;
+  background-color: none !important;
+  margin-bottom: 34px;
+}
+.ui.segment {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.logotop {
+  margin-top: 40px !important;
+}
