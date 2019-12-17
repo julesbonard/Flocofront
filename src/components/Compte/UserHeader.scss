@@ -12,9 +12,23 @@ $secondarytextcolor: #888888;
 
 .username {
     margin: 5px 0;
-    color: $textcolor;
 }
 
 .userlevel {
     color: $secondarytextcolor;
+}
+
+.user.userimage {
+    margin-top: 20px;
+    border-radius: 100%;
+    box-shadow: 0 4px 8px grey;
+    width: 8rem;
+    height: 8rem;
+}
+
+.userlevel {
+    color: $secondarytextcolor;
+}name {
+    margin: 5px 0;
+    color: $textcolor;
 }

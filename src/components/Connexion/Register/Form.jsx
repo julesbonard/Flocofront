@@ -36,7 +36,7 @@ function FormRegister () {
         <Form.Field>
           <Checkbox label='I agree to the Terms and Conditions' />
         </Form.Field>
-        <Link to="/Account" className={submit}>Submit</Link>
+        <Link to="/Map" className={submit}>Submit</Link>
       </Form>
     </div>
   </div>

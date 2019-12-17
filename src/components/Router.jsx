@@ -12,7 +12,9 @@ import Card from "./Flora/Progress/Card";
 import Homepage from "./Connexion/Home/Homepage";
 import HomepageLayout from "./Connexion/Home/HomepageLayout";
 import LoginLayout from "./Connexion/Login/LoginLayout";
-import Accesspage from "./Partner/Accesspage";
+import Accesspage from "./Partner/Access/Accesspage";
+import FlowerPot from "./Flora/Pot/FlowerPot";
+import PartnerPage from "./Partner/Offer/PartnerPage";
 
 const CustomRoute = ({
   component: Component,
@@ -60,6 +62,16 @@ function Router() {
           path="/Partner"
           layout={RegisterLayout}
           component={Accesspage}
+        />
+        <CustomRoute
+          path="/Pot"
+          layout={MainLayout}
+          component={FlowerPot}
+        />
+        <CustomRoute
+          path="/Partner"
+          layout={MainLayout}
+          component={PartnerPage}
         />
       </Switch>
     </BrowserRouter>

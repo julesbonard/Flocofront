@@ -35,7 +35,7 @@ function LoginPage() {
               type="password"
             />
 
-            <Link to="/Account"
+            <Link to="/Map"
               className={`${styles.rounded} ${styles.teal}`}
               color="teal"
               fluid
