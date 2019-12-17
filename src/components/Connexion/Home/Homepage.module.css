@@ -1,11 +1,34 @@
-.homepage {
-    background-color: #FFECE3;
+.body {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    height: 1000px;
+    background-color: #EBD3B7;
+
+}
+
+.logorounded {
+    display: flex;
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px!important;
 }
 
 .login, .register {
+    display: flex;
+    margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
-    width: 50px;
+    width: 250px;
+    height: 50px;
     background-color: white;
+    justify-content: center;
+    align-items: center;
     color: #05957c;
+    border: solid 5px rgb(238, 235, 235);
+    box-shadow: 0 4px 8px grey;
+    border-radius: 50px;
 }

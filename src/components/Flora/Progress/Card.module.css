@@ -4,7 +4,12 @@ body {
 
 
 .card {
+    padding: 20px;
     text-align: center;
+    box-shadow: 0 10px 5px -5px gray;
+    margin-left: auto;
+    margin-right: auto;
+    width: 370px;
 }
 
 .title {
@@ -18,6 +23,8 @@ body {
 }
 
 .levelthree {
+    display: flex;
+    justify-content: center;
     text-align: center;
     padding: 10px;
     color: white;
@@ -32,6 +39,8 @@ body {
 }
 
 .leveltwo {
+    display: flex;
+    justify-content: center;
     text-align: center;
     padding: 10px;
     color: blanchedalmond;

@@ -8,6 +8,7 @@ import {
   Message,
   Segment
 } from "semantic-ui-react";
+import {Link} from 'react-router-dom';
 import flower from "../../../Images/logo-floco.png";
 import styles from "./LoginPage.module.css";
 
@@ -34,14 +35,14 @@ function LoginPage() {
               type="password"
             />
 
-            <Button
+            <Link to="/Account"
               className={`${styles.rounded} ${styles.teal}`}
               color="teal"
               fluid
               size="large"
             >
               Se connecter
-            </Button>
+            </Link>
           </Segment>
         </Form>
         <Message className={`${styles.no_border} ${styles.no_background}`}>

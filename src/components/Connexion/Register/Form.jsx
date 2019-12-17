@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Checkbox, Form, Image } from 'semantic-ui-react'
+import {Link} from 'react-router-dom';
 import styles from './Form.module.css'
 
 import Logo from '../../../assets/logo-floco.png'
@@ -35,7 +36,7 @@ function FormRegister () {
         <Form.Field>
           <Checkbox label='I agree to the Terms and Conditions' />
         </Form.Field>
-        <Button className={submit} type='submit'>Submit</Button>
+        <Link to="/Account" className={submit}>Submit</Link>
       </Form>
     </div>
   </div>
