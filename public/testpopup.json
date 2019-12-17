@@ -1,0 +1,17 @@
+{
+  "user1":{
+  "id": 1,
+  "name": "toto1",
+  "position":["48.5833", "7.75"]
+  },
+  "user2":{
+    "id": 2,
+    "name": "toto2",
+    "position":["48", "8.5"]
+  },
+  "user3":{
+    "id": 3,
+    "name": "toto3",
+    "position":["47", "7.3"]
+  }
+}

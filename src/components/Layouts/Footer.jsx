@@ -4,7 +4,7 @@ import { Grid, Segment } from 'semantic-ui-react';
 import styles from './Footer.module.scss';
 import FooterButton from './FooterButtton';
 
-const {stats_title, stats_segment, stats_paragraphe, footer} = styles;
+const {stats_title, stats_segment, stats_paragraphe, footer, margin_grid} = styles;
 
 export default function Footer() {
     const stats = [
@@ -15,25 +15,27 @@ export default function Footer() {
 
     return (
         <footer className={footer}>
-
         <FooterButton />
 
-        <Segment circular compact size='mini' className={stats_segment} >
-            <Grid centered className={stats_title}>
-                <Grid.Row className={stats_title} >
-                    <h3>mini-flores établies</h3>
-                </Grid.Row>
-                <Grid.Row columns={3} className={stats_paragraphe}>
-                    {stats
-                    .map(stat => {
-                        return (
-                        <Grid.Column  textAlign='center'>
-                            <p>{stat.value}</p>
-                            <p>{stat.label}</p>
-                        </Grid.Column>
-                        )})}
-                </Grid.Row>
-            </Grid>
-        </Segment>
+        <Grid centered className={margin_grid}>
+            <Segment centered circular size='mini' className={stats_segment} >
+                <Grid centered className={stats_title}>
+                    <Grid.Row className={stats_title} >
+                        <h3 className={stats_title}>mini-flores établies</h3>
+                    </Grid.Row>
+                    <Grid.Row columns={3} className={stats_paragraphe}>
+                        {stats
+                        .map(stat => {
+                            return (
+                                <Grid.Column className={stats_paragraphe} textAlign='center'>
+                                <p className={stats_paragraphe}>{stat.value}</p>
+                                <p className={stats_paragraphe}>{stat.label}</p>
+                            </Grid.Column>
+                            )})}
+                    </Grid.Row>
+                </Grid>
+            </Segment>
+        </Grid>
+        
         </footer>
     )}
