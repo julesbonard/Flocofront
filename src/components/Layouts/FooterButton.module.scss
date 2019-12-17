@@ -1,0 +1,23 @@
+.imagebutton {
+  width: 50px;
+}
+
+@mixin buttonmixin {
+  border-radius: 100%;
+  border: none!important;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0px 4px 8px rgba(93, 91, 91, 0.5)!important;
+  margin-bottom: 40px;
+  cursor: pointer;
+  background: white;
+}
+
+.red {
+  @include buttonmixin();
+}
+
+.yellow {
+  box-shadow: 0px 0px 5px 6px rgb(235, 211, 183)!important;
+  @include buttonmixin();
+}

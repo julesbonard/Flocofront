@@ -4,7 +4,9 @@ import Map from './Map'
 
 const LoginPage = () => {
   return (
+    <>
     <Map/>
+    </>
   );
 };
 export default LoginPage;

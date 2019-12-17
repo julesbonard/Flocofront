@@ -1,0 +1,21 @@
+$padding: 0px!important;
+$margin: 0px!important;
+
+.stats_segment{
+    padding: $padding;
+    margin: $margin;
+    box-shadow: 0px 4px 8px rgba(93, 91, 91, 0.5)!important;
+}
+.stats_title{
+    padding: $padding;
+    margin: $margin;
+}
+
+.stats_paragraphe {
+    padding: $padding;
+    margin: $margin;
+}
+
+.footer {
+    margin: 0 0 40px 0;
+}
