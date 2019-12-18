@@ -24,8 +24,9 @@ export default function MapDisplay() {
   const [latitude] = useState(48.5833);
   const [longitude] = useState(7.75);
   const [zoom] = useState(7);
-
   const position = [latitude, longitude];
+
+  const [pointLongitude, setPointLongitude] = useState([])
 
   //Exemple tableau pour Api
 
@@ -37,13 +38,16 @@ export default function MapDisplay() {
 
   //Exemple requête pour Api
 
-  // useEffect(() => {
-  //   const testpopup = async () => {
-  //     const res = await axios.get("testpopup.json");
-  //     console.log(res);
-  //   };
-  //   testpopup();
-  // });
+  useEffect(() => {
+    const testpopup = async () => {
+      let res = await axios.get("testpopup.json");
+      console.log(res);
+      let datas = res.data;
+    };
+    testpopup();
+  });
+
+  
 
   return (
     <Map center={position} zoom={zoom} className={map}>
