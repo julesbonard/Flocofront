@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Logo from "../../assets/mon_compte_vert.png";
 import styles from "./FooterButton.module.scss";
 
-const { imagebutton, red, yellow } = styles;
+const { imagebutton, disable, active } = styles;
 
 export default function FooterButton() {
   const [buttons, setButtons] = useState([
@@ -37,7 +37,7 @@ export default function FooterButton() {
             src={Logo}
             alt="Logo flore footer"
             onClick={() => revertButton(but.id)}
-            className={`${imagebutton} ${!but.reverted ? red : yellow}`}
+            className={`${imagebutton} ${!but.reverted ? disable : active}`}
           />
         );
       })}

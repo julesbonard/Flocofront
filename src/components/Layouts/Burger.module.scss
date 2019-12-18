@@ -51,8 +51,11 @@
 
 .centerlogo{
     position: absolute!important;
-    top: 33px;
+    top: 25px;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
 }
 
+.height_nav {
+    padding: 0.5em!important;
+}

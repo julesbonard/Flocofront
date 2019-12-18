@@ -9,7 +9,8 @@ import styles from './Burger.module.scss';
 const {
         iconbackground, widthlink, 
         closetagburger, centerlogo, imageagenda, imagebibliotheque,
-        imagecommunaute,imagecompte, imagehome
+        imagecommunaute,imagecompte, imagehome,
+        height_nav
       } = styles;
 
 
@@ -61,7 +62,7 @@ export default function Burger() {
       </Sidebar>
 
       <Sidebar.Pusher>
-        <Segment basic>
+        <Segment basic className={height_nav}>
           <Button className={iconbackground} onClick={()=>setVisible(!visible)} >
             <Icon className='bars' size='large' style={{margin: "0"}}></Icon>
           </Button>
