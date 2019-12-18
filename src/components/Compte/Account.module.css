@@ -1,0 +1,13 @@
+.miniflore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px!important;
+    background-color: #05957c;
+    text-align: center!important;
+    color: blanchedalmond;
+    border-radius: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+}

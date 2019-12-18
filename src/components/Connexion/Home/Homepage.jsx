@@ -1,17 +1,18 @@
 import React from 'react';
-import {Image, Button} from 'semantic-ui-react';
-import Logo from '../../../assets/logo_floco_rond.png';
+import {Image} from 'semantic-ui-react';
+import {Link} from 'react-router-dom';
+import Logo from '../../../assets/logo-floco-rond.png'
 import styles from './Homepage.module.css';
 
-const {homepage, logorounded,login, register} = styles;
+const {body, logorounded, login, register} = styles;
 
 function Homepage () {
     return(
-        <div className={homepage}>
-        <Image className={logorounded} src={Logo} size="tiny" alt="Logo Floco"/>
+        <div className={body}>
+          <Image src={Logo} className={logorounded} size="tiny" alt="Logo Floco"/>
         
-        <Button className={login}>Se connecter</Button>
-        <Button className={register}>Creer un compte</Button>
+          <Link to="/Login" className={login}>Se connecter</Link>
+          <Link to="/Register" className={register}>Creer un compte</Link>
         </div>
     )
 }
