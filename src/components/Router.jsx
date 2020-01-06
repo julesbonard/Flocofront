@@ -40,11 +40,7 @@ function Router() {
     <BrowserRouter>
       <Switch>
         <CustomRoute exact path="/" layout={MainLayout} component={Map} />
-        <CustomRoute
-          path="/Login"
-          layout={LoginLayout}
-          component={LoginPage}
-        />
+        <CustomRoute path="/Login" layout={LoginLayout} component={LoginPage} />
         <CustomRoute path="/Map" layout={MainLayout} component={Map} />
         <CustomRoute path="/Account" layout={MainLayout} component={Account} />
         <CustomRoute
@@ -63,11 +59,7 @@ function Router() {
           layout={RegisterLayout}
           component={Accesspage}
         />
-        <CustomRoute
-          path="/Pot"
-          layout={MainLayout}
-          component={FlowerPot}
-        />
+        <CustomRoute path="/Pot" layout={MainLayout} component={FlowerPot} />
         <CustomRoute
           path="/Partner"
           layout={MainLayout}
