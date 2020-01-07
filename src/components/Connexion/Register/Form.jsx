@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import axios from "axios";
 
-import { Form, Image } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Form, Image, Button } from "semantic-ui-react";
+import { useHistory } from "react-router-dom";
 import styles from "./Form.module.css";
 
 import Logo from "../../../assets/logo-floco.png";
@@ -16,6 +17,7 @@ function FormRegister() {
     username: null,
     password: null
   });
+  const history = useHistory();
 
   const change = e => {
     setState({
@@ -28,6 +30,28 @@ function FormRegister() {
     e.preventDefault();
     console.log(state);
   };
+
+  function validateAuthentication() {
+    axios
+      .post("https://floco-app.herokuapp.com/users", {
+        firstName: state.firstname,
+        lastName: state.lastname,
+        email: state.mail,
+        pseudo: state.username,
+        password: state.password
+        //age: 6
+      })
+      .then(response => {
+        localStorage.setItem("uuid", `${response.data.uuid}`);
+        setTimeout(() => {
+          history.push("/Account");
+        }, 200);
+      })
+      .catch(err => {
+        console.log(err);
+        setState({ isError: true, error: err });
+      });
+  }
 
   return (
     <div className={textalign}>
@@ -90,6 +114,7 @@ function FormRegister() {
             <label htmlFor="password">Mot de passe:</label>
             <input type="text" id="password" onChange={change} />
           </Form.Field>
+          <Button onClick={validateAuthentication}>Create</Button>
         </Form>
       </div>
     </div>
