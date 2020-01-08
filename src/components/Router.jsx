@@ -1,22 +1,46 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
 import MainLayout from "./Layouts/MainLayout";
+import RegisterLayout from "./Connexion/Register/RegisterLayout";
+import CardLayout from "./Flora/Progress/CardLayout";
+import LoginLayout from "./Connexion/Login/LoginLayout";
+import HomepageLayout from "./Connexion/Home/HomepageLayout";
+import LoginLayout from "./Connexion/Login/LoginLayout";
+
 import LoginPage from "./Connexion/Login/LoginPage";
 import Map from "./Main/Map/Page";
 import Account from "./Compte/Account";
-import RegisterLayout from "./Connexion/Register/RegisterLayout";
 import Form from "./Connexion/Register/Form";
-import CardLayout from "./Flora/Progress/CardLayout";
 import Card from "./Flora/Progress/Card";
 import Homepage from "./Connexion/Home/Homepage";
-import HomepageLayout from "./Connexion/Home/HomepageLayout";
-import LoginLayout from "./Connexion/Login/LoginLayout";
 import Accesspage from "./Partner/Access/Accesspage";
 import FlowerPot from "./Flora/Pot/FlowerPot";
 import PartnerPage from "./Partner/Offer/PartnerPage";
 
-const CustomRoute = ({
+function CustomRoute({
+  component: Component,
+  layout: Layout,
+  layout: RegisterLayout,
+  layout: CardLayout,
+  layout: LoginLayout,
+  ...rest
+}) {
+  return (
+    <Route
+      {...rest}
+      render={props => (
+        <Layout>
+          <Component {...props} />
+        </Layout>
+      )}
+    />
+  )
+};
+
+function AuthRoute({
+  isAuth,
   component: Component,
   layout: Layout,
   layout: RegisterLayout,
@@ -24,50 +48,48 @@ const CustomRoute = ({
   layout: HomepageLayout,
   layout: LoginLayout,
   ...rest
-}) => (
-  <Route
-    {...rest}
-    render={props => (
-      <Layout>
-        <Component {...props} />
-      </Layout>
-    )}
-  />
-);
+}) {
+  return (
+    <Route
+      {...rest}
+      render={props => {
+        return (
+          isAuth ?
+            < Layout >
+              <Component {...props} />
+            </Layout >
+            :
+            <Redirect to="/" />
+        )
+      }}
+    />
+  )
+};
 
-function Router() {
+function Router({ isAuth }) {
   return (
     <BrowserRouter>
       <Switch>
-        <CustomRoute exact path="/" layout={MainLayout} component={Map} />
+        <CustomRoute path="/Home" layout={HomepageLayout} component={Homepage} />
         <CustomRoute path="/Login" layout={LoginLayout} component={LoginPage} />
-        <CustomRoute path="/Map" layout={MainLayout} component={Map} />
-        <CustomRoute path="/Account" layout={MainLayout} component={Account} />
-        <CustomRoute
-          path="/Register"
-          layout={RegisterLayout}
-          component={Form}
-        />
-        <CustomRoute path="/Progress" layout={CardLayout} component={Card} />
-        <CustomRoute
-          path="/Home"
-          layout={HomepageLayout}
-          component={Homepage}
-        />
-        <CustomRoute
-          path="/Partner"
-          layout={RegisterLayout}
-          component={Accesspage}
-        />
-        <CustomRoute path="/Pot" layout={MainLayout} component={FlowerPot} />
-        <CustomRoute
-          path="/Partner"
-          layout={MainLayout}
-          component={PartnerPage}
-        />
+        <CustomRoute path="/Register" layout={RegisterLayout} component={Homepage} />
+        <AuthRoute exact path="/" isAuth={isAuth} layout={MainLayout} component={Map} />
+        <AuthRoute path="/Map" isAuth={isAuth} layout={MainLayout} component={Map} />
+        <AuthRoute path="/Account" isAuth={isAuth} layout={MainLayout} component={Account} />
+        <AuthRoute path="/Register" isAuth={isAuth} layout={RegisterLayout} component={Form} />
+        <AuthRoute path="/Progress" isAuth={isAuth} layout={CardLayout} component={Card} />
+        <AuthRoute path="/Partner" isAuth={isAuth} layout={RegisterLayout} component={Accesspage} />
+        <AuthRoute path="/Pot" isAuth={isAuth} layout={MainLayout} component={FlowerPot} />
+        <AuthRoute path="/Partner" isAuth={isAuth} layout={MainLayout} component={PartnerPage} />
       </Switch>
     </BrowserRouter>
   );
 }
 
-export default Router;
+const mapStateToProps = state => {
+  return {
+    isAuth: state.isAuth
+  };
+};
+
+export default connect(mapStateToProps)(Router);
