@@ -24,7 +24,7 @@ function LoginForm({ logIn }) {
             })
             .then(res => {
                 logIn(res.data.token, res.data.id);
-                history.push("/");
+                history.push("/map");
             })
             .catch(err => {
                 console.log(err);

@@ -5,7 +5,7 @@ import {
   Image,
   Message,
 } from "semantic-ui-react";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import flower from "../../../Images/logo-floco.png";
 import styles from "./LoginPage.module.css";
 import LoginForm from "./LoginForm";
@@ -24,7 +24,7 @@ function LoginPage({ logIn, location }) {
     const { id, token } = queryString.parse(location.search);
     if (token) {
       logIn(token, id);
-      history.push("/");
+      history.push("/map");
     }
     if (firstRender.current) {
       firstRender.current = false;

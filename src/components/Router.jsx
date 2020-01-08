@@ -7,7 +7,6 @@ import RegisterLayout from "./Connexion/Register/RegisterLayout";
 import CardLayout from "./Flora/Progress/CardLayout";
 import LoginLayout from "./Connexion/Login/LoginLayout";
 import HomepageLayout from "./Connexion/Home/HomepageLayout";
-import LoginLayout from "./Connexion/Login/LoginLayout";
 
 import LoginPage from "./Connexion/Login/LoginPage";
 import Map from "./Main/Map/Page";
@@ -70,10 +69,9 @@ function Router({ isAuth }) {
   return (
     <BrowserRouter>
       <Switch>
-        <CustomRoute path="/Home" layout={HomepageLayout} component={Homepage} />
+        <CustomRoute exact path="/" layout={HomepageLayout} component={Homepage} />
         <CustomRoute path="/Login" layout={LoginLayout} component={LoginPage} />
         <CustomRoute path="/Register" layout={RegisterLayout} component={Homepage} />
-        <AuthRoute exact path="/" isAuth={isAuth} layout={MainLayout} component={Map} />
         <AuthRoute path="/Map" isAuth={isAuth} layout={MainLayout} component={Map} />
         <AuthRoute path="/Account" isAuth={isAuth} layout={MainLayout} component={Account} />
         <AuthRoute path="/Register" isAuth={isAuth} layout={RegisterLayout} component={Form} />
