@@ -46,3 +46,9 @@ input.space {
 .textalign {
     text-align: center;
 }
+
+.button {
+    background: #05957c!important;
+    color: white!important;
+    align-items: center;
+}
