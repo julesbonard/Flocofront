@@ -7,10 +7,6 @@ import styles from "./Form.module.css";
 import Logo from "../../../assets/logo-floco.png";
 import PasswordShowHide from "../Register/password"
 
-
-
-
-
 const { inscription, barre, area, space, logo, button, textalign } = styles;
 
 function FormRegister() {
@@ -43,7 +39,6 @@ function FormRegister() {
         email: state.mail,
         pseudo: state.username,
         password: state.password
-        //age: 6
       })
       .then(response => {
         localStorage.setItem("uuid", `${response.data.uuid}`);
