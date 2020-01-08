@@ -11,7 +11,7 @@ import PasswordShowHide from "../Register/password"
 
 
 
-const { inscription, barre, area, space, logo, submit, textalign } = styles;
+const { inscription, barre, area, space, logo, button, textalign } = styles;
 
 function FormRegister() {
   const [state, setState] = useState({
@@ -118,7 +118,7 @@ function FormRegister() {
            <label htmlFor="password">Mot de passe:</label>
             <PasswordShowHide/>
           </Form.Field>
-          <Button onClick={validateAuthentication}>Create</Button>
+          <Button onClick={validateAuthentication} className={button} >Creer Le Compte </Button>
         </Form>
       </div>
     </div>
