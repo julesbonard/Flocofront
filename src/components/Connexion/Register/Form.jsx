@@ -4,8 +4,12 @@ import axios from "axios";
 import { Form, Image, Button } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import styles from "./Form.module.css";
-
 import Logo from "../../../assets/logo-floco.png";
+import PasswordShowHide from "../Register/password"
+
+
+
+
 
 const { inscription, barre, area, space, logo, submit, textalign } = styles;
 
@@ -52,7 +56,7 @@ function FormRegister() {
         setState({ isError: true, error: err });
       });
   }
-
+ 
   return (
     <div className={textalign}>
       <Image
@@ -107,12 +111,12 @@ function FormRegister() {
               id="username"
               onChange={change}
               className={space}
-              placeholder="username"
+              placeholder="Username"
             />
           </Form.Field>
           <Form.Field>
-            <label htmlFor="password">Mot de passe:</label>
-            <input type="text" id="password" onChange={change} />
+           <label htmlFor="password">Mot de passe:</label>
+            <PasswordShowHide/>
           </Form.Field>
           <Button onClick={validateAuthentication}>Create</Button>
         </Form>
