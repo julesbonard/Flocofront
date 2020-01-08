@@ -30,6 +30,9 @@
   margin: 0 0.5em;
 }
 
+.text {
+  color: white!important;
+}
 .rounded {
   border-radius: 35px !important;
 }
@@ -38,9 +41,7 @@
   background-color: #05957c !important;
 }
 
-.text {
-  color: white;
-}
+
 .no_background {
   background: none !important;
   margin: 0;

@@ -1,13 +1,16 @@
 import  './UserHeader.scss'
 import React, {useState} from 'react';
-import { Image, Grid, Menu} from 'semantic-ui-react'
+import {Image, Grid, Menu} from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
+import styles from './Account.module.css'
+
+const {miniflore} = styles
 
 
 function Account () {
     const [activeItem, setActiveItem] = useState('home')
     
     const handleItemClick = (e, { name }) => setActiveItem(name);
-
 
         return (
             <>
@@ -36,6 +39,7 @@ function Account () {
                   onClick={handleItemClick}
                 />
               </Menu>
+              <Link to="/Progress" className={miniflore}>Mini-Flore</Link>
             </>
         )
     }

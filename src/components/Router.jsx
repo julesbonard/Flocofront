@@ -6,6 +6,8 @@ import MainLayout from "./Layouts/MainLayout";
 import RegisterLayout from "./Connexion/Register/RegisterLayout";
 import CardLayout from "./Flora/Progress/CardLayout";
 import LoginLayout from "./Connexion/Login/LoginLayout";
+import HomepageLayout from "./Connexion/Home/HomepageLayout";
+import LoginLayout from "./Connexion/Login/LoginLayout";
 
 import LoginPage from "./Connexion/Login/LoginPage";
 import Map from "./Main/Map/Page";
@@ -13,6 +15,9 @@ import Account from "./Compte/Account";
 import Form from "./Connexion/Register/Form";
 import Card from "./Flora/Progress/Card";
 import Homepage from "./Connexion/Home/Homepage";
+import Accesspage from "./Partner/Access/Accesspage";
+import FlowerPot from "./Flora/Pot/FlowerPot";
+import PartnerPage from "./Partner/Offer/PartnerPage";
 
 function CustomRoute({
   component: Component,
@@ -40,6 +45,7 @@ function AuthRoute({
   layout: Layout,
   layout: RegisterLayout,
   layout: CardLayout,
+  layout: HomepageLayout,
   layout: LoginLayout,
   ...rest
 }) {
@@ -64,6 +70,7 @@ function Router({ isAuth }) {
   return (
     <BrowserRouter>
       <Switch>
+        <CustomRoute path="/Home" layout={HomepageLayout} component={Homepage} />
         <CustomRoute path="/Login" layout={LoginLayout} component={LoginPage} />
         <CustomRoute path="/Register" layout={RegisterLayout} component={Homepage} />
         <AuthRoute exact path="/" isAuth={isAuth} layout={MainLayout} component={Map} />
@@ -71,6 +78,9 @@ function Router({ isAuth }) {
         <AuthRoute path="/Account" isAuth={isAuth} layout={MainLayout} component={Account} />
         <AuthRoute path="/Register" isAuth={isAuth} layout={RegisterLayout} component={Form} />
         <AuthRoute path="/Progress" isAuth={isAuth} layout={CardLayout} component={Card} />
+        <AuthRoute path="/Partner" isAuth={isAuth} layout={RegisterLayout} component={Accesspage} />
+        <AuthRoute path="/Pot" isAuth={isAuth} layout={MainLayout} component={FlowerPot} />
+        <AuthRoute path="/Partner" isAuth={isAuth} layout={MainLayout} component={PartnerPage} />
       </Switch>
     </BrowserRouter>
   );

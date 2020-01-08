@@ -13,8 +13,10 @@ form.barre {
 }
 
 label.area {
-    display: none;
+    flex-direction: column;
     background-color: #05957c;
+    justify-content: center;
+    align-items: center;
     font-family: 'Montserrat', sans-serif;
     color: white!important;
     border-radius: 50px;
@@ -25,10 +27,16 @@ input.space {
     margin-bottom: 20px!important;
 }
 
-button.submit {
+.submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #e78e5e!important;
+    font-family: 'Montserrat', sans-serif;
     border: white;
-    color: #ebd3b7!important;
+    color: white!important;
+    border-radius: 50px;
+    height: 30px;
 }
 
 .logo {
