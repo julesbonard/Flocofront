@@ -12,7 +12,6 @@ function Account () {
     
     const handleItemClick = (e, { name }) => setActiveItem(name);
 
-
         return (
             <>
               <Grid>
