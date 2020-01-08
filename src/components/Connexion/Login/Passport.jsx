@@ -7,29 +7,26 @@ import {
 } from "semantic-ui-react";
 import styles from "./LoginPage.module.css";
 
-export default function Passport() {
+function Passport() {
     return (
         <Grid.Row>
             <Grid.Column>
                 <Segment className={styles.no_border}>
-                    <Button color="facebook" className={styles.rounded} href="http://localhost:8000/login/auth/facebook/callback">
+                    <Button color="facebook" className={styles.rounded} href="http://localhost:8000/login/auth/facebook">
                         <i className="facebook icon"></i>
                         CONTINUER AVEC FACEBOOK
               </Button>
                 </Segment>
                 <Segment className={styles.no_border}>
-                    <Button color="google plus" className={styles.rounded}>
+                    <Button color="google plus" className={styles.rounded} href="http://localhost:8000/login/auth/google">
                         <i className="google plus icon"></i>
                         CONTINUER AVEC GOOGLE
               </Button>
                 </Segment>
-                <Message className={`${styles.no_border} ${styles.no_background}`}>
-                    Pas de compte ?{" "}
-                    <a className={styles.coucou} href="#">
-                        Créer un tout de suite
-              </a>
-                </Message>
             </Grid.Column>
         </Grid.Row>
     )
 }
+
+
+export default Passport;
