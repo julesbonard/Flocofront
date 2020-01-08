@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import Leaflet from "leaflet";
 import { Map } from "react-leaflet";
 import axios from "axios";
-import Mark from "./Mark";
 import Tile from "./Tile";
 import "leaflet/dist/leaflet.css";
+import { Marker, Popup } from "react-leaflet";
 
 import styles from "./Map.module.css";
 
@@ -21,38 +21,80 @@ Leaflet.Icon.Default.mergeOptions({
 const { map } = styles;
 
 export default function MapDisplay() {
-  const [latitude] = useState(48.5833);
-  const [longitude] = useState(7.75);
+  const [initialMapPosition] = useState([48.5833, 7.75]);
   const [zoom] = useState(7);
-  const position = [latitude, longitude];
+  const [markers, setMarkers] = useState([]);
 
-  const [pointLongitude, setPointLongitude] = useState([])
-
-  //Exemple tableau pour Api
-
-  const points = [
-    ["48.5833", "7.75"],
-    ["48", "8.5"],
-    ["47", "7.3"]
-  ];
-
-  //Exemple requête pour Api
+  const addMarker = e => {
+    const { lat, lng } = e.latlng;
+    axios
+      .post("http://localhost:8000/locations", {
+        latitude: lat,
+        longitude: lng,
+        PlantUuid: "421ab258-01c2-40ca-9350-dec9c81502ae" //TODO: change to a real plant
+      })
+      .then(res => {
+        const { uuid, latitude, longitude, PlantUuid } = res.data;
+        setMarkers([
+          ...markers,
+          {
+            uuid,
+            lat: latitude,
+            lng: longitude,
+            PlantUuid
+          }
+        ]);
+      })
+      .catch(err => {
+        console.log(err);
+        alert(err.messagge);
+      });
+  };
 
   useEffect(() => {
-    const testpopup = async () => {
-      let res = await axios.get("testpopup.json");
+    const getMarkers = async () => {
+      let res = await axios.get("http://localhost:8000/locations");
+      const markers = res.data.map(marker => {
+        return {
+          uuid: marker.uuid,
+          lat: marker.latitude,
+          lng: marker.longitude,
+          PlantUuid: marker.PlantUuid
+        };
+      });
+      setMarkers(markers);
       console.log(res);
-      let datas = res.data;
     };
-    testpopup();
-  });
+    getMarkers();
+  }, []);
 
-  
+  const log = e => {
+    axios
+    .delete(`http://localhost:8000/locations/${e}`).then(res => {
+      const filteredMarkers = markers.filter(marker => e !== marker.uuid);
+      setMarkers(filteredMarkers);
+    })
+    .catch(err => {
+      console.log(err);
+      alert(err.messagge);
+    });
+  };
 
   return (
-    <Map center={position} zoom={zoom} className={map}>
+    <Map
+      center={initialMapPosition}
+      zoom={zoom}
+      className={map}
+      onClick={addMarker}
+    >
       <Tile />
-      <Mark points={points} />
+      {markers.map(marker => (
+        <Marker key={marker.uuid} position={marker}>
+          <Popup>
+            <button onClick={() => log(marker.uuid)} className="ui button">Delete Marker</button>
+          </Popup>
+        </Marker>
+      ))}
     </Map>
   );
 }
