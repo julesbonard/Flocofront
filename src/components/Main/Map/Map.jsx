@@ -31,7 +31,8 @@ export default function MapDisplay() {
       .post("http://localhost:8000/locations", {
         latitude: lat,
         longitude: lng,
-        PlantUuid: "421ab258-01c2-40ca-9350-dec9c81502ae" //TODO: change to a real plant
+        PlantUuid: "1" //TODO: change to a real plant 
+        // backend branch test
       })
       .then(res => {
         const { uuid, latitude, longitude, PlantUuid } = res.data;
@@ -70,14 +71,14 @@ export default function MapDisplay() {
 
   const log = e => {
     axios
-    .delete(`http://localhost:8000/locations/${e}`).then(res => {
-      const filteredMarkers = markers.filter(marker => e !== marker.uuid);
-      setMarkers(filteredMarkers);
-    })
-    .catch(err => {
-      console.log(err);
-      alert(err.messagge);
-    });
+      .delete(`http://localhost:8000/locations/${e}`).then(res => {
+        const filteredMarkers = markers.filter(marker => e !== marker.uuid);
+        setMarkers(filteredMarkers);
+      })
+      .catch(err => {
+        console.log(err);
+        alert(err.messagge);
+      });
   };
 
   return (
