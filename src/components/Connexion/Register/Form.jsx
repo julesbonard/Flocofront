@@ -5,7 +5,6 @@ import { Form, Image, Button } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import styles from "./Form.module.css";
 import Logo from "../../../assets/logo-floco.png";
-import PasswordShowHide from "../Register/password"
 
 const { inscription, barre, area, space, logo, button, textalign } = styles;
 
@@ -14,9 +13,11 @@ function FormRegister() {
     firstname: null,
     lastname: null,
     mail: null,
-    username: null,
-    password: null
+    username: null
   });
+  const [hidden, setHidden] = useState(true)
+  const [password, setPassword] = useState("")
+
   const history = useHistory();
 
   const change = e => {
@@ -38,7 +39,8 @@ function FormRegister() {
         lastName: state.lastname,
         email: state.mail,
         pseudo: state.username,
-        password: state.password
+        password: password,
+        isOAuth: false
       })
       .then(response => {
         localStorage.setItem("uuid", `${response.data.uuid}`);
@@ -51,7 +53,7 @@ function FormRegister() {
         setState({ isError: true, error: err });
       });
   }
- 
+
   return (
     <div className={textalign}>
       <Image
@@ -110,8 +112,17 @@ function FormRegister() {
             />
           </Form.Field>
           <Form.Field>
-           <label htmlFor="password">Mot de passe:</label>
-            <PasswordShowHide/>
+            <label htmlFor="password">Mot de passe:</label>
+            <div>
+              <input
+                type={hidden ? "password" : "text"}
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+              />
+              <button onClick={() => setHidden(!hidden)} >
+                <i class={hidden ? "eye slash icon" : "eye icon"}></i>
+              </button>
+            </div>
           </Form.Field>
           <Button onClick={validateAuthentication} className={button} >Creer Le Compte </Button>
         </Form>
