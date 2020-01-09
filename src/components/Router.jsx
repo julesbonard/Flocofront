@@ -35,8 +35,8 @@ function CustomRoute({
         </Layout>
       )}
     />
-  )
-};
+  );
+}
 
 function AuthRoute({
   isAuth,
@@ -52,33 +52,70 @@ function AuthRoute({
     <Route
       {...rest}
       render={props => {
-        return (
-          isAuth ?
-            < Layout >
-              <Component {...props} />
-            </Layout >
-            :
-            <Redirect to="/" />
-        )
+        return isAuth ? (
+          <Layout>
+            <Component {...props} />
+          </Layout>
+        ) : (
+          <Redirect to="/" />
+        );
       }}
     />
-  )
-};
+  );
+}
 
 function Router({ isAuth }) {
   return (
     <BrowserRouter>
       <Switch>
-        <CustomRoute exact path="/" layout={HomepageLayout} component={Homepage} />
+        <CustomRoute
+          exact
+          path="/"
+          layout={HomepageLayout}
+          component={Homepage}
+        />
         <CustomRoute path="/Login" layout={LoginLayout} component={LoginPage} />
-        <CustomRoute path="/Register" layout={RegisterLayout} component={Homepage} />
-        <AuthRoute path="/Map" isAuth={isAuth} layout={MainLayout} component={Map} />
-        <AuthRoute path="/Account" isAuth={isAuth} layout={MainLayout} component={Account} />
-        <AuthRoute path="/Register" isAuth={isAuth} layout={RegisterLayout} component={Form} />
-        <AuthRoute path="/Progress" isAuth={isAuth} layout={CardLayout} component={Card} />
-        <AuthRoute path="/Partner" isAuth={isAuth} layout={RegisterLayout} component={Accesspage} />
-        <AuthRoute path="/Pot" isAuth={isAuth} layout={MainLayout} component={FlowerPot} />
-        <AuthRoute path="/Partner" isAuth={isAuth} layout={MainLayout} component={PartnerPage} />
+        <CustomRoute
+          path="/Register"
+          layout={RegisterLayout}
+          component={Form}
+        />
+        <AuthRoute
+          path="/Map"
+          isAuth={isAuth}
+          layout={MainLayout}
+          component={Map}
+        />
+        <AuthRoute
+          path="/Account"
+          isAuth={isAuth}
+          layout={MainLayout}
+          component={Account}
+        />
+        <AuthRoute
+          path="/Progress"
+          isAuth={isAuth}
+          layout={CardLayout}
+          component={Card}
+        />
+        <AuthRoute
+          path="/Partner"
+          isAuth={isAuth}
+          layout={RegisterLayout}
+          component={Accesspage}
+        />
+        <AuthRoute
+          path="/Pot"
+          isAuth={isAuth}
+          layout={MainLayout}
+          component={FlowerPot}
+        />
+        <AuthRoute
+          path="/Partner"
+          isAuth={isAuth}
+          layout={MainLayout}
+          component={PartnerPage}
+        />
       </Switch>
     </BrowserRouter>
   );
