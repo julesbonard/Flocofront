@@ -18,7 +18,7 @@ function LoginForm({ logIn }) {
     const onSubmit = e => {
         e.preventDefault();
         axios
-            .post("http://localhost:8000/login", {
+            .post("https://floco-app.herokuapp.com/login", {
                 email,
                 password
             })

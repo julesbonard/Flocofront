@@ -28,7 +28,7 @@ export default function MapDisplay() {
   const addMarker = e => {
     const { lat, lng } = e.latlng;
     axios
-      .post("http://localhost:8000/locations", {
+      .post("https://floco-app.herokuapp.com/locations", {
         latitude: lat,
         longitude: lng,
         PlantUuid: "1" //TODO: change to a real plant 
@@ -54,7 +54,7 @@ export default function MapDisplay() {
 
   useEffect(() => {
     const getMarkers = async () => {
-      let res = await axios.get("http://localhost:8000/locations");
+      let res = await axios.get("https://floco-app.herokuapp.com/locations");
       const markers = res.data.map(marker => {
         return {
           uuid: marker.uuid,
@@ -71,7 +71,7 @@ export default function MapDisplay() {
 
   const log = e => {
     axios
-      .delete(`http://localhost:8000/locations/${e}`).then(res => {
+      .delete(`https://floco-app.herokuapp.com/locations/${e}`).then(res => {
         const filteredMarkers = markers.filter(marker => e !== marker.uuid);
         setMarkers(filteredMarkers);
       })

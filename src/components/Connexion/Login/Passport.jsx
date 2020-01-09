@@ -12,13 +12,13 @@ function Passport() {
         <Grid.Row>
             <Grid.Column>
                 <Segment className={styles.no_border}>
-                    <Button color="facebook" className={styles.rounded} href="http://localhost:8000/login/auth/facebook">
+                    <Button color="facebook" className={styles.rounded} href="https://floco-app.herokuapp.com/login/auth/facebook">
                         <i className="facebook icon"></i>
                         CONTINUER AVEC FACEBOOK
               </Button>
                 </Segment>
                 <Segment className={styles.no_border}>
-                    <Button color="google plus" className={styles.rounded} href="http://localhost:8000/login/auth/google">
+                    <Button color="google plus" className={styles.rounded} href="https://floco-app.herokuapp.com/login/auth/google">
                         <i className="google plus icon"></i>
                         CONTINUER AVEC GOOGLE
               </Button>
