@@ -50,7 +50,7 @@ function LoginPage({ logIn, location }) {
         <Passport />
         <Message className={`${styles.no_border} ${styles.no_background}`}>
           Pas de compte ?{" "}
-          <a className={styles.coucou} href="#">
+          <a className={styles.coucou} href="http://localhost:3000/register">
             Créer un tout de suite
               </a>
         </Message>

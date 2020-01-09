@@ -10,7 +10,7 @@ import HomepageLayout from "./Connexion/Home/HomepageLayout";
 
 import LoginPage from "./Connexion/Login/LoginPage";
 import Map from "./Main/Map/Page";
-import Account from "./Compte/Account";
+import Account from "./Account/Account";
 import Form from "./Connexion/Register/Form";
 import Card from "./Flora/Progress/Card";
 import Homepage from "./Connexion/Home/Homepage";
@@ -57,8 +57,8 @@ function AuthRoute({
             <Component {...props} />
           </Layout>
         ) : (
-          <Redirect to="/" />
-        );
+            <Redirect to="/" />
+          );
       }}
     />
   );
