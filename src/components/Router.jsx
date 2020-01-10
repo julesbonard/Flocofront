@@ -123,7 +123,7 @@ function Router({ isAuth }) {
 
 const mapStateToProps = state => {
   return {
-    isAuth: state.isAuth
+    isAuth: state.authReducer.isAuth
   };
 };
 

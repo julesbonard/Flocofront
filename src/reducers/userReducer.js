@@ -1,12 +1,7 @@
 import { USER_LOGIN, USER_LOGOUT } from "./action";
 
 const initialState = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    pseudo: "",
-    password: "",
-    avatar: ""
+    user: ""
 };
 
 function userReducer(state = initialState, action) {
@@ -15,12 +10,7 @@ function userReducer(state = initialState, action) {
         case USER_LOGIN:
             return {
                 ...state,
-                firstName: payload.firstName,
-                lastName: payload.lastName,
-                email: payload.email,
-                pseudo: payload.pseudo,
-                password: payload.password,
-                avatar: payload.avatar
+                user: payload.user
             };
         case USER_LOGOUT:
             return initialState;

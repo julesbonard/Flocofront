@@ -3,16 +3,15 @@ import React, { useState } from 'react';
 import { Image, Grid, Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import styles from './Account.module.css'
+import { connect } from "react-redux";
 
 const { miniflore } = styles
 
-function Account() {
+function Account({ pseudo, avatar }) {
   const [activeItem, setActiveItem] = useState('home')
   const handleItemClick = (e, { name }) => setActiveItem(name);
 
   const niveau = 1 //USE AXIOS TO GET LEVLEL
-  const pseudo = sessionStorage.getItem('userPseudo')
-  let avatar = sessionStorage.getItem('userAvatar')
 
   if (avatar === "null") {
     avatar = false
@@ -49,5 +48,11 @@ function Account() {
     </>
   )
 }
+const mapStateToProps = state => {
+  return {
+    pseudo: state.userReducer.user.pseudo,
+    avatar: state.userReducer.user.avatar
+  };
+};
 
-export default Account;
+export default connect(mapStateToProps)(Account);

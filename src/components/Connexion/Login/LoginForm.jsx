@@ -25,16 +25,7 @@ function LoginForm({ logIn, userLogIn }) {
             .then(res => {
                 logIn(res.data.token, res.data.id);
                 axios.get(`https://floco-app.herokuapp.com/users/${res.data.id}`)
-                    .then(res => {
-                        logIn(
-                            res.data.firstName,
-                            res.data.lastName,
-                            res.data.email,
-                            res.data.pseudo,
-                            res.data.password,
-                            res.data.avatar
-                        )
-                    })
+                    .then(res => { userLogIn(res.data) })
                 history.push("/map");
             })
             .catch(err => {
@@ -78,9 +69,11 @@ function LoginForm({ logIn, userLogIn }) {
 
 const mapDispatchToProps = dispatch => {
     return {
-        logIn: (token, id, firstName, lastName, email, pseudo, password, avatar) => dispatch({ type: LOGIN, payload: { token, id } }, { type: USER_LOGIN, payload: { firstName, lastName, email, pseudo, password, avatar } })
-        // userLogIn: (firstName, lastName, email, pseudo, password, avatar) => dispatch({ type: USER_LOGIN, payload: { firstName, lastName, email, pseudo, password, avatar } })
+        logIn: (token, id) => dispatch({ type: LOGIN, payload: { token, id } }),
+        userLogIn: (user) => dispatch({ type: USER_LOGIN, payload: { user } })
     };
 };
+
+
 
 export default connect(null, mapDispatchToProps)(LoginForm);
