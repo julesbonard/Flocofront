@@ -5,7 +5,6 @@ import {
   Image,
   Message,
 } from "semantic-ui-react";
-import { Link } from 'react-router-dom';
 import flower from "../../../Images/logo-floco.png";
 import styles from "./LoginPage.module.css";
 import LoginForm from "./LoginForm";
