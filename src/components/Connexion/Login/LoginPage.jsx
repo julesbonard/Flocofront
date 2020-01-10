@@ -11,9 +11,8 @@ import LoginForm from "./LoginForm";
 import Passport from "./Passport";
 import queryString from "query-string";
 import { connect } from "react-redux";
-import { LOGIN } from "../../../reducers/authAction";
+import { LOGIN } from "../../../reducers/action";
 import { useHistory } from "react-router-dom";
-
 
 function LoginPage({ logIn, location }) {
   const history = useHistory();

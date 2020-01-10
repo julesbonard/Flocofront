@@ -6,11 +6,11 @@ import {
 } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { LOGIN } from "../../../reducers/authAction";
+import { LOGIN, USER_LOGIN } from "../../../reducers/action";
 import styles from "./LoginPage.module.css";
 import axios from "axios";
 
-function LoginForm({ logIn }) {
+function LoginForm({ logIn, userLogIn }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const history = useHistory();
@@ -24,6 +24,17 @@ function LoginForm({ logIn }) {
             })
             .then(res => {
                 logIn(res.data.token, res.data.id);
+                axios.get(`https://floco-app.herokuapp.com/users/${res.data.id}`)
+                    .then(res => {
+                        logIn(
+                            res.data.firstName,
+                            res.data.lastName,
+                            res.data.email,
+                            res.data.pseudo,
+                            res.data.password,
+                            res.data.avatar
+                        )
+                    })
                 history.push("/map");
             })
             .catch(err => {
@@ -67,7 +78,8 @@ function LoginForm({ logIn }) {
 
 const mapDispatchToProps = dispatch => {
     return {
-        logIn: (token, id) => dispatch({ type: LOGIN, payload: { token, id } }),
+        logIn: (token, id, firstName, lastName, email, pseudo, password, avatar) => dispatch({ type: LOGIN, payload: { token, id } }, { type: USER_LOGIN, payload: { firstName, lastName, email, pseudo, password, avatar } })
+        // userLogIn: (firstName, lastName, email, pseudo, password, avatar) => dispatch({ type: USER_LOGIN, payload: { firstName, lastName, email, pseudo, password, avatar } })
     };
 };
 
