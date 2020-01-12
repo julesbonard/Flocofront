@@ -20,7 +20,7 @@ Leaflet.Icon.Default.mergeOptions({
 
 const { map } = styles;
 
-export default function MapDisplay() {
+function MapDisplay({ token, id }) {
   const [initialMapPosition] = useState([48.5833, 7.75]);
   const [zoom] = useState(7);
   const [markers, setMarkers] = useState([]);
@@ -52,6 +52,18 @@ export default function MapDisplay() {
       });
   };
 
+  const deleteMarker = e => {
+    axios
+      .delete(`https://floco-app.herokuapp.com/locations/${e}`).then(res => {
+        const filteredMarkers = markers.filter(marker => e !== marker.uuid);
+        setMarkers(filteredMarkers);
+      })
+      .catch(err => {
+        console.log(err);
+        alert(err.messagge);
+      });
+  };
+
   useEffect(() => {
     const getMarkers = async () => {
       let res = await axios.get("https://floco-app.herokuapp.com/locations");
@@ -69,18 +81,6 @@ export default function MapDisplay() {
     getMarkers();
   }, []);
 
-  const log = e => {
-    axios
-      .delete(`https://floco-app.herokuapp.com/locations/${e}`).then(res => {
-        const filteredMarkers = markers.filter(marker => e !== marker.uuid);
-        setMarkers(filteredMarkers);
-      })
-      .catch(err => {
-        console.log(err);
-        alert(err.messagge);
-      });
-  };
-
   return (
     <Map
       center={initialMapPosition}
@@ -92,10 +92,12 @@ export default function MapDisplay() {
       {markers.map(marker => (
         <Marker key={marker.uuid} position={marker}>
           <Popup>
-            <button onClick={() => log(marker.uuid)} className="ui button">Delete Marker</button>
+            <button onClick={() => deleteMarker(marker.uuid)} className="ui button">Delete Marker</button>
           </Popup>
         </Marker>
       ))}
     </Map>
   );
 }
+
+export default MapDisplay

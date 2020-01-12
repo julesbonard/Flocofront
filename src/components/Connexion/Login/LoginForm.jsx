@@ -6,11 +6,11 @@ import {
 } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { LOGIN } from "../../../reducers/authAction";
+import { LOGIN, USER_LOGIN } from "../../../reducers/action";
 import styles from "./LoginPage.module.css";
 import axios from "axios";
 
-function LoginForm({ logIn }) {
+function LoginForm({ logIn, userLogIn }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const history = useHistory();
@@ -24,6 +24,8 @@ function LoginForm({ logIn }) {
             })
             .then(res => {
                 logIn(res.data.token, res.data.id);
+                axios.get(`https://floco-app.herokuapp.com/users/${res.data.id}`)
+                    .then(res => { userLogIn(res.data) })
                 history.push("/map");
             })
             .catch(err => {
@@ -68,7 +70,10 @@ function LoginForm({ logIn }) {
 const mapDispatchToProps = dispatch => {
     return {
         logIn: (token, id) => dispatch({ type: LOGIN, payload: { token, id } }),
+        userLogIn: (user) => dispatch({ type: USER_LOGIN, payload: { user } })
     };
 };
+
+
 
 export default connect(null, mapDispatchToProps)(LoginForm);

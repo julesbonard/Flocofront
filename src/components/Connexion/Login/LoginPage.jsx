@@ -5,16 +5,14 @@ import {
   Image,
   Message,
 } from "semantic-ui-react";
-import { Link } from 'react-router-dom';
 import flower from "../../../Images/logo-floco.png";
 import styles from "./LoginPage.module.css";
 import LoginForm from "./LoginForm";
 import Passport from "./Passport";
 import queryString from "query-string";
 import { connect } from "react-redux";
-import { LOGIN } from "../../../reducers/authAction";
+import { LOGIN } from "../../../reducers/action";
 import { useHistory } from "react-router-dom";
-
 
 function LoginPage({ logIn, location }) {
   const history = useHistory();
@@ -50,7 +48,7 @@ function LoginPage({ logIn, location }) {
         <Passport />
         <Message className={`${styles.no_border} ${styles.no_background}`}>
           Pas de compte ?{" "}
-          <a className={styles.coucou} href="#">
+          <a className={styles.coucou} href="http://localhost:3000/register">
             Créer un tout de suite
               </a>
         </Message>
