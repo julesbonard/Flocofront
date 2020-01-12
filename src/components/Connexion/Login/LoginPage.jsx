@@ -11,17 +11,21 @@ import LoginForm from "./LoginForm";
 import Passport from "./Passport";
 import queryString from "query-string";
 import { connect } from "react-redux";
-import { LOGIN } from "../../../reducers/action";
+import { LOGIN, USER_LOGIN } from "../../../reducers/action";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 
-function LoginPage({ logIn, location }) {
+
+function LoginPage({ logIn, location, userLogIn }) {
   const history = useHistory();
   const firstRender = useRef(true);
 
   useEffect(() => {
     const { id, token } = queryString.parse(location.search);
     if (token) {
-      logIn(token, id);
+      logIn(token, id)
+      axios.get(`https://floco-app.herokuapp.com/users/${id}`)
+        .then(res => { userLogIn(res.data) })
       history.push("/map");
     }
     if (firstRender.current) {
@@ -60,8 +64,10 @@ function LoginPage({ logIn, location }) {
 const mapDispatchToProps = dispatch => {
   return {
     logIn: (token, id) => dispatch({ type: LOGIN, payload: { token, id } }),
+    userLogIn: (user) => dispatch({ type: USER_LOGIN, payload: { user } })
   };
 };
+
 
 
 export default connect(null, mapDispatchToProps)(LoginPage);
