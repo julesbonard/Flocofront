@@ -5,8 +5,6 @@ import axios from "axios";
 import Tile from "./Tile";
 import "leaflet/dist/leaflet.css";
 import { Marker, Popup } from "react-leaflet";
-import { connect } from "react-redux";
-import Axios from 'axios';
 
 import styles from "./Map.module.css";
 
@@ -22,7 +20,7 @@ Leaflet.Icon.Default.mergeOptions({
 
 const { map } = styles;
 
-function MapDisplay({ token, id }) {
+function MapDisplay() {
   const [initialMapPosition] = useState([48.5833, 7.75]);
   const [zoom] = useState(7);
   const [markers, setMarkers] = useState([]);
@@ -83,24 +81,6 @@ function MapDisplay({ token, id }) {
     getMarkers();
   }, []);
 
-  const getUser = async () => {
-    let res = await Axios.get(`https://floco-app.herokuapp.com/users/${id}`, { headers: { Authorization: `Bearer ${token}` } })
-    const firstName = res.data.firstName
-    const lastName = res.data.lastName
-    const email = res.data.email
-    const pseudo = res.data.pseudo
-    const password = res.data.password
-    const avatar = res.data.avatar
-    sessionStorage.setItem('userFirstName', firstName)
-    sessionStorage.setItem('userLastName', lastName)
-    sessionStorage.setItem('userEmail', email)
-    sessionStorage.setItem('userPseudo', pseudo)
-    sessionStorage.setItem('userPassword', password)
-    sessionStorage.setItem('userAvatar', avatar)
-    console.log(res);
-  }
-  getUser()
-
   return (
     <Map
       center={initialMapPosition}
@@ -120,11 +100,4 @@ function MapDisplay({ token, id }) {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    token: state.token,
-    id: state.id
-  };
-};
-
-export default connect(mapStateToProps)(MapDisplay)
+export default MapDisplay
