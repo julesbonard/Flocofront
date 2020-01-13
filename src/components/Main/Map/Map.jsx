@@ -20,7 +20,7 @@ Leaflet.Icon.Default.mergeOptions({
 
 const { map } = styles;
 
-function MapDisplay({ token, id }) {
+function MapDisplay() {
   const [initialMapPosition] = useState([48.5833, 7.75]);
   const [zoom] = useState(7);
   const [markers, setMarkers] = useState([]);
@@ -101,3 +101,4 @@ function MapDisplay({ token, id }) {
 }
 
 export default MapDisplay
+
