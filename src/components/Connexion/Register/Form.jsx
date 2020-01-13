@@ -3,12 +3,14 @@ import axios from "axios";
 
 import { Form, Image, Button } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+import { LOGIN, USER_LOGIN } from "../../../reducers/action";
 import styles from "./Form.module.css";
 import Logo from "../../../assets/logo-floco.png";
 
 const { inscription, barre, area, space, logo, button, textalign } = styles;
 
-function FormRegister() {
+function FormRegister({ logIn, userLogIn }) {
   const [state, setState] = useState({
     firstname: null,
     lastname: null,
@@ -32,7 +34,7 @@ function FormRegister() {
     console.log(state);
   };
 
-  function validateAuthentication() {
+  const validateAuthentication = () => {
     axios
       .post("https://floco-app.herokuapp.com/users", {
         firstName: state.firstname,
@@ -42,8 +44,11 @@ function FormRegister() {
         password: password,
         isOAuth: false
       })
-      .then(response => {
-        localStorage.setItem("uuid", `${response.data.uuid}`);
+      .then(res => {
+        console.log(res);
+
+        logIn(res.data.token, res.data.id);
+        userLogIn(res.data.user)
         setTimeout(() => {
           history.push("/Account");
         }, 200);
@@ -131,4 +136,11 @@ function FormRegister() {
   );
 }
 
-export default FormRegister;
+const mapDispatchToProps = dispatch => {
+  return {
+    logIn: (token, id) => dispatch({ type: LOGIN, payload: { token, id } }),
+    userLogIn: (user) => dispatch({ type: USER_LOGIN, payload: { user } })
+  };
+};
+
+export default connect(null, mapDispatchToProps)(FormRegister);
