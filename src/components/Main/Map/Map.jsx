@@ -20,7 +20,7 @@ Leaflet.Icon.Default.mergeOptions({
 
 const { map } = styles;
 
-function MapDisplay() {
+function MapDisplay({ token }) {
   const [initialMapPosition] = useState([48.5833, 7.75]);
   const [zoom] = useState(7);
   const [markers, setMarkers] = useState([]);
@@ -33,6 +33,10 @@ function MapDisplay() {
         longitude: lng,
         PlantUuid: "1" //TODO: change to a real plant 
         // backend branch test
+      }, {
+        headers: {
+          "access-token": token
+        }
       })
       .then(res => {
         const { uuid, latitude, longitude, PlantUuid } = res.data;
@@ -54,7 +58,13 @@ function MapDisplay() {
 
   const deleteMarker = e => {
     axios
-      .delete(`https://floco-app.herokuapp.com/locations/${e}`).then(res => {
+      .delete(`https://floco-app.herokuapp.com/locations/${e}`,
+        {
+          headers: {
+            "access-token": token
+          }
+        })
+      .then(res => {
         const filteredMarkers = markers.filter(marker => e !== marker.uuid);
         setMarkers(filteredMarkers);
       })
@@ -100,5 +110,11 @@ function MapDisplay() {
   );
 }
 
-export default MapDisplay
+const mapStateToProps = state => {
+  return {
+    token: state.authReducer.token
+  };
+};
+
+export default connect(mapStateToProps)(MapDisplay)
 
