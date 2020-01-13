@@ -2,7 +2,6 @@ import React from "react";
 import {
     Button,
     Grid,
-    Message,
     Segment
 } from "semantic-ui-react";
 import styles from "./LoginPage.module.css";
