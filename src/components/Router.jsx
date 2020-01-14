@@ -3,10 +3,10 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 import MainLayout from "./Layouts/MainLayout";
-import RegisterLayout from "./Connexion/Register/RegisterLayout";
-import CardLayout from "./Flora/Progress/CardLayout";
-import LoginLayout from "./Connexion/Login/LoginLayout";
-import HomepageLayout from "./Connexion/Home/HomepageLayout";
+import NoLayout from "./Layouts/NoLayout";
+import UserLayout from "./Layouts/UserLayout";
+import BurgerLayout from "./Layouts/BurgerLayout";
+
 
 import LoginPage from "./Connexion/Login/LoginPage";
 import Map from "./Main/Map/Page";
@@ -21,9 +21,8 @@ import PartnerPage from "./Partner/Offer/PartnerPage";
 function CustomRoute({
   component: Component,
   layout: Layout,
-  layout: RegisterLayout,
-  layout: CardLayout,
-  layout: LoginLayout,
+  layout: UserLayout,
+  layout: NoLayout,
   ...rest
 }) {
   return (
@@ -42,10 +41,8 @@ function AuthRoute({
   isAuth,
   component: Component,
   layout: Layout,
-  layout: RegisterLayout,
-  layout: CardLayout,
-  layout: HomepageLayout,
-  layout: LoginLayout,
+  layout: UserLayout,
+  layout: NoLayout,
   ...rest
 }) {
   return (
@@ -71,13 +68,17 @@ function Router({ isAuth }) {
         <CustomRoute
           exact
           path="/"
-          layout={HomepageLayout}
+          layout={NoLayout}
           component={Homepage}
         />
-        <CustomRoute path="/Login" layout={LoginLayout} component={LoginPage} />
+        <CustomRoute
+          path="/Login"
+          layout={NoLayout}
+          component={LoginPage}
+        />
         <CustomRoute
           path="/Register"
-          layout={RegisterLayout}
+          layout={NoLayout}
           component={Form}
         />
         <AuthRoute
@@ -89,31 +90,31 @@ function Router({ isAuth }) {
         <AuthRoute
           path="/Account"
           isAuth={isAuth}
-          layout={MainLayout}
+          layout={UserLayout}
           component={Account}
         />
         <AuthRoute
           path="/Progress"
           isAuth={isAuth}
-          layout={CardLayout}
+          layout={UserLayout}
           component={Card}
         />
         <AuthRoute
-          path="/Partner"
+          path="/access"
           isAuth={isAuth}
-          layout={RegisterLayout}
+          layout={NoLayout}
           component={Accesspage}
         />
         <AuthRoute
           path="/Pot"
           isAuth={isAuth}
-          layout={MainLayout}
+          layout={UserLayout}
           component={FlowerPot}
         />
         <AuthRoute
           path="/Partner"
           isAuth={isAuth}
-          layout={MainLayout}
+          layout={BurgerLayout}
           component={PartnerPage}
         />
       </Switch>
