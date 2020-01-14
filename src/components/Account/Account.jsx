@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import { Menu } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
-import styles from './Account.module.css'
-import { connect } from "react-redux";
-
-const { miniflore } = styles
+import NavAccount from "./Nav";
 
 function Account() {
   const [activeItem, setActiveItem] = useState('home')
   const handleItemClick = (e, { name }) => setActiveItem(name);
-
   return (
     <>
       <Menu fluid widths={3}>
@@ -29,15 +24,9 @@ function Account() {
           onClick={handleItemClick}
         />
       </Menu>
-      <Link to="/Progress" className={miniflore}>Mini-Flore</Link>
+      <NavAccount />
     </>
   )
 }
-const mapStateToProps = state => {
-  return {
-    pseudo: state.userReducer.user.pseudo,
-    avatar: state.userReducer.user.avatar
-  };
-};
 
-export default connect(mapStateToProps)(Account);
+export default Account;

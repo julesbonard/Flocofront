@@ -34,7 +34,6 @@ function LoginPage({ logIn, location, userLogIn }) {
       return;
     }
   })
-
   return (
     <Form>
 
@@ -44,11 +43,11 @@ function LoginPage({ logIn, location, userLogIn }) {
             <Image className={styles.logotop} src={flower} size="tall" />
           </Header>
           <LoginForm />
-          <Message className={`${styles.no_border} ${styles.no_background}`}>
+          {/* <Message className={`${styles.no_border} ${styles.no_background}`}>
             <a className={styles.bruh} href="#">
               Mot de passe oublié ?
           </a>
-          </Message>
+          </Message> */}
           <Message className={`${styles.no_border} ${styles.no_background}`}>
             <h1 className={styles.hr}>Ou</h1>
           </Message>
