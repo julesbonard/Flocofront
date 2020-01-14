@@ -3,7 +3,7 @@ import { LOGIN, LOGOUT } from "./action";
 const initialState = {
     id: "",
     token: "",
-    isAuth: false
+    isAuth: true
 };
 
 function authReducer(state = initialState, action) {
