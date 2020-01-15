@@ -10,6 +10,11 @@ function Account() {
   const [activeItem, setActiveItem] = useState('home')
   const handleItemClick = (e, { name }) => setActiveItem(name);
 
+  const niveau = 1 // NEED TO USE AXIOS TO GET LEVLEL
+
+  if (avatar === "null") {
+    avatar = false
+  }
   return (
     <>
       <Menu fluid widths={3}>

@@ -15,16 +15,11 @@ export default function Footer() {
 
     useEffect(() => {
         const getStats = async () => {
-            const idc = "6f2dc06c-64ac-4804-bad5-1c68b824c7ea"
-            const idm = "95c4a340-f4d5-4c54-8e6d-d46e9296e0ed"
-
-            let resCity = await axios.get(`https://floco-app.herokuapp.com/statscity/${idc}`);
-            let resFlora = await axios.get(`https://floco-app.herokuapp.com/miniFlora/${idm}`);
-
-            const street = resCity.data.street
-            const district = resCity.data.district
-            const city = resFlora.data.number
-
+            let resCity = await axios.get(`https://floco-app.herokuapp.com/statscity`);
+            let resFlora = await axios.get(`https://floco-app.herokuapp.com/miniFlora`);
+            const street = resCity.data[0].street
+            const district = resCity.data[0].district
+            const city = resFlora.data[0].number
             setStats([
                 { value: city, label: 'votre ville' },
                 { value: district, label: 'votre quartier' },
