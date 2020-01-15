@@ -5,6 +5,7 @@ import axios from "axios";
 import Tile from "./Tile";
 import "leaflet/dist/leaflet.css";
 import { Marker, Popup } from "react-leaflet";
+import { connect } from "react-redux";
 
 import styles from "./Map.module.css";
 
@@ -28,16 +29,20 @@ function MapDisplay({ token }) {
   const addMarker = e => {
     const { lat, lng } = e.latlng;
     axios
-      .post("https://floco-app.herokuapp.com/locations", {
-        latitude: lat,
-        longitude: lng,
-        PlantUuid: "1" //TODO: change to a real plant 
-        // backend branch test
-      }, {
-        headers: {
-          "access-token": token
+      .post(
+        "https://floco-app.herokuapp.com/locations",
+        {
+          latitude: lat,
+          longitude: lng,
+          PlantUuid: "1" //TODO: change to a real plant
+          // backend branch test
+        },
+        {
+          headers: {
+            "access-token": token
+          }
         }
-      })
+      )
       .then(res => {
         const { uuid, latitude, longitude, PlantUuid } = res.data;
         setMarkers([
@@ -58,12 +63,11 @@ function MapDisplay({ token }) {
 
   const deleteMarker = e => {
     axios
-      .delete(`https://floco-app.herokuapp.com/locations/${e}`,
-        {
-          headers: {
-            "access-token": token
-          }
-        })
+      .delete(`https://floco-app.herokuapp.com/locations/${e}`, {
+        headers: {
+          "access-token": token
+        }
+      })
       .then(res => {
         const filteredMarkers = markers.filter(marker => e !== marker.uuid);
         setMarkers(filteredMarkers);
@@ -102,7 +106,12 @@ function MapDisplay({ token }) {
       {markers.map(marker => (
         <Marker key={marker.uuid} position={marker}>
           <Popup>
-            <button onClick={() => deleteMarker(marker.uuid)} className="ui button">Delete Marker</button>
+            <button
+              onClick={() => deleteMarker(marker.uuid)}
+              className="ui button"
+            >
+              Delete Marker
+            </button>
           </Popup>
         </Marker>
       ))}
@@ -116,5 +125,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(MapDisplay)
-
+export default connect(mapStateToProps)(MapDisplay);

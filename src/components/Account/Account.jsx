@@ -8,10 +8,6 @@ function Account() {
 
   const niveau = 1 // NEED TO USE AXIOS TO GET LEVLEL
 
-  if (avatar === "null") {
-    avatar = false
-  }
-  
   return (
     <>
       <Menu fluid widths={3}>
