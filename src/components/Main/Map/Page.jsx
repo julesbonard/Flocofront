@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Map from './Map'
+import MapButton from './MapButton'
 
 const LoginPage = () => {
   return (
     <>
-    <Map/>
+    <MapButton />
     </>
   );
 };

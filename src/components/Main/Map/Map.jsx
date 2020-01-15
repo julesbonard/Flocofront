@@ -25,6 +25,9 @@ function MapDisplay({ token }) {
   const [initialMapPosition] = useState([48.5833, 7.75]);
   const [zoom] = useState(7);
   const [markers, setMarkers] = useState([]);
+  const [partnersMarkers, setPartnersMarkers] = useState([
+    { lat: 12, lng: 24, PlantUuid: 1 }
+  ]);
 
   const addMarker = e => {
     const { lat, lng } = e.latlng;
