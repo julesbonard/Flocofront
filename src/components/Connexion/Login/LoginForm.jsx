@@ -24,7 +24,12 @@ function LoginForm({ logIn, userLogIn }) {
             })
             .then(res => {
                 logIn(res.data.token, res.data.id);
-                axios.get(`https://floco-app.herokuapp.com/users/${res.data.id}`)
+                axios.get(`https://floco-app.herokuapp.com/users/${res.data.id}`,
+                    {
+                        headers: {
+                            "access-token": res.data.token
+                        }
+                    })
                     .then(res => { userLogIn(res.data) })
                 history.push("/map");
             })
