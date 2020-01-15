@@ -4,6 +4,7 @@ import {
   Header,
   Image,
   Message,
+  Form
 } from "semantic-ui-react";
 import flower from "../../../Images/logo-floco.png";
 import styles from "./LoginPage.module.css";
@@ -35,29 +36,32 @@ function LoginPage({ logIn, location, userLogIn }) {
   })
 
   return (
-    <Grid textAlign="center" style={{ height: "65vh" }} verticalAlign="middle">
-      <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as="h2" color="green" textAlign="center">
-          <Image className={styles.logotop} src={flower} size="tall" />
-        </Header>
-        <LoginForm />
-        <Message className={`${styles.no_border} ${styles.no_background}`}>
-          <a className={styles.bruh} href="#">
-            Mot de passe oublié ?
+    <Form>
+
+      <Grid textAlign="center" style={{ height: "65vh" }} verticalAlign="middle">
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Header as="h2" color="green" textAlign="center">
+            <Image className={styles.logotop} src={flower} size="tall" />
+          </Header>
+          <LoginForm />
+          <Message className={`${styles.no_border} ${styles.no_background}`}>
+            <a className={styles.bruh} href="#">
+              Mot de passe oublié ?
           </a>
-        </Message>
-        <Message className={`${styles.no_border} ${styles.no_background}`}>
-          <h1 className={styles.hr}>Ou</h1>
-        </Message>
-        <Passport />
-        <Message className={`${styles.no_border} ${styles.no_background}`}>
-          Pas de compte ?{" "}
-          <a className={styles.coucou} href="http://localhost:3000/register">
-            Créer un tout de suite
+          </Message>
+          <Message className={`${styles.no_border} ${styles.no_background}`}>
+            <h1 className={styles.hr}>Ou</h1>
+          </Message>
+          <Passport />
+          <Message className={`${styles.no_border} ${styles.no_background}`}>
+            Pas de compte ?{" "}
+            <a className={styles.coucou} href="http://localhost:3000/register">
+              Créer un tout de suite
               </a>
-        </Message>
-      </Grid.Column>
-    </Grid>
+          </Message>
+        </Grid.Column>
+      </Grid>
+    </Form>
   );
 }
 
