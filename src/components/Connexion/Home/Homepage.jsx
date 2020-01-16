@@ -11,7 +11,6 @@ function Homepage() {
     <>
       <div className={body}>
         <Image src={Logo} className={logorounded} size="tiny" alt="Logo Floco" />
-
         <Link to="/Login" className={login}>Se connecter</Link>
         <Link to="/Register" className={register}>Creer un compte</Link>
       </div>
