@@ -3,7 +3,6 @@ $textColor: white;
 $borderColor: white;
 
 .levelUnlock {
-    
     text-align: center;
     padding: 5px;
     color: $textColor;
@@ -13,7 +12,7 @@ $borderColor: white;
     border-radius: 50px;
     margin-top: 50px !important;
     margin-left: 10px;
-    width: auto;
+    width: 250px;
     height: auto;
 }
 
@@ -29,7 +28,7 @@ $borderColor: white;
     border-radius: 50px;
     margin-top: 100px !important;
     margin-left: 25px;
-    width: auto;
+    width: 250px;
     height: auto;
     pointer-events: none !important;
     opacity: 0.2;

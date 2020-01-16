@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image } from 'semantic-ui-react';
+import { Image, Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
 import { connect } from "react-redux";
 import styles from './ProgressPage.module.scss';
@@ -22,19 +22,24 @@ function ProgressPage({ level }) {
     three = true
   }
   return (
-    <>
-      <Link to="/library" className={three ? null : levelLock}>
-        <p className={three ? levelUnlock : null}>Quelle maison habiterait ta plante?</p>
-      </Link>
-      <Link to="/compass" className={two ? null : levelLock}>
-        <p className={two ? levelUnlock : null}>Quelle maison habiterait ta plante?</p>
-      </Link>
+    <Grid>
+      <Grid.Row >
+        <Link to="/library" className={three ? null : levelLock} >
+          <p className={three ? levelUnlock : null}>Quelle maison habiterait ta plante?</p>
+        </Link>
+      </Grid.Row>
+      <Grid.Row>
+        <Link to="/compass" className={two ? null : levelLock}>
+          <p className={two ? levelUnlock : null}>Quelle maison habiterait ta plante?</p>
+        </Link>
+      </Grid.Row>
       <Image className={cercleIcon} src={iconeplus} />
-      <Link to="/access" className={one ? null : levelLock}>
-        <p className={one ? levelUnlock : null}>La restauration de la Flore locale compte sur toi...</p>
-      </Link>
-
-    </>
+      <Grid.Row >
+        <Link to="/access" className={one ? null : levelLock}>
+          <p className={one ? levelUnlock : null}>La restauration de la Flore locale compte sur toi...</p>
+        </Link>
+      </Grid.Row>
+    </Grid>
   )
 };
 
