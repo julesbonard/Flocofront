@@ -70,11 +70,19 @@ body {
     height: 30px;
 }
 
-.endpage {
-    display: flex;
-    justify-content: space-between;
+.partnerimage {
+    margin-top: 20px;
+    border-radius: 100%;
+    box-shadow: 0 4px 8px grey;
+    width: 8rem;
+    height: 8rem;
 }
 
-.flore2 {
-    margin-right: 0;
+.partnername {
+    margin: 5px 0;
+    color: #383838;
+}
+
+.partnercoordonate {
+    color: #888888;
 }

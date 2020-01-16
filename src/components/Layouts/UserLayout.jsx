@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import './UserLayout.scss'
 import Burger from './Burger.jsx'
 
+
 function UserLayout({ children, pseudo, avatar, }) {
   const niveau = 1 //USE AXIOS TO GET LEVLEL
   if (avatar === "null") {
@@ -20,6 +21,7 @@ function UserLayout({ children, pseudo, avatar, }) {
         </Grid.Column>
       </Grid>
       <div>{children}</div>
+      <footer className="footer" />
     </>
   );
 }

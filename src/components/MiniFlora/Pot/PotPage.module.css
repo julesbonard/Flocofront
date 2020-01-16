@@ -1,26 +1,4 @@
-body {
-    font-family: 'Montserrat', sans-serif;
-}
 
-
-.card {
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 10px 5px -5px gray;
-    margin-left: auto;
-    margin-right: auto;
-    width: 370px;
-}
-
-.title {
-    margin-top: 20px!important;
-    background-color: #05957c;
-    color: blanchedalmond;
-    border-radius: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100px;
-}
 
 .longueur {
     display: flex;
@@ -53,11 +31,3 @@ body {
     height: 30px;
 }
 
-.endpage {
-    display: flex;
-    justify-content: space-between;
-}
-
-.flore2 {
-    margin-right: 0;
-}
