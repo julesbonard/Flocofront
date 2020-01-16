@@ -4,9 +4,9 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    color: blanchedalmond;
+    color: white;
     background-color: #e78e5e!important;
-    border: solid 5px blanchedalmond;
+    border: solid 5px white;
     box-shadow: 0 4px 8px grey;
     border-radius: 50px;
     margin-top: 50px!important;
@@ -20,9 +20,9 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    color: blanchedalmond;
+    color: white;
     background-color: #e78e5e!important;
-    border: solid 5px blanchedalmond;
+    border: solid 5px white;
     box-shadow: 0 4px 8px grey;
     border-radius: 50px;
     margin-left: 20px;
