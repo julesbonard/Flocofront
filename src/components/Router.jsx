@@ -11,10 +11,10 @@ import LoginPage from "./Connexion/Login/LoginPage";
 import Map from "./Main/Map/MapPage";
 import Account from "./Account/AccountPage";
 import Form from "./Connexion/Register/Form";
-import Card from "./Flora/Progress/Card";
+import ProgressPage from "./MiniFlora/Progress/ProgressPage";
 import Homepage from "./Connexion/Home/Homepage";
 import Accesspage from "./Partner/Access/Accesspage";
-import FlowerPot from "./Flora/Pot/FlowerPot";
+import PotPage from "./MiniFlora/Pot/PotPage";
 import PartnerPage from "./Partner/Offer/PartnerPage";
 
 function CustomRoute({
@@ -96,7 +96,7 @@ function Router({ isAuth }) {
           path="/Progress"
           isAuth={isAuth}
           layout={UserLayout}
-          component={Card}
+          component={ProgressPage}
         />
         <AuthRoute
           path="/access"
@@ -108,7 +108,7 @@ function Router({ isAuth }) {
           path="/Pot"
           isAuth={isAuth}
           layout={UserLayout}
-          component={FlowerPot}
+          component={PotPage}
         />
         <AuthRoute
           path="/Partner"

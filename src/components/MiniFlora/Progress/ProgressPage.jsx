@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image } from 'semantic-ui-react';
-import styles from './Card.module.css';
+import styles from './ProgressPage.module.css';
 
 import illustration from '../../../assets/bas_de_page_gche.png'
 import illustration2 from '../../../assets/bas_de_page_drt.png'
@@ -8,7 +8,7 @@ import iconeplus from '../../../assets/croix.png'
 
 const { levelthree, leveltwo, more, levelone, endpage, flore, flore2 } = styles;
 
-function UserCard() {
+function ProgressPage() {
   return (
     <>
       <p className={levelthree}>Quelle maison habiterait ta plante?</p>
@@ -23,4 +23,4 @@ function UserCard() {
   )
 };
 
-export default UserCard;
+export default ProgressPage;

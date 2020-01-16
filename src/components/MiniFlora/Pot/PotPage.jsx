@@ -1,13 +1,13 @@
 import React from 'react';
 import { Image } from 'semantic-ui-react';
-import styles from './FlowerPot.module.css';
+import styles from './PotPage.module.css';
 
 import illustration from '../../../assets/bas_de_page_gche.png'
 import illustration2 from '../../../assets/bas_de_page_drt.png'
 
 const { longueur, largeur, profondeur, endpage, flore, flore2 } = styles;
 
-function FlowerPot() {
+function PotPage() {
   return (
     <>
       <p className={longueur}>LONGUEUR</p>
@@ -21,4 +21,4 @@ function FlowerPot() {
   )
 };
 
-export default FlowerPot;
+export default PotPage;
