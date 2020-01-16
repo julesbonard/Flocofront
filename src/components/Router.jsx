@@ -13,9 +13,9 @@ import Account from "./Account/AccountPage";
 import Form from "./Connexion/Register/Form";
 import ProgressPage from "./MiniFlora/Progress/ProgressPage";
 import Homepage from "./Connexion/Home/Homepage";
-import Accesspage from "./Partner/Access/Accesspage";
+import Accesspage from "./MiniFlora/Access/Accesspage";
 import PotPage from "./MiniFlora/Pot/PotPage";
-import PartnerPage from "./Partner/Offer/PartnerPage";
+import PartnerPage from "./MiniFlora/Partner/PartnerPage";
 
 function CustomRoute({
   component: Component,
