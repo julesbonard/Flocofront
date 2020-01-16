@@ -1,28 +1,47 @@
 import React from 'react';
 import { Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
+import { connect } from "react-redux";
 import styles from './ProgressPage.module.scss';
 
 import iconeplus from '../../../assets/croix.png'
 
 const { levelLock, levelUnlock, cercleIcon } = styles;
+function ProgressPage({ level }) {
+  let one = false
+  let two = false
+  let three = false
 
-function ProgressPage() {
+  if (level >= 1) {
+    one = true
+  }
+  if (level >= 2) {
+    two = true
+  }
+  if (level >= 3) {
+    three = true
+  }
   return (
     <>
-      <Link to="/library">
-        <p className={levelLock}>Quelle maison habiterait ta plante?</p>
+      <Link to="/library" className={three ? null : levelLock}>
+        <p className={three ? levelUnlock : null}>Quelle maison habiterait ta plante?</p>
       </Link>
-      <Link to="/compass">
-        <p className={levelUnlock}>Quelle maison habiterait ta plante?</p>
+      <Link to="/compass" className={two ? null : levelLock}>
+        <p className={two ? levelUnlock : null}>Quelle maison habiterait ta plante?</p>
       </Link>
       <Image className={cercleIcon} src={iconeplus} />
-      <Link to="/access">
-        <p className={levelUnlock}>La restauration de la Flore locale compte sur toi...</p>
+      <Link to="/access" className={one ? null : levelLock}>
+        <p className={one ? levelUnlock : null}>La restauration de la Flore locale compte sur toi...</p>
       </Link>
 
     </>
   )
 };
 
-export default ProgressPage;
+const mapStateToProps = state => {
+  return {
+    level: state.levelReducer.level.level,
+  };
+};
+
+export default connect(mapStateToProps)(ProgressPage);

@@ -1,5 +1,4 @@
-$unlockColor: #e78e5e!important;
-$lockColor: #49403d8e!important;
+$backColor: #e78e5e !important;
 $textColor: white;
 $borderColor: white;
 
@@ -8,11 +7,11 @@ $borderColor: white;
     text-align: center;
     padding: 5px;
     color: $textColor;
-    background-color: $unlockColor;
+    background-color: $backColor;
     border: solid 5px $borderColor;
     box-shadow: 0 4px 8px grey;
     border-radius: 50px;
-    margin-top: 50px!important;
+    margin-top: 50px !important;
     margin-left: 10px;
     width: auto;
     height: auto;
@@ -24,21 +23,23 @@ $borderColor: white;
     text-align: center;
     padding: 10px;
     color: $textColor;
-    background-color: $lockColor;
+    background-color: $backColor;
     border: solid 5px $borderColor;
     box-shadow: 0 4px 8px grey;
     border-radius: 50px;
-    margin-top: 100px!important;
+    margin-top: 100px !important;
     margin-left: 25px;
     width: auto;
     height: auto;
+    pointer-events: none !important;
+    opacity: 0.2;
 }
 
 .cercleIcon {
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
-    width: 70px!important;
+    width: 70px !important;
     color: #e78e5e;
     /*box-shadow: 0 4px 8px grey;*/
     
