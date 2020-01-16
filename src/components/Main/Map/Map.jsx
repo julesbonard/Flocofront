@@ -90,7 +90,6 @@ function MapDisplay({ token }) {
         };
       });
       setMarkers(markers);
-      console.log(res);
     };
     getMarkers();
   }, []);

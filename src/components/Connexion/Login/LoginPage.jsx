@@ -16,7 +16,6 @@ import { LOGIN, USER_LOGIN } from "../../../reducers/action";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
-
 function LoginPage({ logIn, location, userLogIn }) {
   const history = useHistory();
   const firstRender = useRef(true);
@@ -36,7 +35,6 @@ function LoginPage({ logIn, location, userLogIn }) {
   })
   return (
     <Form>
-
       <Grid textAlign="center" style={{ height: "65vh" }} verticalAlign="middle">
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" color="green" textAlign="center">
@@ -70,7 +68,5 @@ const mapDispatchToProps = dispatch => {
     userLogIn: (user) => dispatch({ type: USER_LOGIN, payload: { user } })
   };
 };
-
-
 
 export default connect(null, mapDispatchToProps)(LoginPage);

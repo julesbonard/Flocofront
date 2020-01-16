@@ -1,7 +1,8 @@
-import { USER_LOGIN, USER_LOGOUT } from "./action";
+import { USER_LOGIN, USER_LOGOUT, LEVEL_LOGIN } from "./action";
 
 const initialState = {
-    user: ""
+    user: "",
+    level: ""
 };
 
 function userReducer(state = initialState, action) {
@@ -12,6 +13,11 @@ function userReducer(state = initialState, action) {
                 ...state,
                 user: payload.user
             };
+        case LEVEL_LOGIN:
+            return {
+                ...state,
+                level: payload.user
+            }
         case USER_LOGOUT:
             return initialState;
         default:
