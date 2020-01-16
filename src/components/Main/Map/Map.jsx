@@ -7,6 +7,9 @@ import "leaflet/dist/leaflet.css";
 import { Marker, Popup } from "react-leaflet";
 
 import styles from "./Map.module.css";
+import ModalMarker from "./Modal";
+
+
 
 Leaflet.Icon.Default.imagePath = "../node_modules/leaflet";
 
@@ -21,17 +24,31 @@ Leaflet.Icon.Default.mergeOptions({
 const { map } = styles;
 
 export default function MapDisplay() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [latLng, setLatLng] = useState({})
+  const [plantUuid, setPlantUuid] = useState("")
   const [initialMapPosition] = useState([48.5833, 7.75]);
   const [zoom] = useState(7);
   const [markers, setMarkers] = useState([]);
+  
+
+  const openModal = (e) => {
+    const { lat, lng } = e.latlng;
+    setIsModalOpen(true)
+    setLatLng({
+      latitude: lat,
+        longitude: lng
+    })
+  }
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
 
   const addMarker = e => {
-    const { lat, lng } = e.latlng;
     axios
       .post("https://floco-app.herokuapp.com/locations", {
-        latitude: lat,
-        longitude: lng,
-        PlantUuid: "1" //TODO: change to a real plant 
+        ...latLng,
+        PlantUuid: plantUuid //TODO: change to a real plant 
         // backend branch test
       })
       .then(res => {
@@ -81,21 +98,25 @@ export default function MapDisplay() {
       });
   };
 
-  return (
-    <Map
+  return ( 
+    <>
+    <Map 
       center={initialMapPosition}
       zoom={zoom}
       className={map}
-      onClick={addMarker}
-    >
-      <Tile />
+      onClick={openModal}
+  
+    > 
+      <Tile /> 
       {markers.map(marker => (
-        <Marker key={marker.uuid} position={marker}>
-          <Popup>
+        <Marker key={marker.uuid} position={marker}> 
+          <Popup> <ModalMarker/>
             <button onClick={() => log(marker.uuid)} className="ui button">Delete Marker</button>
           </Popup>
         </Marker>
       ))}
     </Map>
+    <ModalMarker open={isModalOpen} setPlantUuid={setPlantUuid} addMarker={addMarker} closeModal={closeModal} />
+    </>
   );
 }
