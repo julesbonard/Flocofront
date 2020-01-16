@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, Grid } from 'semantic-ui-react'
 import { connect } from "react-redux";
-import './UserHeader.scss'
+import './UserLayout.scss'
 import Burger from './Burger.jsx'
 
 function UserLayout({ children, pseudo, avatar }) {
