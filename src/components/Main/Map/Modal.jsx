@@ -63,7 +63,7 @@ function ModalMarker({ open, setPlantUuid, addMarker, closeModal }) {
             selection
             options={seedOptions}
           />
-          <Button onClick={() => { createPlant() }}>Planter une plante</Button>
+          <Button onClick={() => { createPlant() }}>Planter la plante</Button>
         </Modal.Description>
       </Modal.Content>
     </Modal>
