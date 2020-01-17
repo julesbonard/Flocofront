@@ -31,7 +31,7 @@ export default function Footer() {
 
     return (
         <footer className={footer}>
-            <FooterButton />
+            {/* <FooterButton /> */}
             <Grid centered className={margin_grid}>
                 <Segment centered circular size='mini' className={stats_segment} >
                     <Grid centered className={stats_title}>

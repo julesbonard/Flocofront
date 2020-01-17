@@ -3,3 +3,53 @@
   height: 70vh;
   margin-bottom: 20px;
 }
+
+.test1 {
+  width: 5rem;
+  height: 5rem;
+  cursor: pointer;
+  border: solid 1px black;
+}
+
+.test2 {
+  width: 5rem;
+  height: 5rem;
+  cursor: pointer;
+  border: solid 1px black;
+}
+
+@media (min-height: 1000px){
+  .map {
+    max-height: 70vh;
+    height: 70vh;
+  }
+}
+
+@media (max-height: 900px) and (min-height: 800px){
+  .map {
+    max-height: 65vh;
+    height: 65vh;
+  }
+}
+
+
+@media (max-height: 799px) and (min-height: 700px){
+  .map {
+    max-height: 60vh;
+    height: 60vh;
+  }
+}
+
+@media (max-height: 699px) and (min-height: 600px){
+  .map {
+    max-height: 55vh;
+    height: 55vh;
+  }
+}
+
+@media (max-height: 599px){
+  .map {
+    max-height: 50vh;
+    height: 50vh;
+  }
+}

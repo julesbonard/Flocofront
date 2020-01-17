@@ -8,7 +8,7 @@ import UserLayout from "./Layouts/UserLayout";
 import BurgerLayout from "./Layouts/BurgerLayout";
 
 import LoginPage from "./Connexion/Login/LoginPage";
-import Map from "./Main/Map/MapPage";
+import MapPage from "./Main/Map/MapPage";
 import Account from "./Account/AccountPage";
 import Form from "./Connexion/Register/Form";
 import ProgressPage from "./MiniFlora/Progress/ProgressPage";
@@ -84,7 +84,7 @@ function Router({ isAuth }) {
           path="/Map"
           isAuth={isAuth}
           layout={MainLayout}
-          component={Map}
+          component={MapPage}
         />
         <AuthRoute
           path="/Account"
