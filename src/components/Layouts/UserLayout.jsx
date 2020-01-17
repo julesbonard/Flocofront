@@ -15,7 +15,7 @@ function UserLayout({ children, pseudo, avatar, }) {
       <Burger />
       <Grid className="grid">
         <Grid.Column textAlign='center' >
-          <Image className='userimage' src={avatar ? avatar : 'https://elysator.com/wp-content/uploads/blank-User-picture-973460_1280-e1523978675847.png'} centered />
+          <Image className='userimage' src={avatar ? avatar : 'https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_960_720.png'} centered />
           <h1 className='username'>{pseudo}</h1>
           <p className='userlevel'>Niveau {niveau}</p>
         </Grid.Column>
