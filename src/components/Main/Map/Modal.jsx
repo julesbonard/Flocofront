@@ -19,14 +19,11 @@ function ModalMarker({ open, setPlantUuid, addMarker, closeModal }) {
       .finally(() => closeModal())
   }
   const seedOptions = [
-    { text: 'Achillée' },
-    { text: 'Avalanche ' },
-    { text: 'Eucalyptus' },
-    { text: 'Renoncule' },
-    { text: 'Pavot' },
-    { text: 'Muflier' },
-    { text: 'Arum' },
-    { text: 'Jasmin' },
+    { key: 'af', value: 'af', text: 'Achillée' },
+    { key: 'bf', value: 'bf', text: 'Avalanche ' },
+    { key: 'cf', value: 'cf', text: 'Eucalyptus' },
+    { key: 'df', value: 'df', text: 'Renoncule' },
+    { key: 'ef', value: 'ef', text: 'Pavot' },
   ]
 
   return (
