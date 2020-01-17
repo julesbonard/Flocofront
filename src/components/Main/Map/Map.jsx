@@ -21,12 +21,14 @@ Leaflet.Icon.Default.mergeOptions({
 
 const { map } = styles;
 
-function MapDisplay({ token }) {
+function MapDisplay({ token, displayMarkers, displayPartners }) {
   const [initialMapPosition] = useState([48.5833, 7.75]);
   const [zoom] = useState(7);
   const [markers, setMarkers] = useState([]);
   const [partnersMarkers, setPartnersMarkers] = useState([
-    { lat: 12, lng: 24, PlantUuid: 1 }
+    { lat: 50, lng: 6, PlantUuid: 1 },
+    { lat: 52, lng: 6, PlantUuid: 1 },
+    { lat: 51, lng: 5, PlantUuid: 1 }
   ]);
 
   const addMarker = e => {
@@ -98,6 +100,7 @@ function MapDisplay({ token }) {
     getMarkers();
   }, []);
 
+
   return (
     <Map
       center={initialMapPosition}
@@ -106,18 +109,34 @@ function MapDisplay({ token }) {
       onClick={addMarker}
     >
       <Tile />
-      {markers.map(marker => (
-        <Marker key={marker.uuid} position={marker}>
-          <Popup>
-            <button
-              onClick={() => deleteMarker(marker.uuid)}
-              className="ui button"
-            >
-              Delete Marker
-            </button>
-          </Popup>
-        </Marker>
-      ))}
+      
+      {displayPartners &&
+        partnersMarkers.map(marker => (
+          <Marker key={marker.uuid} position={marker}>
+            <Popup>
+              <button
+                onClick={() => deleteMarker(marker.uuid)}
+                className="ui button"
+              >
+                Delete Marker
+              </button>
+            </Popup>
+          </Marker>
+        ))}
+
+      {displayMarkers &&
+        markers.map(marker => (
+          <Marker key={marker.uuid} position={marker}>
+            <Popup>
+              <button
+                onClick={() => deleteMarker(marker.uuid)}
+                className="ui button"
+              >
+                Delete Marker
+              </button>
+            </Popup>
+          </Marker>
+        ))}
     </Map>
   );
 }
