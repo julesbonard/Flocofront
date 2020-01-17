@@ -95,7 +95,6 @@ function MapDisplay({ token, displayMarkers, displayPartners }) {
         };
       });
       setMarkers(markers);
-      console.log(res);
     };
     getMarkers();
   }, []);
