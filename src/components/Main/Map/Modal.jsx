@@ -19,7 +19,19 @@ function ModalMarker({ open, setPlantUuid, addMarker, closeModal }) {
       .finally(() => closeModal())
   }
   const seedOptions = [
-    { key: 'af', value: 'af', text: 'Achillée' },
+    {
+      key: 'af',
+      value: {
+        name: "rose",
+        status: "vulnérable",
+        type: "vivace",
+        environment: "extérieur/intérieur",
+        season: "printemps",
+        exposure: "sun",
+        spray: "fréquente"
+      },
+      text: 'Rose'
+    },
     { key: 'bf', value: 'bf', text: 'Avalanche ' },
     { key: 'cf', value: 'cf', text: 'Eucalyptus' },
     { key: 'df', value: 'df', text: 'Renoncule' },
