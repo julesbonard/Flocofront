@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
 import { Provider } from 'react-redux'
 
 import App from './App';
-import reducer from "./reducers/authReducer";
+import authReducer from "./reducers/authReducer";
+import userReducer from "./reducers/userReducer"
+import levelReducer from "./reducers/levelReducer"
 
 const store = createStore(
-    reducer,
+    combineReducers({ authReducer, userReducer, levelReducer }),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
@@ -19,4 +21,4 @@ ReactDOM.render(
     document.getElementById("root")
 );
 
-// serviceWorker.unregister();
+serviceWorker.register();

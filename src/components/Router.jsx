@@ -3,27 +3,25 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 import MainLayout from "./Layouts/MainLayout";
-import RegisterLayout from "./Connexion/Register/RegisterLayout";
-import CardLayout from "./Flora/Progress/CardLayout";
-import LoginLayout from "./Connexion/Login/LoginLayout";
-import HomepageLayout from "./Connexion/Home/HomepageLayout";
+import NoLayout from "./Layouts/NoLayout";
+import UserLayout from "./Layouts/UserLayout";
+import BurgerLayout from "./Layouts/BurgerLayout";
 
 import LoginPage from "./Connexion/Login/LoginPage";
-import Map from "./Main/Map/Page";
-import Account from "./Compte/Account";
+import MapPage from "./Main/Map/MapPage";
+import Account from "./Account/AccountPage";
 import Form from "./Connexion/Register/Form";
-import Card from "./Flora/Progress/Card";
+import ProgressPage from "./MiniFlora/Progress/ProgressPage";
 import Homepage from "./Connexion/Home/Homepage";
-import Accesspage from "./Partner/Access/Accesspage";
-import FlowerPot from "./Flora/Pot/FlowerPot";
-import PartnerPage from "./Partner/Offer/PartnerPage";
+import Accesspage from "./MiniFlora/Access/Accesspage";
+import PotPage from "./MiniFlora/Pot/PotPage";
+import PartnerPage from "./MiniFlora/Partner/PartnerPage";
 
 function CustomRoute({
   component: Component,
   layout: Layout,
-  layout: RegisterLayout,
-  layout: CardLayout,
-  layout: LoginLayout,
+  layout: UserLayout,
+  layout: NoLayout,
   ...rest
 }) {
   return (
@@ -42,10 +40,8 @@ function AuthRoute({
   isAuth,
   component: Component,
   layout: Layout,
-  layout: RegisterLayout,
-  layout: CardLayout,
-  layout: HomepageLayout,
-  layout: LoginLayout,
+  layout: UserLayout,
+  layout: NoLayout,
   ...rest
 }) {
   return (
@@ -57,8 +53,8 @@ function AuthRoute({
             <Component {...props} />
           </Layout>
         ) : (
-          <Redirect to="/" />
-        );
+            <Redirect to="/" />
+          );
       }}
     />
   );
@@ -71,49 +67,53 @@ function Router({ isAuth }) {
         <CustomRoute
           exact
           path="/"
-          layout={HomepageLayout}
+          layout={NoLayout}
           component={Homepage}
         />
-        <CustomRoute path="/Login" layout={LoginLayout} component={LoginPage} />
+        <CustomRoute
+          path="/Login"
+          layout={NoLayout}
+          component={LoginPage}
+        />
         <CustomRoute
           path="/Register"
-          layout={RegisterLayout}
+          layout={NoLayout}
           component={Form}
         />
         <AuthRoute
           path="/Map"
           isAuth={isAuth}
           layout={MainLayout}
-          component={Map}
+          component={MapPage}
         />
         <AuthRoute
           path="/Account"
           isAuth={isAuth}
-          layout={MainLayout}
+          layout={UserLayout}
           component={Account}
         />
         <AuthRoute
           path="/Progress"
           isAuth={isAuth}
-          layout={CardLayout}
-          component={Card}
+          layout={UserLayout}
+          component={ProgressPage}
         />
         <AuthRoute
-          path="/Partner"
+          path="/access"
           isAuth={isAuth}
-          layout={RegisterLayout}
+          layout={NoLayout}
           component={Accesspage}
         />
         <AuthRoute
           path="/Pot"
           isAuth={isAuth}
-          layout={MainLayout}
-          component={FlowerPot}
+          layout={UserLayout}
+          component={PotPage}
         />
         <AuthRoute
           path="/Partner"
           isAuth={isAuth}
-          layout={MainLayout}
+          layout={BurgerLayout}
           component={PartnerPage}
         />
       </Switch>
@@ -123,7 +123,7 @@ function Router({ isAuth }) {
 
 const mapStateToProps = state => {
   return {
-    isAuth: state.isAuth
+    isAuth: state.authReducer.isAuth
   };
 };
 

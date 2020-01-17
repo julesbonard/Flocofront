@@ -3,12 +3,14 @@ import axios from "axios";
 
 import { Form, Image, Button } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+import { LOGIN, USER_LOGIN } from "../../../reducers/action";
 import styles from "./Form.module.css";
 import Logo from "../../../assets/logo-floco.png";
 
 const { inscription, barre, area, space, logo, button, textalign } = styles;
 
-function FormRegister() {
+function FormRegister({ logIn, userLogIn }) {
   const [state, setState] = useState({
     firstname: null,
     lastname: null,
@@ -32,7 +34,7 @@ function FormRegister() {
     console.log(state);
   };
 
-  function validateAuthentication() {
+  const validateAuthentication = () => {
     axios
       .post("https://floco-app.herokuapp.com/users", {
         firstName: state.firstname,
@@ -42,8 +44,11 @@ function FormRegister() {
         password: password,
         isOAuth: false
       })
-      .then(response => {
-        localStorage.setItem("uuid", `${response.data.uuid}`);
+      .then(res => {
+        console.log(res);
+
+        logIn(res.data.token, res.data.id);
+        userLogIn(res.data.user)
         setTimeout(() => {
           history.push("/Account");
         }, 200);
@@ -55,80 +60,90 @@ function FormRegister() {
   }
 
   return (
-    <div className={textalign}>
-      <Image
-        className={logo}
-        src={Logo}
-        size="tiny"
-        centered
-        alt="Logo Floco"
-      />
-      <div className={inscription}>
-        <Form className={barre} onSubmit={submit}>
-          <Form.Field>
-            <label htmlFor="firstname" className={area} fluid size="large">
-              Nom:
+    <Form>
+
+      <div className={textalign}>
+        <Image
+          className={logo}
+          src={Logo}
+          size="tiny"
+          centered
+          alt="Logo Floco"
+        />
+        <div className={inscription}>
+          <Form className={barre} onSubmit={submit}>
+            <Form.Field>
+              <label htmlFor="firstname" className={area} fluid size="large">
+                Nom:
             </label>
-            <input
-              type="text"
-              id="firstname"
-              onChange={change}
-              className={space}
-              placeholder="Nom"
-            />
-          </Form.Field>
-          <Form.Field>
-            <label htmlFor="lastname" className={area}>
-              Prénom:
-            </label>
-            <input
-              type="text"
-              id="lastname"
-              onChange={change}
-              className={space}
-              placeholder="Prénom"
-            />
-          </Form.Field>
-          <Form.Field>
-            <label htmlFor="mail" className={area}>
-              email:
-            </label>
-            <input
-              type="text"
-              id="mail"
-              onChange={change}
-              className={space}
-              placeholder="Mail"
-            />
-          </Form.Field>
-          <Form.Field>
-            <label htmlFor="username">Pseudo:</label>
-            <input
-              type="text"
-              id="username"
-              onChange={change}
-              className={space}
-              placeholder="Username"
-            />
-          </Form.Field>
-          <Form.Field>
-            <label htmlFor="password">Mot de passe:</label>
-            <div>
               <input
-                type={hidden ? "password" : "text"}
-                value={password}
-                onChange={e => setPassword(e.target.value)}
+                type="text"
+                id="firstname"
+                onChange={change}
+                className={space}
+                placeholder="Nom"
               />
-              <button onClick={() => setHidden(!hidden)} >
-                <i class={hidden ? "eye slash icon" : "eye icon"}></i>
-              </button>
-            </div>
-          </Form.Field>
-          <Button onClick={validateAuthentication} className={button} >Creer Le Compte </Button>
-        </Form>
+            </Form.Field>
+            <Form.Field>
+              <label htmlFor="lastname" className={area}>
+                Prénom:
+            </label>
+              <input
+                type="text"
+                id="lastname"
+                onChange={change}
+                className={space}
+                placeholder="Prénom"
+              />
+            </Form.Field>
+            <Form.Field>
+              <label htmlFor="mail" className={area}>
+                email:
+            </label>
+              <input
+                type="text"
+                id="mail"
+                onChange={change}
+                className={space}
+                placeholder="Mail"
+              />
+            </Form.Field>
+            <Form.Field>
+              <label htmlFor="username">Pseudo:</label>
+              <input
+                type="text"
+                id="username"
+                onChange={change}
+                className={space}
+                placeholder="Username"
+              />
+            </Form.Field>
+            <Form.Field>
+              <label htmlFor="password">Mot de passe:</label>
+              <div>
+                <input
+                  type={hidden ? "password" : "text"}
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                />
+                <button onClick={() => setHidden(!hidden)} >
+                  <i class={hidden ? "eye slash icon" : "eye icon"}></i>
+                </button>
+              </div>
+            </Form.Field>
+            <Button onClick={validateAuthentication} className={button} >Creer Le Compte </Button>
+          </Form>
+        </div>
       </div>
-    </div>
+    </Form>
   );
 }
 
-export default FormRegister;
+const mapDispatchToProps = dispatch => {
+  return {
+    logIn: (token, id) => dispatch({ type: LOGIN, payload: { token, id } }),
+    userLogIn: (user) => dispatch({ type: USER_LOGIN, payload: { user } })
+  };
+};
+
+export default connect(null, mapDispatchToProps)(FormRegister);

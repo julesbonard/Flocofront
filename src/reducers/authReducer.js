@@ -1,9 +1,9 @@
-import { LOGIN, LOGOUT } from "./authAction";
+import { LOGIN, LOGOUT } from "./action";
 
 const initialState = {
     id: "",
     token: "",
-    isAuth: false
+    isAuth: true //FALSE quand le developpement sera terminé
 };
 
 function authReducer(state = initialState, action) {

@@ -1,0 +1,33 @@
+.container {
+  margin: 5px;
+  width: auto;
+  height: auto;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap; 
+  overflow: auto;
+}
+.item {
+  background-color: #05957c;
+  border-radius: 12px 50px 12px 12px;
+  color: white;
+  width: 95px;
+  height: 160px;
+  margin: 5px;
+  display: flex;
+  flex-wrap: nowrap; 
+  overflow: auto;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-around;
+}
+.cercle{
+  padding: 10px!important;
+  border-radius: 100px!important;
+  background-color: #e78e5e!important;
+  border: 3px solid white!important;
+}
+.text{
+  writing-mode: tb-rl;
+  transform: rotate(-180deg); 
+  }

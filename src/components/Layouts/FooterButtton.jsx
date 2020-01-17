@@ -9,7 +9,6 @@ export default function FooterButton() {
   const [buttons, setButtons] = useState([
     { id: 1, reverted: false },
     { id: 2, reverted: false },
-    { id: 3, reverted: false }
   ]);
 
   const revertButton = id => {

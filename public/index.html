@@ -2,19 +2,108 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
+    />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/logo-floco-rond.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Web site created using create-react-app"/>
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
     <title>React App</title>
   </head>
-  
+
   <body>
     <div id="root"></div>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
-      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-      crossorigin="anonymous">
+    <div class="ui basic modal modal-display background-modal">
+      <div class="ui icon header">
+        <img src="logo-floco.png" alt="floco plante logo modal" class="icon image-modal"></img>
+        Bienvenue sur une app d'enfer
+      </div>
+      <div class="content padding-modal">
+        <p>Voulez vous créer un raccourci de cette App d'enfer sur votre bureau ?</p>
+      </div>
+      <div class="actions center-modal">
+        <div class="ui red basic cancel inverted button modal-no">
+          <i class="remove icon"></i>
+          No
+        </div>
+        <div class="ui green ok inverted button add-button" id="button-modal">
+          <i class="checkmark icon"></i>
+          Yes
+        </div>
+      </div>
+    </div>
+    <script>
+      if ("serviceWorker" in navigator) {
+        let deferredPrompt;
+        const addBtn = document.querySelector(".add-button");
+        const modalDisplay = document.querySelector(".modal-display");
+        const modalNo =document.querySelector(".modal-no");
+        modalDisplay.style.display = "none";
+
+        window.addEventListener("beforeinstallprompt", e => {
+          // Prevent Chrome 67 and earlier from automatically showing the prompt
+          e.preventDefault();
+          // Stash the event so it can be triggered later.
+          deferredPrompt = e;
+          // Update UI to notify the user they can add to home screen
+          modalDisplay.style.display = "block";
+
+          modalNo.addEventListener("click", e => {
+            modalDisplay.style.display = "none";
+          })
+
+          addBtn.addEventListener("click", e => {
+            // hide our user interface that shows our A2HS button
+            modalDisplay.style.display = "none";
+            // Show the prompt
+            deferredPrompt.prompt();
+            // Wait for the user to respond to the prompt
+            deferredPrompt.userChoice.then(choiceResult => {
+              if (choiceResult.outcome === "accepted") {
+                console.log("User accepted the A2HS prompt");
+              } else {
+                console.log("User dismissed the A2HS prompt");
+              }
+              deferredPrompt = null;
+            });
+          });
+        });
+
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("worker.js")
+            .then(
+              registration => {
+                console.log(
+                  "Worker registration successful",
+                  registration.scope
+                );
+              },
+              err => {
+                console.log("Worker registration failed", err);
+              }
+            )
+            .catch(err => console.log(err));
+        });
+      } else {
+        console.log("Service Worker is not supported by browser.");
+      }
     </script>
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"
+    ></script>
     <script src="semantic/dist/semantic.min.js"></script>
+    
   </body>
 </html>

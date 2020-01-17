@@ -5,11 +5,10 @@ import axios from "axios";
 import Tile from "./Tile";
 import "leaflet/dist/leaflet.css";
 import { Marker, Popup } from "react-leaflet";
+import { connect } from "react-redux";
 
 import styles from "./Map.module.css";
 import ModalMarker from "./Modal";
-
-
 
 Leaflet.Icon.Default.imagePath = "../node_modules/leaflet";
 
@@ -23,23 +22,28 @@ Leaflet.Icon.Default.mergeOptions({
 
 const { map } = styles;
 
-export default function MapDisplay() {
+function MapDisplay({ token, displayMarkers, displayPartners }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [markers, setMarkers] = useState([]);
   const [latLng, setLatLng] = useState({})
   const [plantUuid, setPlantUuid] = useState("")
   const [initialMapPosition] = useState([48.5833, 7.75]);
   const [zoom] = useState(7);
-  const [markers, setMarkers] = useState([]);
-  
+  const [partnersMarkers, setPartnersMarkers] = useState([
+    { lat: 50, lng: 6, PlantUuid: 1 },
+    { lat: 52, lng: 6, PlantUuid: 1 },
+    { lat: 51, lng: 5, PlantUuid: 1 }
+  ]);
 
   const openModal = (e) => {
     const { lat, lng } = e.latlng;
     setIsModalOpen(true)
     setLatLng({
       latitude: lat,
-        longitude: lng
+      longitude: lng
     })
   }
+
   const closeModal = () => {
     setIsModalOpen(false)
   }
@@ -48,9 +52,13 @@ export default function MapDisplay() {
     axios
       .post("https://floco-app.herokuapp.com/locations", {
         ...latLng,
-        PlantUuid: plantUuid //TODO: change to a real plant 
-        // backend branch test
-      })
+        PlantUuid: plantUuid
+      },
+        {
+          headers: {
+            "access-token": token
+          }
+        })
       .then(res => {
         const { uuid, latitude, longitude, PlantUuid } = res.data;
         setMarkers([
@@ -62,6 +70,23 @@ export default function MapDisplay() {
             PlantUuid
           }
         ]);
+      })
+      .catch(err => {
+        console.log(err);
+        alert(err.messagge);
+      });
+  };
+
+  const deleteMarker = e => {
+    axios
+      .delete(`https://floco-app.herokuapp.com/locations/${e}`, {
+        headers: {
+          "access-token": token
+        }
+      })
+      .then(res => {
+        const filteredMarkers = markers.filter(marker => e !== marker.uuid);
+        setMarkers(filteredMarkers);
       })
       .catch(err => {
         console.log(err);
@@ -81,42 +106,56 @@ export default function MapDisplay() {
         };
       });
       setMarkers(markers);
-      console.log(res);
     };
     getMarkers();
   }, []);
 
-  const log = e => {
-    axios
-      .delete(`https://floco-app.herokuapp.com/locations/${e}`).then(res => {
-        const filteredMarkers = markers.filter(marker => e !== marker.uuid);
-        setMarkers(filteredMarkers);
-      })
-      .catch(err => {
-        console.log(err);
-        alert(err.messagge);
-      });
-  };
-
-  return ( 
+  return (
     <>
-    <Map 
-      center={initialMapPosition}
-      zoom={zoom}
-      className={map}
-      onClick={openModal}
-  
-    > 
-      <Tile /> 
-      {markers.map(marker => (
-        <Marker key={marker.uuid} position={marker}> 
-          <Popup> <ModalMarker/>
-            <button onClick={() => log(marker.uuid)} className="ui button">Delete Marker</button>
-          </Popup>
-        </Marker>
-      ))}
-    </Map>
-    <ModalMarker open={isModalOpen} setPlantUuid={setPlantUuid} addMarker={addMarker} closeModal={closeModal} />
+      <Map
+        center={initialMapPosition}
+        zoom={zoom}
+        className={map}
+        onClick={openModal}
+      >
+        <Tile />
+        {displayPartners &&
+          partnersMarkers.map(marker => (
+            <Marker key={marker.uuid} position={marker}>
+              <Popup>
+                <ModalMarker />
+                <button
+                  onClick={() => deleteMarker(marker.uuid)}
+                  className="ui button"
+                >
+                  Delete Marker
+              </button>
+              </Popup>
+            </Marker>
+          ))}
+        {displayMarkers &&
+          markers.map(marker => (
+            <Marker key={marker.uuid} position={marker}>
+              <Popup>
+                <button
+                  onClick={() => deleteMarker(marker.uuid)}
+                  className="ui button"
+                >
+                  Delete Marker
+              </button>
+              </Popup>
+            </Marker>
+          ))}
+      </Map>
+      <ModalMarker open={isModalOpen} setPlantUuid={setPlantUuid} addMarker={addMarker} closeModal={closeModal} />
     </>
   );
 }
+
+const mapStateToProps = state => {
+  return {
+    token: state.authReducer.token
+  };
+};
+
+export default connect(mapStateToProps)(MapDisplay);
