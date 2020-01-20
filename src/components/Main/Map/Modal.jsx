@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
-import { Button, Header, Image, Modal, Dropdown, Form } from 'semantic-ui-react'
-import { axios } from 'axios';
+import { Button, Image, Modal, Dropdown, Form } from 'semantic-ui-react'
+import Axios from 'axios';
 
 function ModalMarker({ open, setPlantUuid, addMarker, closeModal }) {
   const [longueur, setLongueur] = useState(null);
   const [largeur, setLargeur] = useState(null);
   const [profondeur, setProfondeur] = useState(null);
+  let seedOptions = []
 
   const createPlant = () => {
-    axios.post("/plant")
+    Axios.post("/plant")
       .then(res => {
         setPlantUuid(res.data.uuid)
         return addMarker()
@@ -18,34 +19,27 @@ function ModalMarker({ open, setPlantUuid, addMarker, closeModal }) {
       })
       .finally(() => closeModal())
   }
-  const seedOptions = [
-    {
-      key: 'af',
-      value: {
-        name: "rose",
-        status: "vulnérable",
-        type: "vivace",
-        environment: "extérieur/intérieur",
-        season: "printemps",
-        exposure: "sun",
-        spray: "fréquente"
-      },
-      text: 'Rose'
-    },
-    { key: 'bf', value: 'bf', text: 'Avalanche ' },
-    { key: 'cf', value: 'cf', text: 'Eucalyptus' },
-    { key: 'df', value: 'df', text: 'Renoncule' },
-    { key: 'ef', value: 'ef', text: 'Pavot' },
-  ]
+
+  const getSeeds = async () => {
+    const res = await Axios.get("https://floco-app.herokuapp.com/seeds")
+    for (let index = 0; index < res.data.length; index++) {
+      const sedd = { key: res.data[index].uuid, text: res.data[index].name, value: res.data[index] }
+      seedOptions.push(sedd)
+    }
+  }
+  getSeeds()
+
+  const onSubmit = () => {
+    Axios.post()
+  }
 
   return (
     <Modal open={open}>
-      <Modal.Header>Récapitulatif : </Modal.Header>
+      <Modal.Header>Tu veux planter une plante? </Modal.Header>
       <Modal.Content image>
         <Image wrapped size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' />
         <Modal.Description>
-          <Header>Nom de la plante</Header>
-          <p>Taille du pot:</p>
+          <h3>Taille du pot (en cm):</h3>
           <Form>
             <Form.Input
               placeholder='Longueur'
@@ -66,8 +60,9 @@ function ModalMarker({ open, setPlantUuid, addMarker, closeModal }) {
               onChange={e => setProfondeur(e.target.value)}
             />
           </Form>
-          <p>interieur ou exterieur</p>
-          <p> graines (menu deroualnt )</p>
+        </Modal.Description>
+        <Modal.Description>
+          <h3>Graines</h3>
           <Dropdown
             placeholder='Choisie une graine'
             fluid
@@ -75,8 +70,8 @@ function ModalMarker({ open, setPlantUuid, addMarker, closeModal }) {
             selection
             options={seedOptions}
           />
-          <Button onClick={() => { createPlant() }}>Planter la plante</Button>
         </Modal.Description>
+        <Button primary onClick={() => { createPlant() }}>Planter la plante</Button>
       </Modal.Content>
     </Modal>
   )
