@@ -1,12 +1,22 @@
-import React from 'react';
-import { Image } from 'semantic-ui-react';
-import styles from './Card.module.css';
+import React from "react";
+import { Image } from "semantic-ui-react";
+import styles from "./Card.module.css";
 
-import illustration from '../../../assets/bas_de_page_gche.png'
-import illustration2 from '../../../assets/bas_de_page_drt.png'
-import iconeplus from '../../../assets/croix.png'
+import borderb from "../../../assets/border-bas.png";
+import iconeplus from "../../../assets/croix.png";
+import illustration from "../../../assets/bas_de_page_gche.png";
+import illustration2 from "../../../assets/bas_de_page_drt.png";
 
-const { levelthree, leveltwo, more, levelone, endpage, flore, flore2 } = styles;
+const {
+  levelthree,
+  leveltwo,
+  more,
+  levelone,
+  endpage,
+  partner,
+  flore,
+  flore2
+} = styles;
 
 function UserCard() {
   return (
@@ -14,13 +24,21 @@ function UserCard() {
       <p className={levelthree}>Quelle maison habiterait ta plante?</p>
       <p className={leveltwo}>Quelle maison habiterait ta plante?</p>
       <Image className={more} src={iconeplus} />
-      <p className={levelone}>La restauration de la Flore locale compte sur toi...</p>
+      <div className={flore}>
+        <Image size="medium" src={borderb} />
+        <p className={levelone}>
+          La restauration de la Flore locale compte sur toi...
+        </p>
+      </div>
       <div className={endpage}>
         <Image size="small" className={flore} src={illustration} />
+        <p href="./Partner/Offer/PartnerPage" className={partner}>
+          Découvrez les propositions de nos partenaires
+        </p>
         <Image size="small" className={flore2} src={illustration2} />
       </div>
     </>
-  )
-};
+  );
+}
 
 export default UserCard;
