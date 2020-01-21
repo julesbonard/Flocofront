@@ -48,7 +48,7 @@ function MapDisplay({
 
     axios
       .post(
-        `${process.env.REACT_APP_API_URL}/plants`,
+        `${process.env.REACT_APP_API_URL}/locations`,
         {
           latitude: lat,
           longitude: lng,
