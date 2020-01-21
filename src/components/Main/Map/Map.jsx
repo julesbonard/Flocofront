@@ -21,7 +21,13 @@ Leaflet.Icon.Default.mergeOptions({
 
 const { map } = styles;
 
-function MapDisplay({ token, displayMarkers, displayPartners }) {
+function MapDisplay({
+  token,
+  displayMarkers,
+  displayPartners,
+  displayUser,
+  id
+}) {
   const [initialMapPosition] = useState([48.5833, 7.75]);
   const [zoom] = useState(7);
   const [markers, setMarkers] = useState([]);
@@ -30,25 +36,30 @@ function MapDisplay({ token, displayMarkers, displayPartners }) {
     { lat: 52, lng: 6, PlantUuid: 1 },
     { lat: 51, lng: 5, PlantUuid: 1 }
   ]);
+  const [userMarkers, setUserMarkers] = useState([]);
+  const config = {
+    headers: {
+      "access-token": token
+    }
+  };
 
   const addMarker = e => {
     const { lat, lng } = e.latlng;
+
     axios
       .post(
-        "https://floco-app.herokuapp.com/locations",
+        `${process.env.REACT_APP_API_URL}/plants`,
         {
           latitude: lat,
           longitude: lng,
           PlantUuid: "1" //TODO: change to a real plant
           // backend branch test
         },
-        {
-          headers: {
-            "access-token": token
-          }
-        }
+        config
       )
       .then(res => {
+        console.log(res);
+
         const { uuid, latitude, longitude, PlantUuid } = res.data;
         setMarkers([
           ...markers,
@@ -66,39 +77,51 @@ function MapDisplay({ token, displayMarkers, displayPartners }) {
       });
   };
 
-  const deleteMarker = e => {
-    axios
-      .delete(`https://floco-app.herokuapp.com/locations/${e}`, {
-        headers: {
-          "access-token": token
-        }
-      })
-      .then(res => {
-        const filteredMarkers = markers.filter(marker => e !== marker.uuid);
-        setMarkers(filteredMarkers);
-      })
-      .catch(err => {
-        console.log(err);
-        alert(err.messagge);
+  const deleteMarker = async plant => {
+    try {
+      await axios.delete(
+        `${process.env.REACT_APP_API_URL}/plants/${plant.plantUuid}`,
+        config
+      );
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_URL}/plants`,
+        config
+      );
+
+      const refactoredPlants = res.data.map(({ uuid, Location, Pot }) => {
+        return {
+          plantUuid: uuid,
+          locationUuid: Location.uuid,
+          PotUuid: Pot.uuid,
+          lat: Location.latitude,
+          lng: Location.longitude,
+          userUuid: Pot.UserUuid
+        };
       });
+      setMarkers(refactoredPlants);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
     const getMarkers = async () => {
-      let res = await axios.get("https://floco-app.herokuapp.com/locations");
-      const markers = res.data.map(marker => {
+      const plants = await axios.get(`${process.env.REACT_APP_API_URL}/plants`);
+
+      const refactoredPlants = plants.data.map(({ uuid, Location, Pot }) => {
         return {
-          uuid: marker.uuid,
-          lat: marker.latitude,
-          lng: marker.longitude,
-          PlantUuid: marker.PlantUuid
+          plantUuid: uuid,
+          locationUuid: Location.uuid,
+          PotUuid: Pot.uuid,
+          lat: Location.latitude,
+          lng: Location.longitude,
+          userUuid: Pot.UserUuid
         };
       });
-      setMarkers(markers);
+      setMarkers(refactoredPlants);
     };
     getMarkers();
   }, []);
-
 
   return (
     <Map
@@ -108,13 +131,13 @@ function MapDisplay({ token, displayMarkers, displayPartners }) {
       onClick={addMarker}
     >
       <Tile />
-      
+
       {displayPartners &&
         partnersMarkers.map(marker => (
           <Marker key={marker.uuid} position={marker}>
             <Popup>
               <button
-                onClick={() => deleteMarker(marker.uuid)}
+                onClick={() => deleteMarker(marker)}
                 className="ui button"
               >
                 Delete Marker
@@ -128,7 +151,21 @@ function MapDisplay({ token, displayMarkers, displayPartners }) {
           <Marker key={marker.uuid} position={marker}>
             <Popup>
               <button
-                onClick={() => deleteMarker(marker.uuid)}
+                onClick={() => deleteMarker(marker)}
+                className="ui button"
+              >
+                Delete Marker
+              </button>
+            </Popup>
+          </Marker>
+        ))}
+
+      {displayUser &&
+        markers.map(marker => (
+          <Marker key={marker.uuid} position={marker}>
+            <Popup>
+              <button
+                onClick={() => deleteMarker(marker)}
                 className="ui button"
               >
                 Delete Marker
@@ -142,7 +179,8 @@ function MapDisplay({ token, displayMarkers, displayPartners }) {
 
 const mapStateToProps = state => {
   return {
-    token: state.authReducer.token
+    token: state.authReducer.token,
+    id: state.authReducer.id
   };
 };
 
