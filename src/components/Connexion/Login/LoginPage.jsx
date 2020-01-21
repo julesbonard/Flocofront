@@ -1,11 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import {
-  Grid,
-  Header,
-  Image,
-  Message,
-  Form
-} from "semantic-ui-react";
+import { Grid, Header, Image, Message, Form } from "semantic-ui-react";
 import flower from "../../../Images/logo-floco.png";
 import styles from "./LoginPage.module.css";
 import LoginForm from "./LoginForm";
@@ -23,19 +17,24 @@ function LoginPage({ logIn, location, userLogIn }) {
   useEffect(() => {
     const { id, token } = queryString.parse(location.search);
     if (token) {
-      logIn(token, id)
-      axios.get(`https://floco-app.herokuapp.com/users/${id}`)
-        .then(res => { userLogIn(res.data) })
+      logIn(token, id);
+      axios.get(`${process.env.REACT_APP_API_URL}/users/${id}`).then(res => {
+        userLogIn(res.data);
+      });
       history.push("/map");
     }
     if (firstRender.current) {
       firstRender.current = false;
       return;
     }
-  })
+  });
   return (
     <Form>
-      <Grid textAlign="center" style={{ height: "65vh" }} verticalAlign="middle">
+      <Grid
+        textAlign="center"
+        style={{ height: "65vh" }}
+        verticalAlign="middle"
+      >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" color="green" textAlign="center">
             <Image className={styles.logotop} src={flower} size="tall" />
@@ -54,7 +53,7 @@ function LoginPage({ logIn, location, userLogIn }) {
             Pas de compte ?{" "}
             <a className={styles.coucou} href="http://localhost:3000/register">
               Créer un tout de suite
-              </a>
+            </a>
           </Message>
         </Grid.Column>
       </Grid>
@@ -65,7 +64,7 @@ function LoginPage({ logIn, location, userLogIn }) {
 const mapDispatchToProps = dispatch => {
   return {
     logIn: (token, id) => dispatch({ type: LOGIN, payload: { token, id } }),
-    userLogIn: (user) => dispatch({ type: USER_LOGIN, payload: { user } })
+    userLogIn: user => dispatch({ type: USER_LOGIN, payload: { user } })
   };
 };
 

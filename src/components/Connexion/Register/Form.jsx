@@ -17,8 +17,8 @@ function FormRegister({ logIn, userLogIn }) {
     mail: null,
     username: null
   });
-  const [hidden, setHidden] = useState(true)
-  const [password, setPassword] = useState("")
+  const [hidden, setHidden] = useState(true);
+  const [password, setPassword] = useState("");
 
   const history = useHistory();
 
@@ -36,7 +36,7 @@ function FormRegister({ logIn, userLogIn }) {
 
   const validateAuthentication = () => {
     axios
-      .post("https://floco-app.herokuapp.com/users", {
+      .post(`${process.env.REACT_APP_API_URL}/users`, {
         firstName: state.firstname,
         lastName: state.lastname,
         email: state.mail,
@@ -48,7 +48,7 @@ function FormRegister({ logIn, userLogIn }) {
         console.log(res);
 
         logIn(res.data.token, res.data.id);
-        userLogIn(res.data.user)
+        userLogIn(res.data.user);
         setTimeout(() => {
           history.push("/Account");
         }, 200);
@@ -57,11 +57,10 @@ function FormRegister({ logIn, userLogIn }) {
         console.log(err);
         setState({ isError: true, error: err });
       });
-  }
+  };
 
   return (
     <Form>
-
       <div className={textalign}>
         <Image
           className={logo}
@@ -75,7 +74,7 @@ function FormRegister({ logIn, userLogIn }) {
             <Form.Field>
               <label htmlFor="firstname" className={area} fluid size="large">
                 Nom:
-            </label>
+              </label>
               <input
                 type="text"
                 id="firstname"
@@ -87,7 +86,7 @@ function FormRegister({ logIn, userLogIn }) {
             <Form.Field>
               <label htmlFor="lastname" className={area}>
                 Prénom:
-            </label>
+              </label>
               <input
                 type="text"
                 id="lastname"
@@ -99,7 +98,7 @@ function FormRegister({ logIn, userLogIn }) {
             <Form.Field>
               <label htmlFor="mail" className={area}>
                 email:
-            </label>
+              </label>
               <input
                 type="text"
                 id="mail"
@@ -126,12 +125,14 @@ function FormRegister({ logIn, userLogIn }) {
                   value={password}
                   onChange={e => setPassword(e.target.value)}
                 />
-                <button onClick={() => setHidden(!hidden)} >
+                <button onClick={() => setHidden(!hidden)}>
                   <i class={hidden ? "eye slash icon" : "eye icon"}></i>
                 </button>
               </div>
             </Form.Field>
-            <Button onClick={validateAuthentication} className={button} >Creer Le Compte </Button>
+            <Button onClick={validateAuthentication} className={button}>
+              Creer Le Compte{" "}
+            </Button>
           </Form>
         </div>
       </div>
@@ -142,7 +143,7 @@ function FormRegister({ logIn, userLogIn }) {
 const mapDispatchToProps = dispatch => {
   return {
     logIn: (token, id) => dispatch({ type: LOGIN, payload: { token, id } }),
-    userLogIn: (user) => dispatch({ type: USER_LOGIN, payload: { user } })
+    userLogIn: user => dispatch({ type: USER_LOGIN, payload: { user } })
   };
 };
 
