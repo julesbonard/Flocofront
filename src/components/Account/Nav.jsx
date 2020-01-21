@@ -7,7 +7,7 @@ const { main, container, item, cercle, text } = styles
 
 function Account() {
     const onglets = [
-        { link: "/access", title: "mini-flore", icons: [{ name: "plus" }, { name: "eye" }] },
+        { link: "/progress", title: "mini-flore", icons: [{ name: "plus" }, { name: "eye" }] },
         { link: "#", title: "contribution", icons: [{ name: "eye" }] },
         { link: "#", title: "dashboard", icons: [{ name: "plus" }, { name: "eye" }] },
         { link: "#", title: "classement", icons: [{ name: "building" }, { name: "home" }] },

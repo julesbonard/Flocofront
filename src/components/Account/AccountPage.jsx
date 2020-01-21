@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { Menu } from 'semantic-ui-react'
 import NavAccount from "./Nav";
+import Treasury from "./Treasury";
 
-function Account() {
+function AccountPage() {
   const [activeItem, setActiveItem] = useState('home')
   const handleItemClick = (e, { name }) => setActiveItem(name);
-
-  const niveau = 1 // NEED TO USE AXIOS TO GET LEVLEL
-
   return (
     <>
       <Menu fluid widths={3}>
@@ -27,9 +25,10 @@ function Account() {
           onClick={handleItemClick}
         />
       </Menu>
+      <Treasury />
       <NavAccount />
     </>
   )
 }
 
-export default Account;
+export default AccountPage;
