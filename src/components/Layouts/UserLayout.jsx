@@ -21,7 +21,7 @@ function UserLayout({ children, pseudo, avatar, }) {
         </Grid.Column>
       </Grid>
       <div>{children}</div>
-      <footer className="footer" />
+      {/*<footer className="footer" />*/}
     </>
   );
 }
