@@ -8,14 +8,14 @@
   width: 5rem;
   height: 5rem;
   cursor: pointer;
-  border: solid 1px black;
+  border: solid 4px green;
 }
 
 .test2 {
   width: 5rem;
   height: 5rem;
   cursor: pointer;
-  border: solid 1px black;
+  border: solid 4px red;
 }
 
 @media (min-height: 1000px){
