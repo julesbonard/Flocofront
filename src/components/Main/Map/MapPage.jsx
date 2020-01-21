@@ -7,13 +7,6 @@ import Buttons from "./Buttons";
 import { LEVEL_LOGIN } from "../../../reducers/action";
 
 const MapPage = ({ token, id, levelLogIn }) => {
-  const displayMarkers = buttons.find(el => el.label === "markers").display;
-  const displayPartners = buttons.find(el => el.label === "partnersMarkers").display;
-  const [buttons, setButtons] = useState([
-    { id: 1, label: "markers", display: true },
-    { id: 2, label: "partnersMarkers", display: false }
-  ]);
-
   const tresaury = async () => {
     const res = await Axios.get(`https://floco-app.herokuapp.com/users/${id}/tresaury`, {
       headers: {
@@ -43,6 +36,14 @@ const MapPage = ({ token, id, levelLogIn }) => {
     }
   }
   tresaury()
+
+  const [buttons, setButtons] = useState([
+    { id: 1, label: "markers", display: true },
+    { id: 2, label: "partnersMarkers", display: false }
+  ]);
+  const displayMarkers = buttons.find(el => el.label === "markers").display;
+  const displayPartners = buttons.find(el => el.label === "partnersMarkers")
+    .display;
 
   const revertButton = id => {
     const displayButtons = buttons.map(but => {

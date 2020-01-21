@@ -50,7 +50,7 @@ function FormRegister({ logIn, userLogIn }) {
         logIn(res.data.token, res.data.id);
         userLogIn(res.data.user)
         setTimeout(() => {
-          history.push("/Account");
+          history.push("/map");
         }, 200);
       })
       .catch(err => {

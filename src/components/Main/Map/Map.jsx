@@ -48,11 +48,11 @@ function MapDisplay({ token, displayMarkers, displayPartners }) {
     setIsModalOpen(false)
   }
 
-  const addMarker = e => {
+  const addMarker = (id) => {
     axios
       .post("https://floco-app.herokuapp.com/locations", {
         ...latLng,
-        PlantUuid: plantUuid
+        PlantUuid: id
       },
         {
           headers: {
@@ -147,7 +147,7 @@ function MapDisplay({ token, displayMarkers, displayPartners }) {
             </Marker>
           ))}
       </Map>
-      <ModalMarker open={isModalOpen} setPlantUuid={setPlantUuid} addMarker={addMarker} closeModal={closeModal} />
+      <ModalMarker open={isModalOpen} setPlantUuid={setPlantUuid} plantUuid={plantUuid} addMarker={addMarker} closeModal={closeModal} />
     </>
   );
 }

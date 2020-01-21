@@ -1,18 +1,45 @@
 import React, { useState } from 'react'
-import { Button, Image, Modal, Dropdown, Form } from 'semantic-ui-react'
+import { connect } from "react-redux";
+import { Button, Image, Modal, Form } from 'semantic-ui-react'
 import Axios from 'axios';
 
-function ModalMarker({ open, setPlantUuid, addMarker, closeModal }) {
+function ModalMarker({ open, setPlantUuid, addMarker, closeModal, token, id, avatar }) {
   const [longueur, setLongueur] = useState(null);
   const [largeur, setLargeur] = useState(null);
   const [profondeur, setProfondeur] = useState(null);
+  const [seedId, setSeedId] = useState(null)
   let seedOptions = []
+  let PotUuid = null
+  const UserUuid = id
 
-  const createPlant = () => {
-    Axios.post("/plant")
+  const createPotPlant = () => {
+    Axios.post("https://floco-app.herokuapp.com/pots", {
+      width: largeur,
+      length: longueur,
+      depth: profondeur,
+      UserUuid
+    },
+      {
+        headers: {
+          "access-token": token
+        }
+      })
       .then(res => {
-        setPlantUuid(res.data.uuid)
-        return addMarker()
+        console.log(res.data)
+        PotUuid = res.data.uuid
+        Axios.post("https://floco-app.herokuapp.com/plants", {
+          SeedUuid: seedId,
+          PotUuid
+        },
+          {
+            headers: {
+              "access-token": token
+            }
+          })
+          .then(res => {
+            console.log(res.data);
+            addMarker(res.data.uuid)
+          })
       })
       .catch(err => {
         console.log(err)
@@ -23,21 +50,18 @@ function ModalMarker({ open, setPlantUuid, addMarker, closeModal }) {
   const getSeeds = async () => {
     const res = await Axios.get("https://floco-app.herokuapp.com/seeds")
     for (let index = 0; index < res.data.length; index++) {
-      const sedd = { key: res.data[index].uuid, text: res.data[index].name, value: res.data[index] }
+      const sedd = { key: res.data[index].uuid, text: res.data[index].name, value: res.data[index].uuid }
       seedOptions.push(sedd)
     }
   }
   getSeeds()
-
-  const onSubmit = () => {
-    Axios.post()
-  }
+  console.log(seedId);
 
   return (
     <Modal open={open}>
       <Modal.Header>Tu veux planter une plante? </Modal.Header>
       <Modal.Content image>
-        <Image wrapped size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' />
+        <Image wrapped size='medium' src={avatar ? avatar : 'https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_960_720.png'} />
         <Modal.Description>
           <h3>Taille du pot (en cm):</h3>
           <Form>
@@ -63,18 +87,29 @@ function ModalMarker({ open, setPlantUuid, addMarker, closeModal }) {
         </Modal.Description>
         <Modal.Description>
           <h3>Graines</h3>
-          <Dropdown
+          <Form.Select
+            onChange={(e, { value }) => setSeedId(value)}
             placeholder='Choisie une graine'
             fluid
             search
-            selection
             options={seedOptions}
           />
         </Modal.Description>
-        <Button primary onClick={() => { createPlant() }}>Planter la plante</Button>
+        <Modal.Description>
+          <Button primary onClick={() => createPotPlant()}>Planter la plante</Button>
+          <Button secondary onClick={() => closeModal()} >Fermer</Button>
+        </Modal.Description>
       </Modal.Content>
     </Modal>
   )
 };
 
-export default ModalMarker;
+const mapStateToProps = state => {
+  return {
+    token: state.authReducer.token,
+    id: state.authReducer.id,
+    avatar: state.userReducer.user.avatar
+  };
+};
+
+export default connect(mapStateToProps)(ModalMarker);
