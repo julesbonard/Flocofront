@@ -4,10 +4,41 @@ import Axios from "axios";
 
 import { connect } from "react-redux";
 import Buttons from "./Buttons";
-
 import { LEVEL_LOGIN } from "../../../reducers/action";
 
+import partner from "./partner.png";
+import plant from "./plant.png";
+import moncompte from "./user.png";
+
 const MapPage = ({ token, id, levelLogIn }) => {
+  const [onlyCurrentUser, setOnlyCurrentUser] = useState(false);
+  const [buttons, setButtons] = useState([
+    {
+      id: 1,
+      label: "markers",
+      display: true,
+      image: plant,
+      text: "Les plantes"
+    },
+    {
+      id: 2,
+      label: "partnersMarkers",
+      display: false,
+      image: partner,
+      text: "Les partenaires"
+    },
+    {
+      id: 3,
+      label: "userMarkers",
+      display: false,
+      image: moncompte,
+      text: "Mes plantes"
+    }
+  ]);
+  const toggleCurrentUser = () => {
+    setOnlyCurrentUser(!onlyCurrentUser);
+  };
+
   const tresaury = async () => {
     const res = await Axios.get(
       `${process.env.REACT_APP_API_URL}/users/${id}/tresaury`,
@@ -44,11 +75,6 @@ const MapPage = ({ token, id, levelLogIn }) => {
   };
   tresaury();
 
-  const [buttons, setButtons] = useState([
-    { id: 1, label: "markers", display: true },
-    { id: 2, label: "partnersMarkers", display: false },
-    { id: 3, label: "userMarkers", display: false }
-  ]);
   const displayMarkers = buttons.find(el => el.label === "markers").display;
   const displayPartners = buttons.find(el => el.label === "partnersMarkers")
     .display;
@@ -77,8 +103,13 @@ const MapPage = ({ token, id, levelLogIn }) => {
         displayMarkers={displayMarkers}
         displayPartners={displayPartners}
         displayUser={displayUser}
+        onlyCurrentUser={onlyCurrentUser}
       />
-      <Buttons buttons={buttons} handleClick={revertButton} />
+      <Buttons
+        buttons={buttons}
+        handleClick={revertButton}
+        toggleCurrentUser={toggleCurrentUser}
+      />
     </>
   );
 };

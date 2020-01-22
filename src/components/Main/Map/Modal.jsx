@@ -72,7 +72,6 @@ function ModalMarker({
     }
   };
   getSeeds();
-  console.log(seedId);
 
   return (
     <Modal open={open}>

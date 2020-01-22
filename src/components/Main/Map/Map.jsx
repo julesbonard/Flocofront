@@ -26,6 +26,7 @@ function MapDisplay({
   token,
   displayMarkers,
   displayPartners,
+  onlyCurrentUser,
   displayUser,
   id
 }) {
@@ -127,7 +128,6 @@ function MapDisplay({
   useEffect(() => {
     const getMarkers = async () => {
       const plants = await axios.get(`${process.env.REACT_APP_API_URL}/plants`);
-
       const refactoredPlants = plants.data.map(({ uuid, Location, Pot }) => {
         return {
           PlantUuid: uuid,
@@ -169,32 +169,20 @@ function MapDisplay({
           ))}
 
         {displayMarkers &&
-          markers.map(marker => (
-            <Marker key={marker.uuid} position={marker}>
-              <Popup>
-                <button
-                  onClick={() => deleteMarker(marker)}
-                  className="ui button"
-                >
-                  Delete Marker
-                </button>
-              </Popup>
-            </Marker>
-          ))}
-
-        {displayMarkers &&
-          markers.map(marker => (
-            <Marker key={marker.uuid} position={marker}>
-              <Popup>
-                <button
-                  onClick={() => deleteMarker(marker)}
-                  className="ui button"
-                >
-                  Delete Marker
-                </button>
-              </Popup>
-            </Marker>
-          ))}
+          markers
+            .filter(marker => (onlyCurrentUser ? marker.userUuid === id : true))
+            .map(marker => (
+              <Marker key={marker.uuid} position={marker}>
+                <Popup>
+                  <button
+                    onClick={() => deleteMarker(marker)}
+                    className="ui button"
+                  >
+                    Delete Marker
+                  </button>
+                </Popup>
+              </Marker>
+            ))}
       </Map>
       <ModalMarker
         open={isModalOpen}
