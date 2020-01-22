@@ -8,8 +8,6 @@ import moncompte from "./user.png";
 const { test1, test2 } = styles;
 
 function MapButton({ buttons, handleClick }) {
-
-
   const chooseImage = e => {
     if (e === 'markers') return plant;
     if (e === "partnersMarkers") return partner;
@@ -24,9 +22,9 @@ function MapButton({ buttons, handleClick }) {
 
   return (
     <>
-      {buttons.map(but => {
+      {buttons.map((but, index) => {
         return (
-          <div style={{ 'display': 'inline-block' }}>
+          <div key={index} style={{ 'display': 'inline-block' }}>
             <img
               src={chooseImage(but.label)}
               alt="button floco plante"

@@ -48,7 +48,6 @@ function MapDisplay({
 
   const openModal = e => {
     const { lat, lng } = e.latlng;
-
     setIsModalOpen(true);
     setLatLng({
       latitude: lat,
@@ -74,10 +73,7 @@ function MapDisplay({
           }
         }
       )
-
       .then(res => {
-        console.log(res);
-
         const { uuid, latitude, longitude, PlantUuid } = res.data;
         setMarkers([
           ...markers,
@@ -96,7 +92,6 @@ function MapDisplay({
   };
 
   const deleteMarker = async plant => {
-    console.log(plant.PlantUuid);
     try {
       await axios.delete(
         `${process.env.REACT_APP_API_URL}/plants/${plant.PlantUuid}`,
@@ -153,8 +148,8 @@ function MapDisplay({
         <Tile />
 
         {displayPartners &&
-          partnersMarkers.map(marker => (
-            <Marker key={marker.uuid} position={marker}>
+          partnersMarkers.map((marker, index) => (
+            <Marker key={index} position={marker}>
               <Popup>
                 <ModalMarker />
                 <button
@@ -168,8 +163,8 @@ function MapDisplay({
           ))}
 
         {displayMarkers &&
-          markers.map(marker => (
-            <Marker key={marker.uuid} position={marker}>
+          markers.map((marker, index) => (
+            <Marker key={index} position={marker}>
               <Popup>
                 <button
                   onClick={() => deleteMarker(marker)}
@@ -182,8 +177,8 @@ function MapDisplay({
           ))}
 
         {displayMarkers &&
-          markers.map(marker => (
-            <Marker key={marker.uuid} position={marker}>
+          markers.map((marker, index) => (
+            <Marker key={index} position={marker}>
               <Popup>
                 <button
                   onClick={() => deleteMarker(marker)}

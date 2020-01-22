@@ -26,32 +26,27 @@ export default function Burger() {
         visible={visible}
         style={{ width: "160px" }}
       >
-
-        <Menu.Item as='a' className={widthlink}>
+        <Menu.Item className={widthlink}>
           <Link to="/Map" className={imagehome}>
             Page D'acceuil
           </Link>
         </Menu.Item>
-
-        <Menu.Item as='a' className={widthlink}>
+        <Menu.Item className={widthlink}>
           <Link to="../Account" className={imagecompte}>
             Mon compte
           </Link>
         </Menu.Item>
-
-        <Menu.Item as='a' className={widthlink}>
+        <Menu.Item className={widthlink}>
           <Link to="/Map" className={imageagenda}>
             Agenda
           </Link>
         </Menu.Item>
-
-        <Menu.Item as='a' className={widthlink}>
+        <Menu.Item className={widthlink}>
           <Link to="/Map" className={imagecommunaute}>
             Communauté
           </Link>
         </Menu.Item>
-
-        <Menu.Item as='a' className={widthlink}>
+        <Menu.Item className={widthlink}>
           <Link to="/Map" className={imagebibliotheque}>
             Bibliothèque
           </Link>

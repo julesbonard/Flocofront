@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import Map from "./Map";
 import Axios from "axios";
-
 import { connect } from "react-redux";
 import Buttons from "./Buttons";
-
 import { LEVEL_LOGIN } from "../../../reducers/action";
 
 const MapPage = ({ token, id, levelLogIn }) => {
@@ -33,11 +31,9 @@ const MapPage = ({ token, id, levelLogIn }) => {
           }
         }
       );
-      console.log(newRes.data);
       const level = newRes.data;
       levelLogIn(level);
     } else {
-      console.log(res.data);
       const level = res.data;
       levelLogIn(level);
     }
