@@ -52,7 +52,7 @@ export default function Burger() {
         </Menu.Item>
 
         <Menu.Item as='a' className={widthlink}>
-          <Link to="/Map" className={imagebibliotheque}>
+          <Link to="../Bibliotheque" className={imagebibliotheque}>
             Bibliothèque
           </Link>
         </Menu.Item>
