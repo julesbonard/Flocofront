@@ -60,83 +60,81 @@ function FormRegister({ logIn, userLogIn }) {
   };
 
   return (
-    <Form>
-      <div className={textalign}>
-        <Image
-          className={logo}
-          src={Logo}
-          size="tiny"
-          centered
-          alt="Logo Floco"
-        />
-        <div className={inscription}>
-          <Form className={barre} onSubmit={submit}>
-            <Form.Field>
-              <label htmlFor="firstname" className={area} fluid size="large">
-                Nom:
+    <div className={textalign}>
+      <Image
+        className={logo}
+        src={Logo}
+        size="tiny"
+        centered
+        alt="Logo Floco"
+      />
+      <div className={inscription}>
+        <Form className={barre} onSubmit={submit}>
+          <Form.Field>
+            <label htmlFor="firstname" className={area} size="large">
+              Nom:
               </label>
-              <input
-                type="text"
-                id="firstname"
-                onChange={change}
-                className={space}
-                placeholder="Nom"
-              />
-            </Form.Field>
-            <Form.Field>
-              <label htmlFor="lastname" className={area}>
-                Prénom:
+            <input
+              type="text"
+              id="firstname"
+              onChange={change}
+              className={space}
+              placeholder="Nom"
+            />
+          </Form.Field>
+          <Form.Field>
+            <label htmlFor="lastname" className={area}>
+              Prénom:
               </label>
-              <input
-                type="text"
-                id="lastname"
-                onChange={change}
-                className={space}
-                placeholder="Prénom"
-              />
-            </Form.Field>
-            <Form.Field>
-              <label htmlFor="mail" className={area}>
-                email:
+            <input
+              type="text"
+              id="lastname"
+              onChange={change}
+              className={space}
+              placeholder="Prénom"
+            />
+          </Form.Field>
+          <Form.Field>
+            <label htmlFor="mail" className={area}>
+              email:
               </label>
+            <input
+              type="text"
+              id="mail"
+              onChange={change}
+              className={space}
+              placeholder="Mail"
+            />
+          </Form.Field>
+          <Form.Field>
+            <label htmlFor="username">Pseudo:</label>
+            <input
+              type="text"
+              id="username"
+              onChange={change}
+              className={space}
+              placeholder="Username"
+            />
+          </Form.Field>
+          <Form.Field>
+            <label htmlFor="password">Mot de passe:</label>
+            <div>
               <input
-                type="text"
-                id="mail"
-                onChange={change}
-                className={space}
-                placeholder="Mail"
+                type={hidden ? "password" : "text"}
+                value={password}
+                onChange={e => setPassword(e.target.value)}
               />
-            </Form.Field>
-            <Form.Field>
-              <label htmlFor="username">Pseudo:</label>
-              <input
-                type="text"
-                id="username"
-                onChange={change}
-                className={space}
-                placeholder="Username"
-              />
-            </Form.Field>
-            <Form.Field>
-              <label htmlFor="password">Mot de passe:</label>
-              <div>
-                <input
-                  type={hidden ? "password" : "text"}
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
-                />
-                <button onClick={() => setHidden(!hidden)}>
-                  <i class={hidden ? "eye slash icon" : "eye icon"}></i>
-                </button>
-              </div>
-            </Form.Field>
-            <Button onClick={validateAuthentication} className={button}>
-              Creer Le Compte{" "}
-            </Button>
-          </Form>
-        </div>
+              <button onClick={() => setHidden(!hidden)}>
+                <i className={hidden ? "eye slash icon" : "eye icon"}></i>
+              </button>
+            </div>
+          </Form.Field>
+          <Button onClick={validateAuthentication} className={button}>
+            Creer Le Compte{" "}
+          </Button>
+        </Form>
       </div>
-    </Form>
+    </div>
   );
 }
 

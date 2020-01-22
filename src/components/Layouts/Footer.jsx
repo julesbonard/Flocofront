@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Grid, Segment } from "semantic-ui-react";
 import axios from "axios";
 import styles from "./Footer.module.scss";
-import FooterButton from "./FooterButtton";
 
 const {
   stats_title,

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styles from "./Map.module.css";
 import partner from "./partner.png";
@@ -11,25 +11,25 @@ function MapButton({ buttons, handleClick }) {
 
 
   const chooseImage = e => {
-    if(e === 'markers') return plant;
-    if(e === "partnersMarkers") return partner;
-    else if(e === 'userMarkers') return moncompte;
+    if (e === 'markers') return plant;
+    if (e === "partnersMarkers") return partner;
+    else if (e === 'userMarkers') return moncompte;
   };
 
   const chooseText = e => {
-    if(e === 'markers') return 'Les plantes';
-    if(e === "partnersMarkers") return 'Les partenaires';
-    else if(e === 'userMarkers') return 'Mes points';
+    if (e === 'markers') return 'Les plantes';
+    if (e === "partnersMarkers") return 'Les partenaires';
+    else if (e === 'userMarkers') return 'Mes points';
   }
 
   return (
     <>
       {buttons.map(but => {
         return (
-          <div style={{'display': 'inline-block'}}>
+          <div style={{ 'display': 'inline-block' }}>
             <img
               src={chooseImage(but.label)}
-              alt="image button floco plante"
+              alt="button floco plante"
               onClick={() => handleClick(but.id)}
               className={`${!but.display ? test1 : test2}`}
             />
