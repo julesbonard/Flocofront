@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Map from "./Map";
 import Axios from "axios";
+
 import { connect } from "react-redux";
 import Buttons from "./Buttons";
 
@@ -42,6 +43,7 @@ const MapPage = ({ token, id, levelLogIn }) => {
     }
   };
   tresaury();
+
   const [buttons, setButtons] = useState([
     { id: 1, label: "markers", display: true },
     { id: 2, label: "partnersMarkers", display: false },
