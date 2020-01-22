@@ -32,6 +32,10 @@ $secondarytextcolor: #888888;
 .grid {
     margin: 0px !important ;
     padding: 0px !important;
+    border-bottom: 2px;
+    border-bottom-style: solid;
+    border-radius: 20px;
+    border-color: #ddd;
 }
 
 .footer {
