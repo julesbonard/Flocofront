@@ -170,7 +170,22 @@ function MapDisplay({
 
         {displayMarkers &&
           markers
-            .filter(marker => (onlyCurrentUser ? marker.userUuid === id : true))
+            .map(marker => (
+              <Marker key={marker.uuid} position={marker}>
+                <Popup>
+                  <button
+                    onClick={() => deleteMarker(marker)}
+                    className="ui button"
+                  >
+                    Delete Marker
+                  </button>
+                </Popup>
+              </Marker>
+            ))}
+
+        {displayUser &&
+          markers
+            .filter(marker => marker.userUuid === id)
             .map(marker => (
               <Marker key={marker.uuid} position={marker}>
                 <Popup>

@@ -14,8 +14,6 @@ function MapButton({ buttons, handleClick, toggleCurrentUser }) {
               src={but.image}
               alt="image button floco plante"
               onClick={() => {
-                // Trigger the toggle only for the userMarkers button, which is id 3
-                if (but.id === 3) return toggleCurrentUser();
                 return handleClick(but.id);
               }}
               className={`${!but.display ? test1 : test2}`}
