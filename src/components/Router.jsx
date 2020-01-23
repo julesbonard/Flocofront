@@ -16,6 +16,7 @@ import Homepage from "./Connexion/Home/Homepage";
 import Accesspage from "./MiniFlora/Access/Accesspage";
 import PotPage from "./MiniFlora/Pot/PotPage";
 import PartnerPage from "./MiniFlora/Partner/PartnerPage";
+import Bibliotheque from './Bibliotheque/library';
 
 function CustomRoute({
   component: Component,
@@ -110,6 +111,12 @@ function Router({ isAuth }) {
           layout={UserLayout}
           component={PotPage}
         />
+        <AuthRoute
+          path="/Bibliotheque"
+          isAuth={isAuth}
+          layout={UserLayout}
+          component={Bibliotheque}
+          />
         <AuthRoute
           path="/Partner"
           isAuth={isAuth}
