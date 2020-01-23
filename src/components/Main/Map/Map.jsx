@@ -209,12 +209,10 @@ function MapDisplay({
     </>
   );
 }
-
 const mapStateToProps = state => {
   return {
     token: state.authReducer.token,
     id: state.authReducer.id
   };
 };
-
 export default connect(mapStateToProps)(MapDisplay);

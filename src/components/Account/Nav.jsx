@@ -14,18 +14,18 @@ function Account() {
     ]
     return (
         <>
-            <Segment class={main}>
-                <div class={container}>
-                    {onglets.map(onglet =>
-                        <Link to={onglet.link} >
-                            <div class={item}>
+            <Segment className={main}>
+                <div className={container}>
+                    {onglets.map((onglet, index) =>
+                        <Link key={index} to={onglet.link} >
+                            <div className={item}>
                                 <h3 className={text}>
                                     {onglet.title}
                                 </h3>
                                 <Grid.Row columns={1}>
-                                    {onglet.icons.map(icon => {
+                                    {onglet.icons.map((icon, index) => {
                                         return (
-                                            <Segment className={cercle}>
+                                            <Segment key={index} className={cercle}>
                                                 <Icon name={icon.name} />
                                             </Segment>
                                         )

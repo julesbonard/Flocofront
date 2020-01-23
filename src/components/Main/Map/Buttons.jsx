@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styles from "./Map.module.css";
 
-const { test1, test2 } = styles;
+const { test1, test2, width, border } = styles;
+
 
 function MapButton({ buttons, handleClick, toggleCurrentUser }) {
   return (
-    <>
+     <div className={`${border} ui four column grid`}>
+      <div className="row">
       {buttons.map(but => {
         return (
-          <div style={{ display: "inline-block" }}>
+          <div className={`${width} column`}>
             <img
               src={but.image}
               alt="image button floco plante"
@@ -22,7 +24,8 @@ function MapButton({ buttons, handleClick, toggleCurrentUser }) {
           </div>
         );
       })}
-    </>
+   </div>
+    </div>
   );
 }
 
