@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Grid, Segment } from "semantic-ui-react";
 import axios from "axios";
 import styles from "./Footer.module.scss";
-import FooterButton from "./FooterButtton";
 
 const {
   stats_title,
@@ -47,15 +46,15 @@ export default function Footer() {
     <footer className={footer}>
       {/* <FooterButton /> */}
       <Grid centered className={margin_grid}>
-        <Segment centered circular size="mini" className={stats_segment}>
+        <Segment circular size="mini" className={stats_segment}>
           <Grid centered className={stats_title}>
             <Grid.Row className={stats_title}>
               <h3 className={stats_title}>mini-flores établies</h3>
             </Grid.Row>
             <Grid.Row columns={3} className={stats_paragraphe}>
-              {stats.map(stat => {
+              {stats.map((stat, index) => {
                 return (
-                  <Grid.Column className={stats_paragraphe} textAlign="center">
+                  <Grid.Column key={index} className={stats_paragraphe} textAlign="center">
                     <p className={stats_paragraphe}>{stat.value}</p>
                     <p className={stats_paragraphe}>{stat.label}</p>
                   </Grid.Column>

@@ -12,10 +12,10 @@ function ModalMarker({
   id,
   avatar
 }) {
-  const [longueur, setLongueur] = useState(null);
-  const [largeur, setLargeur] = useState(null);
-  const [profondeur, setProfondeur] = useState(null);
-  const [seedId, setSeedId] = useState(null);
+  const [longueur, setLongueur] = useState();
+  const [largeur, setLargeur] = useState();
+  const [profondeur, setProfondeur] = useState();
+  const [seedId, setSeedId] = useState();
   let seedOptions = [];
   let PotUuid = null;
   const UserUuid = id;
@@ -36,7 +36,6 @@ function ModalMarker({
       }
     )
       .then(res => {
-        console.log(res.data);
         PotUuid = res.data.uuid;
         Axios.post(
           `${process.env.REACT_APP_API_URL}/plants`,
@@ -50,7 +49,6 @@ function ModalMarker({
             }
           }
         ).then(res => {
-          console.log(res.data);
           addMarker(res.data.uuid);
         });
       })
@@ -72,7 +70,6 @@ function ModalMarker({
     }
   };
   getSeeds();
-  console.log(seedId);
 
   return (
     <Modal open={open}>

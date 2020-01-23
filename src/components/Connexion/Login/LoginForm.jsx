@@ -37,7 +37,7 @@ function LoginForm({ logIn, userLogIn }) {
   };
 
   return (
-    <Form size="medium" onSubmit={onSubmit}>
+    <Form size="large" onSubmit={onSubmit}>
       <Segment className={styles.no_border}>
         <Form.Input
           fluid
