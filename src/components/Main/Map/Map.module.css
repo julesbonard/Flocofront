@@ -8,46 +8,55 @@
   width: 5rem;
   height: 5rem;
   cursor: pointer;
-  border: solid 4px green;
+  border-radius: 50%;
 }
 
 .test2 {
   width: 5rem;
   height: 5rem;
   cursor: pointer;
-  border: solid 4px red;
+  box-shadow: 0px 0px 10px 7px rgba(255, 160, 122, 0.8);
+  border-radius: 50%;
 }
 
-@media (min-height: 1000px){
+.width {
+  width: 32% !important;
+  text-align: center;
+}
+
+.border {
+  border: none !important;
+}
+
+@media (min-height: 1000px) {
   .map {
     max-height: 70vh;
     height: 70vh;
   }
 }
 
-@media (max-height: 900px) and (min-height: 800px){
+@media (max-height: 900px) and (min-height: 800px) {
   .map {
     max-height: 65vh;
     height: 65vh;
   }
 }
 
-
-@media (max-height: 799px) and (min-height: 700px){
+@media (max-height: 799px) and (min-height: 700px) {
   .map {
     max-height: 60vh;
     height: 60vh;
   }
 }
 
-@media (max-height: 699px) and (min-height: 600px){
+@media (max-height: 699px) and (min-height: 600px) {
   .map {
     max-height: 55vh;
     height: 55vh;
   }
 }
 
-@media (max-height: 599px){
+@media (max-height: 599px) {
   .map {
     max-height: 50vh;
     height: 50vh;

@@ -72,9 +72,9 @@ function ModalMarker({
   getSeeds();
 
   return (
-    <Modal open={open}>
+    <Modal open={open} style={{ textAlign: "center" }}>
       <Modal.Header>Tu veux planter une plante? </Modal.Header>
-      <Modal.Content image>
+      <Modal.Content image style={{ display: "block" }}>
         <Image
           wrapped
           size="medium"
@@ -83,6 +83,7 @@ function ModalMarker({
               ? avatar
               : "https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_960_720.png"
           }
+          style={{ maxWidth: "50%", margin: "auto" }}
         />
         <Modal.Description>
           <h3>Taille du pot (en cm):</h3>
@@ -118,7 +119,11 @@ function ModalMarker({
           />
         </Modal.Description>
         <Modal.Description>
-          <Button primary onClick={() => createPotPlant()}>
+          <Button
+            primary
+            onClick={() => createPotPlant()}
+            style={{ background: "#00957C" }}
+          >
             Planter la plante
           </Button>
           <Button secondary onClick={() => closeModal()}>
