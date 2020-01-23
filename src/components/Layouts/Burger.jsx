@@ -46,7 +46,7 @@ export default function Burger() {
             Communauté
           </Link>
         </Menu.Item>
-        <Menu.Item as='a' className={widthlink}>
+        <Menu.Item className={widthlink}>
           <Link to="../Bibliotheque" className={imagebibliotheque}>
             Bibliothèque
           </Link>

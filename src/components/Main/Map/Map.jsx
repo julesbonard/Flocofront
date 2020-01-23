@@ -36,12 +36,11 @@ function MapDisplay({
   const [plantUuid, setPlantUuid] = useState("");
   const [initialMapPosition] = useState([48.5833, 7.75]);
   const [zoom] = useState(7);
-  const [partnersMarkers, setPartnersMarkers] = useState([
+  const [partnersMarkers] = useState([
     { lat: 50, lng: 6, PlantUuid: 1 },
     { lat: 52, lng: 6, PlantUuid: 1 },
     { lat: 51, lng: 5, PlantUuid: 1 }
   ]);
-  const [userMarkers, setUserMarkers] = useState([]);
   const config = {
     headers: {
       "access-token": token
@@ -170,8 +169,8 @@ function MapDisplay({
 
         {displayMarkers &&
           markers
-            .map(marker => (
-              <Marker key={marker.uuid} position={marker}>
+            .map((marker, index) => (
+              <Marker key={index} position={marker}>
                 <Popup>
                   <button
                     onClick={() => deleteMarker(marker)}
