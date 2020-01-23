@@ -26,6 +26,7 @@ function MapDisplay({
   token,
   displayMarkers,
   displayPartners,
+  onlyCurrentUser,
   displayUser,
   id
 }) {
@@ -35,11 +36,12 @@ function MapDisplay({
   const [plantUuid, setPlantUuid] = useState("");
   const [initialMapPosition] = useState([48.5833, 7.75]);
   const [zoom] = useState(7);
-  const [partnersMarkers] = useState([
+  const [partnersMarkers, setPartnersMarkers] = useState([
     { lat: 50, lng: 6, PlantUuid: 1 },
     { lat: 52, lng: 6, PlantUuid: 1 },
     { lat: 51, lng: 5, PlantUuid: 1 }
   ]);
+  const [userMarkers, setUserMarkers] = useState([]);
   const config = {
     headers: {
       "access-token": token
@@ -48,6 +50,7 @@ function MapDisplay({
 
   const openModal = e => {
     const { lat, lng } = e.latlng;
+
     setIsModalOpen(true);
     setLatLng({
       latitude: lat,
@@ -73,7 +76,10 @@ function MapDisplay({
           }
         }
       )
+
       .then(res => {
+        console.log(res);
+
         const { uuid, latitude, longitude, PlantUuid } = res.data;
         setMarkers([
           ...markers,
@@ -92,6 +98,7 @@ function MapDisplay({
   };
 
   const deleteMarker = async plant => {
+    console.log(plant.PlantUuid);
     try {
       await axios.delete(
         `${process.env.REACT_APP_API_URL}/plants/${plant.PlantUuid}`,
@@ -121,7 +128,6 @@ function MapDisplay({
   useEffect(() => {
     const getMarkers = async () => {
       const plants = await axios.get(`${process.env.REACT_APP_API_URL}/plants`);
-
       const refactoredPlants = plants.data.map(({ uuid, Location, Pot }) => {
         return {
           PlantUuid: uuid,
@@ -148,8 +154,8 @@ function MapDisplay({
         <Tile />
 
         {displayPartners &&
-          partnersMarkers.map((marker, index) => (
-            <Marker key={index} position={marker}>
+          partnersMarkers.map(marker => (
+            <Marker key={marker.uuid} position={marker}>
               <Popup>
                 <ModalMarker />
                 <button
@@ -163,32 +169,35 @@ function MapDisplay({
           ))}
 
         {displayMarkers &&
-          markers.map((marker, index) => (
-            <Marker key={index} position={marker}>
-              <Popup>
-                <button
-                  onClick={() => deleteMarker(marker)}
-                  className="ui button"
-                >
-                  Delete Marker
-                </button>
-              </Popup>
-            </Marker>
-          ))}
+          markers
+            .map(marker => (
+              <Marker key={marker.uuid} position={marker}>
+                <Popup>
+                  <button
+                    onClick={() => deleteMarker(marker)}
+                    className="ui button"
+                  >
+                    Delete Marker
+                  </button>
+                </Popup>
+              </Marker>
+            ))}
 
-        {displayMarkers &&
-          markers.map((marker, index) => (
-            <Marker key={index} position={marker}>
-              <Popup>
-                <button
-                  onClick={() => deleteMarker(marker)}
-                  className="ui button"
-                >
-                  Delete Marker
-                </button>
-              </Popup>
-            </Marker>
-          ))}
+        {displayUser &&
+          markers
+            .filter(marker => marker.userUuid === id)
+            .map(marker => (
+              <Marker key={marker.uuid} position={marker}>
+                <Popup>
+                  <button
+                    onClick={() => deleteMarker(marker)}
+                    className="ui button"
+                  >
+                    Delete Marker
+                  </button>
+                </Popup>
+              </Marker>
+            ))}
       </Map>
       <ModalMarker
         open={isModalOpen}
@@ -200,12 +209,10 @@ function MapDisplay({
     </>
   );
 }
-
 const mapStateToProps = state => {
   return {
     token: state.authReducer.token,
     id: state.authReducer.id
   };
 };
-
 export default connect(mapStateToProps)(MapDisplay);
