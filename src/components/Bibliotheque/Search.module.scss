@@ -1,0 +1,40 @@
+$green: #05957c !important;
+$greenBackground: #b3d4cf !important;
+
+.slider {
+    -webkit-appearance: none;
+    width: 85%;
+    height: 35px;
+    background: $greenBackground;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius: 50px;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 60px;
+    height: 35px;
+    background: $green;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.slider::-moz-range-thumb {
+    width: 60px;
+    height: 35px;
+    background: $green;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.button{
+    background: $green;
+}
