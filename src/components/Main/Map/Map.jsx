@@ -8,6 +8,7 @@ import { Marker, Popup } from "react-leaflet";
 import { connect } from "react-redux";
 
 import styles from "./Map.module.css";
+import ModalMarker from "./Modal";
 
 Leaflet.Icon.Default.imagePath = "../node_modules/leaflet";
 
@@ -25,38 +26,56 @@ function MapDisplay({
   token,
   displayMarkers,
   displayPartners,
+  onlyCurrentUser,
   displayUser,
   id
 }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [markers, setMarkers] = useState([]);
+  const [latLng, setLatLng] = useState({});
+  const [plantUuid, setPlantUuid] = useState("");
   const [initialMapPosition] = useState([48.5833, 7.75]);
   const [zoom] = useState(7);
-  const [markers, setMarkers] = useState([]);
-  const [partnersMarkers, setPartnersMarkers] = useState([
+  const [partnersMarkers] = useState([
     { lat: 50, lng: 6, PlantUuid: 1 },
     { lat: 52, lng: 6, PlantUuid: 1 },
     { lat: 51, lng: 5, PlantUuid: 1 }
   ]);
-  const [userMarkers, setUserMarkers] = useState([]);
   const config = {
     headers: {
       "access-token": token
     }
   };
 
-  const addMarker = e => {
+  const openModal = e => {
     const { lat, lng } = e.latlng;
 
+    setIsModalOpen(true);
+    setLatLng({
+      latitude: lat,
+      longitude: lng
+    });
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const addMarker = id => {
     axios
       .post(
         `${process.env.REACT_APP_API_URL}/locations`,
         {
-          latitude: lat,
-          longitude: lng,
-          PlantUuid: "1" //TODO: change to a real plant
-          // backend branch test
+          ...latLng,
+          PlantUuid: id
         },
-        config
+        {
+          headers: {
+            "access-token": token
+          }
+        }
       )
+
       .then(res => {
         console.log(res);
 
@@ -78,9 +97,10 @@ function MapDisplay({
   };
 
   const deleteMarker = async plant => {
+    console.log(plant.PlantUuid);
     try {
       await axios.delete(
-        `${process.env.REACT_APP_API_URL}/plants/${plant.plantUuid}`,
+        `${process.env.REACT_APP_API_URL}/plants/${plant.PlantUuid}`,
         config
       );
       const res = await axios.get(
@@ -90,7 +110,7 @@ function MapDisplay({
 
       const refactoredPlants = res.data.map(({ uuid, Location, Pot }) => {
         return {
-          plantUuid: uuid,
+          PlantUuid: uuid,
           locationUuid: Location.uuid,
           PotUuid: Pot.uuid,
           lat: Location.latitude,
@@ -107,10 +127,9 @@ function MapDisplay({
   useEffect(() => {
     const getMarkers = async () => {
       const plants = await axios.get(`${process.env.REACT_APP_API_URL}/plants`);
-
       const refactoredPlants = plants.data.map(({ uuid, Location, Pot }) => {
         return {
-          plantUuid: uuid,
+          PlantUuid: uuid,
           locationUuid: Location.uuid,
           PotUuid: Pot.uuid,
           lat: Location.latitude,
@@ -124,64 +143,75 @@ function MapDisplay({
   }, []);
 
   return (
-    <Map
-      center={initialMapPosition}
-      zoom={zoom}
-      className={map}
-      onClick={addMarker}
-    >
-      <Tile />
+    <>
+      <Map
+        center={initialMapPosition}
+        zoom={zoom}
+        className={map}
+        onClick={openModal}
+      >
+        <Tile />
 
-      {displayPartners &&
-        partnersMarkers.map(marker => (
-          <Marker key={marker.uuid} position={marker}>
-            <Popup>
-              <button
-                onClick={() => deleteMarker(marker)}
-                className="ui button"
-              >
-                Delete Marker
-              </button>
-            </Popup>
-          </Marker>
-        ))}
+        {displayPartners &&
+          partnersMarkers.map(marker => (
+            <Marker key={marker.uuid} position={marker}>
+              <Popup>
+                <ModalMarker />
+                <button
+                  onClick={() => deleteMarker(marker)}
+                  className="ui button"
+                >
+                  Delete Marker
+                </button>
+              </Popup>
+            </Marker>
+          ))}
 
-      {displayMarkers &&
-        markers.map(marker => (
-          <Marker key={marker.uuid} position={marker}>
-            <Popup>
-              <button
-                onClick={() => deleteMarker(marker)}
-                className="ui button"
-              >
-                Delete Marker
-              </button>
-            </Popup>
-          </Marker>
-        ))}
+        {displayMarkers &&
+          markers
+            .map((marker, index) => (
+              <Marker key={index} position={marker}>
+                <Popup>
+                  <button
+                    onClick={() => deleteMarker(marker)}
+                    className="ui button"
+                  >
+                    Delete Marker
+                  </button>
+                </Popup>
+              </Marker>
+            ))}
 
-      {displayUser &&
-        markers.map(marker => (
-          <Marker key={marker.uuid} position={marker}>
-            <Popup>
-              <button
-                onClick={() => deleteMarker(marker)}
-                className="ui button"
-              >
-                Delete Marker
-              </button>
-            </Popup>
-          </Marker>
-        ))}
-    </Map>
+        {displayUser &&
+          markers
+            .filter(marker => marker.userUuid === id)
+            .map(marker => (
+              <Marker key={marker.uuid} position={marker}>
+                <Popup>
+                  <button
+                    onClick={() => deleteMarker(marker)}
+                    className="ui button"
+                  >
+                    Delete Marker
+                  </button>
+                </Popup>
+              </Marker>
+            ))}
+      </Map>
+      <ModalMarker
+        open={isModalOpen}
+        setPlantUuid={setPlantUuid}
+        plantUuid={plantUuid}
+        addMarker={addMarker}
+        closeModal={closeModal}
+      />
+    </>
   );
 }
-
 const mapStateToProps = state => {
   return {
     token: state.authReducer.token,
     id: state.authReducer.id
   };
 };
-
 export default connect(mapStateToProps)(MapDisplay);

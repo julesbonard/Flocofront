@@ -31,3 +31,38 @@
     height: 30px;
 }
 
+
+
+.centragePage{
+    justify-content: center;
+   
+}
+
+.potFleur {
+    margin-top: 50px;
+    padding-top: 30px;
+    margin-left: 30px;
+}
+
+.long {
+    height: 20px;
+    margin-top: 55px;
+    margin-left: 20px;
+}
+
+.larg, .prof {
+    height: 20px;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+.imageBas {
+    padding-bottom: 0px !important;
+}
+
+.image{
+    margin-top: 130px;
+    
+}
+
+
