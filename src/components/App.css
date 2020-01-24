@@ -6,6 +6,7 @@
 body {
   width: 100%;
   height: 100%;
+  font-family: "Montserrat", "roboto", sans-serif !important;
 }
 
 .background-modal {
@@ -29,12 +30,12 @@ body {
 }
 
 #button-modal {
-  box-shadow: 0 0 0 2px #3E957C inset!important;
-  color: #3E957C!important;
+  box-shadow: 0 0 0 2px #3e957c inset !important;
+  color: #3e957c !important;
 }
 
 #button-modal:hover {
-  background-color: transparent!important;
-  box-shadow: 0 0 0 2px rgb(6, 175, 6) inset!important;
-  color: rgb(6, 175, 6)!important;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 2px rgb(6, 175, 6) inset !important;
+  color: rgb(6, 175, 6) !important;
 }
