@@ -17,7 +17,7 @@ import Accesspage from "./MiniFlora/Access/Accesspage";
 import PotPage from "./MiniFlora/Pot/PotPage";
 import PartnerPage from "./MiniFlora/Partner/PartnerPage";
 import Library from './Bibliotheque/LibraryPage';
-import Plants from "./Bibliotheque/Plants/lysPage";
+import Plants from "./Bibliotheque/Plants/LysPage";
 
 function CustomRoute({
   component: Component,

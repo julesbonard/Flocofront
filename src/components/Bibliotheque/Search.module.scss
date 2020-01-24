@@ -22,17 +22,20 @@ $greenBackground: #b3d4cf !important;
     appearance: none;
     width: 60px;
     height: 35px;
-    background: $green;
+    background-color: $green;
     cursor: pointer;
     border-radius: 50px;
+    background-image: url(../../assets/button-butterfly.png);
+  
 }
 
 .slider::-moz-range-thumb {
     width: 60px;
     height: 35px;
-    background: $green;
+    background-color: $green;
     cursor: pointer;
     border-radius: 50px;
+    background-image:url(../../assets/button-butterfly.png);
 }
 
 .button{
