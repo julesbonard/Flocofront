@@ -1,7 +1,7 @@
 $green: #05957c !important;
 $greenBackground: #b3d4cf !important;
 
-.slider {
+.sliderPlante {
     -webkit-appearance: none;
     width: 85%;
     height: 35px;
@@ -12,32 +12,141 @@ $greenBackground: #b3d4cf !important;
     transition: opacity .2s;
     border-radius: 50px;
 }
-
-.slider:hover {
+.sliderPlante:hover {
     opacity: 1;
 }
-
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 60px;
-    height: 35px;
-    background-color: $green;
-    cursor: pointer;
-    border-radius: 50px;
-    background-image: url(../../assets/button-butterfly.png);
-  
-}
-
-.slider::-moz-range-thumb {
+.sliderPlante::-moz-range-thumb {
     width: 60px;
     height: 35px;
     background-color: $green;
     cursor: pointer;
     border-radius: 50px;
     background-image:url(../../assets/button-butterfly.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: 13px;
 }
 
+// .slider::-webkit-slider-thumb {
+//     -webkit-appearance: none;
+//     appearance: none;
+//     width: 60px;
+//     height: 35px;
+//     background-color: $green;
+//     cursor: pointer;
+//     border-radius: 50px;
+//     background-image:url(../../assets/button-butterfly.png);
+//     background-size: contain; 
+//     background-repeat: no-repeat; 
+// }
 .button{
     background: $green;
+}
+
+
+.sliderArrosage {
+    -webkit-appearance: none;
+    width: 85%;
+    height: 35px;
+    background: $greenBackground;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius: 50px;
+}
+.sliderArrosage:hover {
+    opacity: 1;
+}
+.sliderArrosage::-moz-range-thumb {
+    width: 60px;
+    height: 35px;
+    background-color: $green;
+    cursor: pointer;
+    border-radius: 50px;
+    background-image:url(../../assets/button-water.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: 13px;
+}
+
+
+.sliderFlore {
+    -webkit-appearance: none;
+    width: 85%;
+    height: 35px;
+    background: $greenBackground;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius: 50px;
+}
+.sliderFlore:hover {
+    opacity: 1;
+}
+.sliderFlore::-moz-range-thumb {
+    width: 60px;
+    height: 35px;
+    background-color: $green;
+    cursor: pointer;
+    border-radius: 50px;
+    background-image:url(../../assets/button-flower.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: 13px;
+}
+
+
+.sliderSaison {
+    -webkit-appearance: none;
+    width: 85%;
+    height: 35px;
+    background: $greenBackground;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius: 50px;
+}
+.sliderSaison:hover {
+    opacity: 1;
+}
+.sliderSaison::-moz-range-thumb {
+    width: 60px;
+    height: 35px;
+    background-color: $green;
+    cursor: pointer;
+    border-radius: 50px;
+    background-image:url(../../assets/button-sun.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: 13px;
+}
+
+
+.sliderAnnuelle {
+    -webkit-appearance: none;
+    width: 85%;
+    height: 35px;
+    background: $greenBackground;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius: 50px;
+}
+.sliderAnnuelle:hover {
+    opacity: 1;
+}
+.sliderAnnuelle::-moz-range-thumb {
+    width: 60px;
+    height: 35px;
+    background-color: $green;
+    cursor: pointer;
+    border-radius: 50px;
+    background-image:url(../../assets/button-butterfly.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: 13px;
 }

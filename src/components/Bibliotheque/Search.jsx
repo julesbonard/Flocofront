@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Button } from "semantic-ui-react";
 import styles from './Search.module.scss'
 
-const { slider, button } = styles;
+const { button, sliderPlante, sliderArrosage, sliderFlore, sliderSaison, sliderAnnuelle } = styles;
 
 function Search() {
     return (
@@ -11,7 +11,7 @@ function Search() {
                 <p>glisser pour choisir</p>
             </Grid.Row>
             <Grid.Row centered>
-                <input type="range" min="1" max="2" className={slider} id="myRange" />
+                <input type="range" min="1" max="2" className={sliderPlante} id="myRange" />
             </Grid.Row>
             <Grid.Row>
                 <Grid.Column width={4}>
@@ -23,7 +23,7 @@ function Search() {
                 </Grid.Column>
             </Grid.Row>
             <Grid.Row centered>
-                <input type="range" min="1" max="3" className={slider} id="myRange" />
+                <input type="range" min="1" max="3" className={sliderArrosage} id="myRange" />
             </Grid.Row>
             <Grid.Row>
                 <Grid.Column width={5}>
@@ -37,7 +37,7 @@ function Search() {
                 </Grid.Column>
             </Grid.Row>
             <Grid.Row centered>
-                <input type="range" min="1" max="2" className={slider} id="myRange" />
+                <input type="range" min="1" max="2" className={sliderFlore} id="myRange" />
             </Grid.Row>
             <Grid.Row>
                 <Grid.Column width={4}>
@@ -49,7 +49,7 @@ function Search() {
                 </Grid.Column>
             </Grid.Row>
             <Grid.Row centered>
-                <input type="range" min="1" max="4" className={slider} id="myRange" />
+                <input type="range" min="1" max="4" className={sliderSaison} id="myRange" />
             </Grid.Row>
             <Grid.Row >
                 <Grid.Column width={4}>
@@ -66,7 +66,7 @@ function Search() {
                 </Grid.Column>
             </Grid.Row>
             <Grid.Row centered>
-                <input type="range" min="1" max="3" className={slider} id="myRange" />
+                <input type="range" min="1" max="3" className={sliderAnnuelle} id="myRange" />
             </Grid.Row>
             <Grid.Row>
                 <Grid.Column width={5}>
