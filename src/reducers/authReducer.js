@@ -3,7 +3,7 @@ import { LOGIN, LOGOUT } from "./action";
 const initialState = {
     id: "",
     token: "",
-    isAuth: true //FALSE quand le developpement sera terminé
+    isAuth: false
 };
 
 function authReducer(state = initialState, action) {
