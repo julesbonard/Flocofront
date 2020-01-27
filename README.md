@@ -1,10 +1,43 @@
+## Bienvenue sur la documentation d'une app d'enfer !
+
+<img src="./src/assets/logo-floco.png" alt="logo floco" width="300"/>
+
+### trucs kon a utilisé
+
+- Semantic ui
+- Semantic ui React
+- Axios
+- Chart.js
+- Leaflet
+- Node-sass
+- React
+- React-leaflet
+- React-router-dom
+- Redux
+
+### `Fork le projet`
+
+```
+git clone https://github.com/WildCodeSchool/biarritz_P3_floco_frontend.git
+```
+
+### `Installer les modules`
+
+```
+npm install
+```
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `Ouvrir le projet`
+
+```
+npm start
+```
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -12,57 +45,48 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `npm test`
+### `Api`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+https://floco-app.herokuapp.com/
+```
 
-### `npm run build`
+### `Présentation`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Floco est un projet client fait par ~~**5**~~ 4 élèves de la [Wild Code School](https://www.wildcodeschool.com/) en 1 mois et demi.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Le but de l'appli [(PWA)](https://fr.wikipedia.org/wiki/Progressive_web_app) est d’inciter les utilisateurs à participer à la réimplantation de certaines plantes, en voie de disparition dans la région de Strasbourg.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `Fonctionnalités à mettre en place`
 
-### `npm run eject`
+#### Page D'acceuil/Map
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- La partie stats des plantes locales.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Mon Compte
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Faire un tchat.
+- Faire un système d'ajout d'amis.
+- Développer les sous-menus.
+- Ajouter une partie niveau en rapport avec le nombre de plantes de l'utilisateur.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### Plantes
 
-## Learn More
+- Faire une page d'ajout de plantes.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Bibliothèque
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Ajouter Des filtres pour rechercher une plante.
 
-### Code Splitting
+### `L'équipe`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+![](src/assets/8874047.png)
 
-### Analyzing the Bundle Size
+Etudiant de la Wild Code School cool
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- [Dominic Brice](https://github.com/dominicBrice)
+- [Lucas Leproux](https://github.com/lucas240)
+- [Jules Bonard](https://github.com/julesbonard)
+- [Frédérique Mendy](https://github.com/Superdref)
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#### Porteuse de projet: "Ying Wang"
