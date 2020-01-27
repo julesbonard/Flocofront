@@ -7,7 +7,7 @@ import Passport from "./Passport";
 import queryString from "query-string";
 import { connect } from "react-redux";
 import { LOGIN, USER_LOGIN } from "../../../reducers/action";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import axios from "axios";
 
 function LoginPage({ logIn, location, userLogIn }) {
@@ -45,9 +45,7 @@ function LoginPage({ logIn, location, userLogIn }) {
         <Passport />
         <Message className={`${styles.no_border} ${styles.no_background}`}>
           Pas de compte ?{" "}
-          <a className={styles.coucou} href="http://localhost:3000/register">
-            Créer un tout de suite
-            </a>
+          <Link className={styles.coucou} to="/register">Créer un tout de suite</Link>
         </Message>
       </Grid.Column>
     </Grid>
