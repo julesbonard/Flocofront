@@ -10,9 +10,7 @@ import userReducer from "./reducers/userReducer"
 import levelReducer from "./reducers/levelReducer"
 
 const store = createStore(
-    combineReducers({ authReducer, userReducer, levelReducer }),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+    combineReducers({ authReducer, userReducer, levelReducer }));
 
 ReactDOM.render(
     <Provider store={store}>
