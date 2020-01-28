@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Grid, Header, Image, Message } from "semantic-ui-react";
-import flower from "../../../Images/logo-floco.png";
+import flower from "../../../assets/logo-floco.png";
 import styles from "./LoginPage.module.css";
 import LoginForm from "./LoginForm";
 import Passport from "./Passport";
@@ -29,11 +29,7 @@ function LoginPage({ logIn, location, userLogIn }) {
     }
   });
   return (
-    <Grid
-      textAlign="center"
-      style={{ height: "65vh" }}
-      verticalAlign="middle"
-    >
+    <Grid textAlign="center" style={{ height: "65vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as="h2" color="green" textAlign="center">
           <Image className={styles.logotop} src={flower} size="massive" />
@@ -45,7 +41,9 @@ function LoginPage({ logIn, location, userLogIn }) {
         <Passport />
         <Message className={`${styles.no_border} ${styles.no_background}`}>
           Pas de compte ?{" "}
-          <Link className={styles.coucou} to="/register">Créer un tout de suite</Link>
+          <Link className={styles.coucou} to="/register">
+            Créer un tout de suite
+          </Link>
         </Message>
       </Grid.Column>
     </Grid>
