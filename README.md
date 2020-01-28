@@ -1,68 +1,153 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Bienvenue sur la documentation d'une app d'enfer !
 
-## Available Scripts
+<img src="./src/assets/logo-floco.png" alt="logo floco" width="300"/>
 
-In the project directory, you can run:
+### `Présentation`
 
-### `npm start`
+Floco est un projet client fait par ~~**5**~~ 4 élèves de la [Wild Code School](https://www.wildcodeschool.com/) en 1 mois et demi.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Le but de l'appli [(PWA)](https://fr.wikipedia.org/wiki/Progressive_web_app) est d’inciter les utilisateurs à participer à la réimplantation de certaines plantes, en voie de disparition dans la région de Strasbourg.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### `Organisation des dossiers`
 
-### `npm test`
+```
+public/
+├─── src/
+|   ├── assets/  # Images
+|   |
+|   ├──components/ # Dossier qui regroupe tout les composants du dossier page avec son fichier module.css.
+|   |   |
+|   │   ├── Account/
+|   │   │   ... # tresaury -> regroupe le badge, le niveau et les points de l'utilisateur
+|   |   |
+|   │   ├── Agenda/
+|   │   │   ... # Dossier vide -> calendrier des saisons des plantes
+|   │   │
+|   │   ├── Bibliothèque/
+|   |   |  ... # Ficher search -> permet de rechercher les plantes selon le choix des utilisateurs
+|   |   |  |
+|   |   |  └── Plants/
+|   |   |   ... # Dossier contient les photos des plantes
+|   │   |
+|   │   ├── Connexion/
+|   |   |  └─── Home/
+|   |   |   ... # Partie permettant de se connecter ou creer un compte
+|   |   |  └─── Login/
+|   |   |   ... # Partie permettant de se connecter
+|   |   |  └─── Register/
+|   |   |   ... # Partie permettant de creer un compte
+|   │   |
+|   |   ├── Layouts/
+|   |   |   ... # Partie incluant menu burger, footer, layouts
+|   |   |
+|   |   ├── Main/
+|   |   |  └─── Map/
+|   |   |       ... # page principale avec la modale, les boutons et la map
+|   |   |  └─── Stats/
+|   |   |       ... # graphique representant les niveaux d'oxygene
+|   |   |
+|   |   ├── MiniFlora/
+|   |   |  └─── Access/
+|   |   |       ... # Partie representant l'inscription des partenaires
+|   |   |  └─── Compass/
+|   |   |       ... #
+|   |   |  └─── Partner/
+|   |   |       ... # liste des differents partenaires
+|   |   |  └─── Pot/
+|   |   |       ... # choix des differents types de pots
+|   |   |  └─── Progress/
+|   |   |       ... # Partie representant l'evolution du choix de la plante du partenaire jusqu'au lieu du developpement de la plante
+|   |   |
+|   |   ├── Reducers
+|   |   |   ... # Dossier qui regroupe tous les fichiers insdispensable aux reducers
+|   |   |
+|   |   |
+|   |   └── components/
+|   └── src/
+|
+├── .env/
+|   ... # contient le lien de deploiement vers heroku.app
+|
+└── public/
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
 
-### `npm run build`
+### `Lier back avec front`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Ouvrir l'app en front:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Pour un environemment de developpement, changer l'URL dans le fichier: _.env_
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+REACT_APP_API_URL="change url"
+```
 
-### `npm run eject`
+#### Lien:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+https://github.com/WildCodeSchool/biarritz_P3_floco_frontend
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Ouvrir l'app en back:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+fèr comme exemple.env
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### Lien:
 
-## Learn More
+```
+https://github.com/WildCodeSchool/biarritz_P3_floco_backend
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### `Api`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+https://floco-app.herokuapp.com/
+```
 
-### Code Splitting
+### `Trucs kon a utilisé`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- Semantic ui
+- Semantic ui React
+- Axios
+- Chart.js
+- Leaflet
+- Node-sass
+- React
+- React-leaflet
+- React-router-dom
+- Redux
 
-### Analyzing the Bundle Size
+### `Fonctionnalités à mettre en place`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+#### Page D'acceuil/Map
 
-### Making a Progressive Web App
+- La partie stats des plantes locales.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+#### Mon Compte
 
-### Advanced Configuration
+- Faire un tchat.
+- Faire un système d'ajout d'amis.
+- Développer les sous-menus.
+- Ajouter une partie niveau en rapport avec le nombre de plantes de l'utilisateur.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+#### Plantes
 
-### Deployment
+- Faire une page d'ajout de plantes.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+#### Bibliothèque
 
-### `npm run build` fails to minify
+- Ajouter Des filtres pour rechercher une plante.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### `L'équipe`
+
+![](src/assets/8874047.png)
+
+Etudiant de la Wild Code School cool
+
+- [Dominic Brice](https://github.com/dominicBrice)
+- [Lucas Leproux](https://github.com/lucas240)
+- [Jules Bonard](https://github.com/julesbonard)
+- [Frédérique Mendy](https://github.com/Superdref)
+- ~~[Fonny Camus](https://github.com/fan6559)~~
+
+#### Porteuse de projet: "Ying Wang"
