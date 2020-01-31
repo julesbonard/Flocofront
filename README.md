@@ -1,112 +1,93 @@
-## Welcome in an awesome App documentation !
+# Welcome in an awesome App documentation !
 
 <img src="./src/assets/logo-floco.png" alt="logo floco" width="300"/>
 
-### `Presentation`
+## `Presentation`
 
-Floco is a client project created by ~~**5**~~ 4 [Wild Code School](https://www.wildcodeschool.com/) students in one month and a half.
+Floco is a client project created by 4 [Wild Code School](https://www.wildcodeschool.com/) students in one month and a half.
 
-The application[(PWA)](https://fr.wikipedia.org/wiki/Progressive_web_app) is made to encourage users to participate in the reimplantation of certain plants, in danger of extinction in Strasbourg region.
+The application [(PWA)](https://fr.wikipedia.org/wiki/Progressive_web_app) is made to encourage users to participate in the reimplantation of certain plants, in danger of extinction in Strasbourg region.
 
-### `File directory`
+## `File directory`
 
 ```
 public/
 ├─── src/
 |   ├── assets/  # Images
 |   |
-|   ├──components/ # Dossier qui regroupe tout les composants du dossier page avec son fichier module.css.
+|   ├──components/ # Folder which contains all components'folder, every component folder contains a css file
 |   |   |
 |   │   ├── Account/
-|   │   │   ... # tresaury -> regroupe le badge, le niveau et les points de l'utilisateur
+|   │   │   ... # tresaury -> contains the user level badge and the points he won
 |   |   |
-|   │   ├── Agenda/
-|   │   │   ... # Dossier vide -> calendrier des saisons des plantes
+|   │   ├── Agenda (Diary)/
+|   │   │   ... # Empty folder -> season schedule for planting and blossom
 |   │   │
-|   │   ├── Bibliothèque/
-|   |   |  ... # Ficher search -> permet de rechercher les plantes selon le choix des utilisateurs
+|   │   ├── Bibliothèque (Library)/
+|   |   |  ... # File search -> allows searching for plants selected by users
 |   |   |  |
 |   |   |  └── Plants/
-|   |   |   ... # Dossier contient les photos des plantes
+|   |   |   ... # Folder which contains specification plants sheets
 |   │   |
 |   │   ├── Connexion/
 |   |   |  └─── Home/
-|   |   |   ... # Partie permettant de se connecter ou creer un compte
+|   |   |   ... # Part which allows login or register
 |   |   |  └─── Login/
-|   |   |   ... # Partie permettant de se connecter
+|   |   |   ... # Part which allows login, also by Google and Facebook
 |   |   |  └─── Register/
-|   |   |   ... # Partie permettant de creer un compte
+|   |   |   ... # Part which allows account creation
 |   │   |
 |   |   ├── Layouts/
-|   |   |   ... # Partie incluant menu burger, footer, layouts
+|   |   |   ... # Contains burger menu, footer, layouts
 |   |   |
 |   |   ├── Main/
 |   |   |  └─── Map/
-|   |   |       ... # page principale avec la modale, les boutons et la map
+|   |   |       ... # Homepage which contains a Map with modal and user's plant localisation points
 |   |   |  └─── Stats/
-|   |   |       ... # graphique representant les niveaux d'oxygene
+|   |   |       ... # Oxygen level graphics
 |   |   |
 |   |   ├── MiniFlora/
 |   |   |  └─── Access/
-|   |   |       ... # Partie representant l'inscription des partenaires
+|   |   |       ... # Users inscription part
 |   |   |  └─── Compass/
 |   |   |       ... #
 |   |   |  └─── Partner/
-|   |   |       ... # liste des differents partenaires
+|   |   |       ... # Partner listing
 |   |   |  └─── Pot/
-|   |   |       ... # choix des differents types de pots
+|   |   |       ... # Flower pots listing
 |   |   |  └─── Progress/
-|   |   |       ... # Partie representant l'evolution du choix de la plante du partenaire jusqu'au lieu du developpement de la plante
+|   |   |       ... # This part represent the user plant evolution from acquisition through the partner to plant development
 |   |   |
 |   |   ├── Reducers
-|   |   |   ... # Dossier qui regroupe tous les fichiers insdispensable aux reducers
+|   |   |   ... # Contains all files required by Reducer
 |   |   |
 |   |   |
 |   |   └── components/
 |   └── src/
 |
 ├── .env/
-|   ... # contient le lien de deploiement vers heroku.app
+|   ... # Contains heroku.app deployment link
 |
 └── public/
 
 ```
 
-### `Connect back ans front`
+## `Connect back and front`
 
-#### Open front side application:
+### Open front side application:
 
 Create a programming environment, changing the URL in file : _.env_
 
 ```
-REACT_APP_API_URL="change url"
-```
-
-#### Link:
-
-```
-https://github.com/WildCodeSchool/biarritz_P3_floco_frontend
+REACT_APP_API_URL="https://floco-app.herokuapp.com/"
 ```
 
 ### Open back side application:
 
-fèr comme exemple.env
+Doing like in example.env
 
-#### Link:
+#### `Technic Stack`
 
-```
-https://github.com/WildCodeSchool/biarritz_P3_floco_backend
-```
-
-### `Api`
-
-```
-https://floco-app.herokuapp.com/
-```
-
-### `Dependencies used`
-
-- Semantic ui
 - Semantic ui React
 - Axios
 - Chart.js
@@ -117,28 +98,7 @@ https://floco-app.herokuapp.com/
 - React-router-dom
 - Redux
 
-### `Features to develop`
-
-#### Homepage/Map
-
-- Statistical part of local plants.
-
-#### Account
-
-- Create a chat.
-- Create an adding friends section.
-- Develop sub menus.
-- Add a level part according to users'number of plants.
-
-#### Plants
-
-- Create an adding plants page.
-
-#### Library
-
-- Add filters in the search for plant.
-
-### `The Team`
+## `The Team`
 
 ![](src/assets/8874047.png)
 
@@ -148,6 +108,5 @@ Wild Code School cool students
 - [Lucas Leproux](https://github.com/lucas240)
 - [Jules Bonard](https://github.com/julesbonard)
 - [Frédérique Mendy](https://github.com/Superdref)
-- ~~[Fonny Camus](https://github.com/fan6559)~~
 
-#### Project leader: "Ying Wang"
+## Project leader: "Ying Wang"
