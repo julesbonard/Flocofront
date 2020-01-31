@@ -1,14 +1,14 @@
-## Bienvenue sur la documentation d'une app d'enfer !
+## Welcome in an awesome App documentation !
 
 <img src="./src/assets/logo-floco.png" alt="logo floco" width="300"/>
 
-### `Présentation`
+### `Presentation`
 
-Floco est un projet client fait par ~~**5**~~ 4 élèves de la [Wild Code School](https://www.wildcodeschool.com/) en 1 mois et demi.
+Floco is a client project created by ~~**5**~~ 4 [Wild Code School](https://www.wildcodeschool.com/) students in one month and a half.
 
-Le but de l'appli [(PWA)](https://fr.wikipedia.org/wiki/Progressive_web_app) est d’inciter les utilisateurs à participer à la réimplantation de certaines plantes, en voie de disparition dans la région de Strasbourg.
+The application[(PWA)](https://fr.wikipedia.org/wiki/Progressive_web_app) is made to encourage users to participate in the reimplantation of certain plants, in danger of extinction in Strasbourg region.
 
-### `Organisation des dossiers`
+### `File directory`
 
 ```
 public/
@@ -72,27 +72,27 @@ public/
 
 ```
 
-### `Lier back avec front`
+### `Connect back ans front`
 
-#### Ouvrir l'app en front:
+#### Open front side application:
 
-Pour un environemment de developpement, changer l'URL dans le fichier: _.env_
+Create a programming environment, changing the URL in file : _.env_
 
 ```
 REACT_APP_API_URL="change url"
 ```
 
-#### Lien:
+#### Link:
 
 ```
 https://github.com/WildCodeSchool/biarritz_P3_floco_frontend
 ```
 
-### Ouvrir l'app en back:
+### Open back side application:
 
 fèr comme exemple.env
 
-#### Lien:
+#### Link:
 
 ```
 https://github.com/WildCodeSchool/biarritz_P3_floco_backend
@@ -104,7 +104,7 @@ https://github.com/WildCodeSchool/biarritz_P3_floco_backend
 https://floco-app.herokuapp.com/
 ```
 
-### `Trucs kon a utilisé`
+### `Dependencies used`
 
 - Semantic ui
 - Semantic ui React
@@ -117,32 +117,32 @@ https://floco-app.herokuapp.com/
 - React-router-dom
 - Redux
 
-### `Fonctionnalités à mettre en place`
+### `Features to develop`
 
-#### Page D'acceuil/Map
+#### Homepage/Map
 
-- La partie stats des plantes locales.
+- Statistical part of local plants.
 
-#### Mon Compte
+#### Account
 
-- Faire un tchat.
-- Faire un système d'ajout d'amis.
-- Développer les sous-menus.
-- Ajouter une partie niveau en rapport avec le nombre de plantes de l'utilisateur.
+- Create a chat.
+- Create an adding friends section.
+- Develop sub menus.
+- Add a level part according to users'number of plants.
 
-#### Plantes
+#### Plants
 
-- Faire une page d'ajout de plantes.
+- Create an adding plants page.
 
-#### Bibliothèque
+#### Library
 
-- Ajouter Des filtres pour rechercher une plante.
+- Add filters in the search for plant.
 
-### `L'équipe`
+### `The Team`
 
 ![](src/assets/8874047.png)
 
-Etudiant de la Wild Code School cool
+Wild Code School cool students
 
 - [Dominic Brice](https://github.com/dominicBrice)
 - [Lucas Leproux](https://github.com/lucas240)
@@ -150,4 +150,4 @@ Etudiant de la Wild Code School cool
 - [Frédérique Mendy](https://github.com/Superdref)
 - ~~[Fonny Camus](https://github.com/fan6559)~~
 
-#### Porteuse de projet: "Ying Wang"
+#### Project leader: "Ying Wang"
