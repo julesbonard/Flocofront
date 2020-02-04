@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 import { Form, Image, Button } from "semantic-ui-react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { LOGIN, USER_LOGIN } from "../../../reducers/action";
 import styles from "./Form.module.css";
@@ -133,6 +133,14 @@ function FormRegister({ logIn, userLogIn }) {
             Creer Le Compte{" "}
           </Button>
         </Form>
+        <div style={{ marginTop: "20px" }}>
+          <p>
+            Déjà un compte?{" "}
+            <Link to="/login">
+              Se connecter
+          </Link>
+          </p>
+        </div>
       </div>
     </div>
   );

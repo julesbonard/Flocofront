@@ -1,5 +1,7 @@
 import React from "react";
-import { Image, Grid } from "semantic-ui-react";
+import { Image, Grid, Button } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+
 import styles from "./PartnerPage.module.css";
 
 import laSerre from "../../../assets/LaSerre.png";
@@ -19,7 +21,13 @@ const {
 function PartnerPage() {
   return (
     <>
-      <p className={title}>Mini-Flore</p>
+      <div style={{ textAlign: "center" }} >
+        <Link to="/progress">
+          <Button primary>
+            Mini-flore
+            </Button>
+        </Link>
+      </div>
       <Grid className={fullpage}>
         <Grid className={card}>
           <Grid.Row textAlign="center">
