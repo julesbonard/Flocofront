@@ -11,10 +11,6 @@ import borderbottom from "../../../assets/border-bas.png";
 const {
   fullpage,
   card,
-  title,
-  partnerimage,
-  partnername,
-  partnercoordonate,
   endpage
 } = styles;
 
@@ -31,10 +27,10 @@ function PartnerPage() {
       <Grid className={fullpage}>
         <Grid className={card}>
           <Grid.Row textAlign="center">
-            <Image className={partnerimage} src={jardinissler} centered />
+            <Image src={jardinissler} centered />
             <article>
-              <h1 className={partnername}>Jardins Issler</h1>
-              <p className={partnercoordonate}>
+              <h1>Jardins Issler</h1>
+              <p >
                 Rue du commerce - 67550 Vendenheim
               </p>
               <p>Tel : 03 88 33 97 33 - Fax : 03 88 33 97 94</p>
@@ -44,10 +40,10 @@ function PartnerPage() {
         </Grid>
         <Grid className={card}>
           <Grid.Row textAlign="center">
-            <Image className={partnerimage} src={laSerre} centered />
+            <Image src={laSerre} centered />
             <article>
-              <h1 className={partnername}>La Serre</h1>
-              <p className={partnercoordonate}>
+              <h1>La Serre</h1>
+              <p >
                 11 rue de Sélestat - 67300 Schiltigheim
               </p>
               <p>Tel : 03 88 33 06 85 - Fax : 03 88 19 15 59</p>
