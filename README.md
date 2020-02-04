@@ -1,6 +1,6 @@
 # Welcome in an awesome App documentation !
 
-<img src="./src/assets/logo-floco.png" alt="logo floco" width="300"/>
+<img src="./src/assets/logo-floco-rond.png" alt="logo floco" width="300"/>
 
 ## `Presentation`
 
@@ -72,31 +72,47 @@ public/
 
 ```
 
-## `Connect back and front`
+### Our application is developped in Javascript and we use React (Create React App).
+
+```
+A src folder which contains:
+
+- assets folder: all images files, extension = .png,
+- components folder: folders with a component file, extension = .jsx
+  and his style file, extension = .module.css,
+- a router file, extension = .jsx,
+- a Layout folder: layout files, extension = .js.
+```
+
+```
+A reducer folder (Redux) which contains:
+- reducer action files, extension = .js.
+  3 indipensables files:
+- App.js, index.js,
+- serviceWorker.js, the good way for create a PWA.
+```
 
 ### Open front side application:
 
+```
 Create a programming environment, changing the URL in file : _.env_
 
-```
 REACT_APP_API_URL="https://floco-app.herokuapp.com/"
 ```
 
-### Open back side application:
-
-Doing like in example.env
-
 #### `Technic Stack`
 
+```
+
+- React
+- React-router-dom
+- React-leaflet
 - Semantic ui React
+- Node-sass
 - Axios
 - Chart.js
-- Leaflet
-- Node-sass
-- React
-- React-leaflet
-- React-router-dom
 - Redux
+```
 
 ## `The Team`
 
@@ -110,3 +126,13 @@ Wild Code School cool students
 - [Frédérique Mendy](https://github.com/Superdref)
 
 ## Project leader: "Ying Wang"
+
+<img src="./src/assets/react-logo.png" alt="logo React" width="60"/>
+
+<img src="./src/assets/Leaflet_logo.png" alt="logo Leaflet" width="200"/>
+
+<img src="./src/assets/semanticuireact-logo.png" alt="logo Semantic Ui React" width="60"/>
+
+<img src="./src/assets/sass-logo.png" alt="logo Sass" width="80"/>
+
+<img src="./src/assets/redux.png" alt="logo Redux" width="270"/>
