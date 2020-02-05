@@ -11,7 +11,7 @@ function Treasury({ level, points, badge }) {
         <>
             <Card centered className={treasury_card}>
                 <Card.Content  >
-                    <h2 className={text} >trésorie</h2>
+                    <h2 className={text} >trésorerie</h2>
                 </Card.Content>
                 <Card.Content>
                     <Grid >
