@@ -1,6 +1,6 @@
 # Welcome in an awesome App documentation !
 
-<img src="./src/assets/logo-floco-rond.png" alt="logo floco" width="300"/>
+<div align="center"><img src="./src/assets/logo-floco-rond.png" alt="logo floco" width="300"/></div>
 
 ## `Presentation`
 
