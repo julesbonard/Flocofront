@@ -1,3 +1,5 @@
+<div bgcolor="#EBD3B7">
+
 # Welcome in an awesome App documentation !
 
 <div align="center"><img src="./src/assets/logo-floco-rond.png" alt="logo floco" width="300"/></div>
@@ -138,3 +140,5 @@ Wild Code School cool students
 <img src="./src/assets/sass-logo.png" alt="logo Sass" width="80"/>
 
 <img src="./src/assets/redux.png" alt="logo Redux" width="220"/>
+
+</div>
