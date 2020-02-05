@@ -120,10 +120,12 @@ REACT_APP_API_URL="https://floco-app.herokuapp.com/"
 
 Wild Code School cool students
 
-- [Dominic Brice](https://github.com/dominicBrice)
+<img src="./src/assets/FlocoTeam.png" alt="Team Floco">
+
 - [Lucas Leproux](https://github.com/lucas240)
-- [Jules Bonard](https://github.com/julesbonard)
 - [Frédérique Mendy](https://github.com/Superdref)
+- [Dominic Brice](https://github.com/dominicBrice)
+- [Jules Bonard](https://github.com/julesbonard)
 
 ## Project leader: "Ying Wang"
 
