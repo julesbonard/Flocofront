@@ -137,4 +137,4 @@ Wild Code School cool students
 
 <img src="./src/assets/sass-logo.png" alt="logo Sass" width="80"/>
 
-<img src="./src/assets/redux.png" alt="logo Redux" width="270"/>
+<img src="./src/assets/redux.png" alt="logo Redux" width="220"/>
