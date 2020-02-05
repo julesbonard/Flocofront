@@ -77,18 +77,21 @@ function MapDisplay({
       )
 
       .then(res => {
-        console.log(res);
-
-        const { uuid, latitude, longitude, PlantUuid } = res.data;
-        setMarkers([
-          ...markers,
-          {
-            uuid,
-            lat: latitude,
-            lng: longitude,
-            PlantUuid
-          }
-        ]);
+        const getMarkers = async () => {
+          const plants = await axios.get(`${process.env.REACT_APP_API_URL}/plants`);
+          const refactoredPlants = plants.data.map(({ uuid, Location, Pot }) => {
+            return {
+              PlantUuid: uuid,
+              locationUuid: Location.uuid,
+              PotUuid: Pot.uuid,
+              lat: Location.latitude,
+              lng: Location.longitude,
+              userUuid: Pot.UserUuid
+            };
+          });
+          setMarkers(refactoredPlants);
+        };
+        getMarkers();
       })
       .catch(err => {
         console.log(err);
