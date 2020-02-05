@@ -87,7 +87,7 @@ A src folder which contains:
 ```
 A reducer folder (Redux) which contains:
 - reducer action files, extension = .js.
-  3 indipensables files:
+3 indipensables files:
 - App.js, index.js,
 - serviceWorker.js, the good way for create a PWA.
 ```
