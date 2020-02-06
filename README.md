@@ -1,16 +1,29 @@
-<div bgcolor="#EBD3B7">
-
 # Welcome in an awesome App documentation !
 
 <div align="center"><img src="./src/assets/logo-floco-rond.png" alt="logo floco" width="300"/></div>
 
-## `Presentation`
+## Presentation
 
 Floco is a client project created by 4 [Wild Code School](https://www.wildcodeschool.com/) students in one month and a half.
 
 The application [(PWA)](https://fr.wikipedia.org/wiki/Progressive_web_app) is made to encourage users to participate in the reimplantation of certain plants, in danger of extinction in Strasbourg region.
 
-## `File directory`
+## Getting started
+```bash
+git clone
+npm install
+echo REACT_APP_API_URL=https://your-api-url.com/ > .env
+npm start
+```
+
+## Environment variables
+Your env variables should be in a `.env` file in your application root directory.
+You will create it in the getting started
+```
+REACT_APP_API_URL=https://your-api-url.com/ > .env
+```
+
+## File directory
 
 ```
 public/
@@ -65,7 +78,6 @@ public/
 |   |   |
 |   |   |
 |   |   └── components/
-|   └── src/
 |
 ├── .env/
 |   ... # Contains heroku.app deployment link
@@ -74,49 +86,19 @@ public/
 
 ```
 
-### Our application is developped in Javascript and we use React (Create React App).
+## Technical Stack
 
-```
-A src folder which contains:
-
-- assets folder: all images files, extension = .png,
-- components folder: folders with a component file, extension = .jsx
-  and his style file, extension = .module.css,
-- a router file, extension = .jsx,
-- a Layout folder: layout files, extension = .js.
-```
-
-```
-A reducer folder (Redux) which contains:
-- reducer action files, extension = .js.
-3 indipensables files:
-- App.js, index.js,
-- serviceWorker.js, the good way for create a PWA.
-```
-
-### Open front side application:
-
-```
-Create a programming environment, changing the URL in file : _.env_
-
-REACT_APP_API_URL="https://floco-app.herokuapp.com/"
-```
-
-#### `Technic Stack`
-
-```
+The project was bootstrapped with [create-react-app](https://github.com/facebook/create-react-app)
 
 - React
-- React-router-dom
-- React-leaflet
-- Semantic ui React
-- Node-sass
+- Leaflet
+- Semantic UI
+- SCSS
 - Axios
 - Chart.js
 - Redux
-```
 
-## `The Team`
+## The Team
 
 ![](src/assets/8874047.png)
 
@@ -140,5 +122,3 @@ Wild Code School cool students
 <img src="./src/assets/sass-logo.png" alt="logo Sass" width="80"/>
 
 <img src="./src/assets/redux.png" alt="logo Redux" width="220"/>
-
-</div>
