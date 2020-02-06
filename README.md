@@ -9,6 +9,7 @@ Floco is a client project created by 4 [Wild Code School](https://www.wildcodesc
 The application [(PWA)](https://fr.wikipedia.org/wiki/Progressive_web_app) is made to encourage users to participate in the reimplantation of certain plants, in danger of extinction in Strasbourg region.
 
 ## Getting started
+
 ```bash
 git clone
 npm install
@@ -17,8 +18,10 @@ npm start
 ```
 
 ## Environment variables
+
 Your env variables should be in a `.env` file in your application root directory.
 You will create it in the getting started
+
 ```
 REACT_APP_API_URL=https://your-api-url.com/ > .env
 ```
@@ -90,13 +93,13 @@ public/
 
 The project was bootstrapped with [create-react-app](https://github.com/facebook/create-react-app)
 
-- React
-- Leaflet
-- Semantic UI
-- SCSS
-- Axios
-- Chart.js
-- Redux
+- [<img src="./src/assets/react-logo.png" alt="logo React" width="60"/>](https://reactjs.org/)
+- [<img src="./src/assets/Leaflet_logo.png" alt="logo Leaflet" width="200"/>](https://reactjs.org/)
+- [<img src="./src/assets/semanticuireact-logo.png" alt="logo Semantic Ui React" width="60"/>](https://react.semantic-ui.com/)
+- [<img src="./src/assets/sass-logo.png" alt="logo Sass" width="80"/>](https://sass-lang.com/documentation)
+- [<img src="./src/assets/logo-axios.png" alt="logo Axios" width="180"/>](https://www.axios.com/)
+- [<img src="./src/assets/logo-charts.png" alt="logo Charts js" width="60"/>](https://www.chartjs.org/docs/latest/)
+- [<img src="./src/assets/redux.png" alt="logo Redux" width="220"/>](https://redux.js.org/introduction/getting-started/)
 
 ## The Team
 
@@ -111,14 +114,4 @@ Wild Code School cool students
 - [Dominic Brice](https://github.com/dominicBrice)
 - [Jules Bonard](https://github.com/julesbonard)
 
-## Project leader: "Ying Wang"
-
-<img src="./src/assets/react-logo.png" alt="logo React" width="60"/>
-
-<img src="./src/assets/Leaflet_logo.png" alt="logo Leaflet" width="200"/>
-
-<img src="./src/assets/semanticuireact-logo.png" alt="logo Semantic Ui React" width="60"/>
-
-<img src="./src/assets/sass-logo.png" alt="logo Sass" width="80"/>
-
-<img src="./src/assets/redux.png" alt="logo Redux" width="220"/>
+Project leader: "Ying Wang"
